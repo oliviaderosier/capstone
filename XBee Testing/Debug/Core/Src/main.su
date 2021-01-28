@@ -1,0 +1,8 @@
+sensorObjects.h:19:6:processIO	4	static
+sensorObjects.h:24:6:processTempRequest	4	static
+main.c:69:5:main	24	static
+main.c:117:6:SystemClock_Config	72	static
+main.c:153:13:MX_USART3_UART_Init	8	static
+main.c:186:13:MX_GPIO_Init	16	static
+main.c:198:6:HAL_UART_RxCpltCallback	16	static
+main.c:223:6:Error_Handler	4	static

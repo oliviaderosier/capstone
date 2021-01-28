@@ -22,8 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "sensorObjects.h";
-
+#include "sensorObjects.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -194,15 +193,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void processIO()
-{
 
-}
-
-void processTempRequest()
-{
-
-}
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 {
