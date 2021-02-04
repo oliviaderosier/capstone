@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+
 <html>
 <div style="background-image: url('golf.jpg')";>
 <head>
+
+<!-------------------------------------------LINE GRAPH CODE---------------------------------------------> 
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
+/*-------------------------------------------GETTING VALUES FROM DATA BASE FOR GRAPH----------------------------------------*/
 
 var m1 = <?php
 
@@ -65,11 +70,15 @@ var s1 = <?php
       }
     </script>
 
+<!-------------------------------------------BAR GRAPH CODE--------------------------------------------->
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
   google.charts.load('current', {'packages':['bar']});
   google.charts.setOnLoadCallback(drawStuff);
+
+/*-------------------------------------------GETTING VALUES FROM DATA BASE FOR GRAPH----------------------------------------*/
 
 var hole1 = <?php
 
@@ -118,8 +127,6 @@ var hole1 = <?php
       bar: { groupWidth: "90%" }
     };
 
-    
-
     var chart = new google.charts.Bar(document.getElementById('bargraph'));
     chart.draw(data, options);
   };
@@ -131,6 +138,8 @@ var hole1 = <?php
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
+
+<!-------------------------------------------------START OF HTML CODE-------------------------------------------------->
 
 <body onload = "myFunction()">
 <div id="bulk">
@@ -149,18 +158,70 @@ var hole1 = <?php
 <div id="parameterBlock">
 <p>&#x1F321 Ambient Temperature:  <span id="temp"></span>&#176C</p>
 <p>&#x1F325 Feels Like:  <span id="feelsLike"></span>&#176C, <span id="desc"></span>. </p>
-<p> &#x1F3CC Soil Temperature: 30 &#176 C </p>
-<p>&#x1F326 Percent Chance of Rain: 10% <p>
+
+ <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
+
+<?php
+
+  $db = mysqli_connect("localhost", "root", "", "capstone");
+  if ($db->connect_error)
+  {
+      die ("Connection failed: " . $db->connect_error);
+
+  }
+
+  $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
+  $results = $db->query($q);
+
+  $temp =$row['temp'];
+
+  echo '<p> &#x1F3CC Soil Temperature: '.$temp.'&#176 C </p>';
+
+  $db->close();
+?>
+
+<p>&#x1F326 Percent Chance of Rain: <span id="rain"></span>% <p>
 <p>&#x263C Time of Sunrise: <span id="rise"></span> AM </p>
 <p>&#x263E Time of Sunset: <span id="set"></span> PM </p>
-
-</div>
-</div>
-</div>
 </div>
 
+<div id="parameterBlock" style = "position:relative; left:800px; top:-850px;">
+<p>Battery Life of Communication Devices </p>
+
+ <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
+
+<?php
+
+  $db = mysqli_connect("localhost", "root", "", "capstone");
+  if ($db->connect_error)
+  {
+      die ("Connection failed: " . $db->connect_error);
+
+  }
+
+  $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
+  $results = $db->query($q);
+
+  $battery =$row['battery'];
+
+  echo '<p>&#x1F50B Device 1: ' .$battery. '%</p>';
+
+  $db->close();
+?>
+
+<p>&#x1F50B Device 2: 75%</p>
+<p>&#x1F50B Device 3: 95%</p>
+
+</div>
+
+</div>
 </body>
 </html>
+
+<!-----------------------------------------END OF HTML CODE------------------------------------------->
+
+
+<!-----------------------------------------JAVA WEATHER API------------------------------------------->
 
 <script>
 function myFunction() {
@@ -172,19 +233,20 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b1
     document.getElementById("feelsLike").innerHTML =  data['main']['feels_like'];
     document.getElementById("temp").innerHTML = data['main']['temp'];
 
-    var riseTime = data['sys']['sunrise'] * 1000;
-    var riseDate = new Date(riseTime);
-    riseDate.toDateString();
-    var hours = riseDate.getHours();
-    var minutes = riseDate.getMinutes();
-    var time = hours + ":"+ minutes;
+//time conversion from epoch unix time to readable time
+                var riseTime = data['sys']['sunrise'] * 1000;
+                var riseDate = new Date(riseTime);
+                riseDate.toDateString();
+                var hours = riseDate.getHours();
+                var minutes = riseDate.getMinutes();
+                var time = hours + ":"+ minutes;
 
-    var setTime = data['sys']['sunset'] * 1000;
-    var setDate = new Date(setTime);
-    setDate.toDateString();
-    var hours1 = setDate.getHours() - 12;
-    var minutes1 = setDate.getMinutes();
-    var time1 = hours1 + ":"+ minutes1;
+                var setTime = data['sys']['sunset'] * 1000;
+                var setDate = new Date(setTime);
+                setDate.toDateString();
+                var hours1 = setDate.getHours() - 12;
+                var minutes1 = setDate.getMinutes();
+                var time1 = hours1 + ":"+ minutes1;
 
     document.getElementById("rise").innerHTML = time;
     document.getElementById("set").innerHTML = time1;
@@ -192,6 +254,20 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b1
     }
   </script>
 
+<!-------------------------------------------JAVA CHANCE OF RAIN API--------------------------------------------->
+
+  <script>
+  fetch('http://api.worldweatheronline.com/premium/v1/weather.ashx?key=d1e8c8e0551e4b798d3190230210202&q=Regina&num_of_days=1&format=json&tp=12&mca=no')
+  .then(response => response.json())
+  .then(data=>{
+
+  document.getElementById("rain").innerHTML = data['data']['weather'][0]['hourly'][1]['chanceofrain'];
+  })
+  </script>
+  
+  
+  <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
+ 
   <?php
 
   $db = mysqli_connect("localhost", "root", "", "capstone");
