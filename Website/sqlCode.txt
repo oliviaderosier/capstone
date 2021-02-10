@@ -1,0 +1,13 @@
+CREATE TABLE data (
+    id int not null auto_increment primary key,
+    dataDate datetime,
+    moisture int,
+    salt int,
+    temp int,
+    rain bool,
+    battery int,
+    waterUsed int
+);
+
+INSERT INTO data (moisture, salt, temp, rain, battery, waterUsed)
+VALUES ( 10, 20 , 22, 0, 85, 5);

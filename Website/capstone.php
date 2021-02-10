@@ -13,49 +13,187 @@
 /*-------------------------------------------GETTING VALUES FROM DATA BASE FOR GRAPH----------------------------------------*/
 
 var m1 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                
+                 $q = "SELECT moisture FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['moisture'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-              $db = mysqli_connect("localhost", "root", "", "capstone");
-              if ($db->connect_error)
-                  {
-                    die ("Connection failed: " . $db->connect_error);
+var m2 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -1 ;
+  
+                 $q = "SELECT moisture FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['moisture'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-                  }
-              $q = "SELECT * FROM data";
-              $results = $db->query($q);
-              $row = $results->fetch_assoc();
-              $m1= $row["moisture"];
+  var m3 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -2 ;
+  
+                 $q = "SELECT moisture FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['moisture'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-              echo $m1; 
-
-              $db->close();
-?>
+var m4 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -3 ;
+  
+                 $q = "SELECT moisture FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['moisture'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
 var s1 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+  
+                 $q = "SELECT salt FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['salt'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-              $db = mysqli_connect("localhost", "root", "", "capstone");
-              if ($db->connect_error)
-                  {
-                    die ("Connection failed: " . $db->connect_error);
+var s2 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -1;
+  
+                 $q = "SELECT salt FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['salt'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-                  }
-              $q = "SELECT * FROM data";
-              $results = $db->query($q);
-              $row = $results->fetch_assoc();
-              $s1= $row["salt"];
+var s3 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -2;
+  
+                 $q = "SELECT salt FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['salt'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
-              echo $s1; 
-
-              $db->close();
-?>
+var s4 = <?php
+                $db = mysqli_connect("localhost", "root", "", "capstone");
+                if ($db->connect_error)
+                    {
+                      die ("Connection failed: " . $db->connect_error);
+  
+                    }
+                $q = "SELECT MAX(id) FROM data";
+                $results = $db->query($q);
+                $row = mysqli_fetch_array($results);
+                $N = $row[0];
+                $N = $N -3;
+  
+                 $q = "SELECT salt FROM data where id = $N";
+                 $results = $db->query($q);
+                 $row = $results->fetch_assoc();
+                 $M = $row['salt'];
+                 echo $M;
+  
+                $db->close();
+  ?>
 
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Moisture Level', 'Salinity Level'],
           ['Monday',  m1, s1],
-          ['Tuesday',  200,      460],
-          ['Wednesday',  660,       1120],
-          ['Thursday',  1030,      540]
+          ['Tuesday',  m2,      s2],
+          ['Wednesday',  m3,       s3],
+          ['Thursday',  m4,      s4]
         ]);
 
         var options = {
@@ -157,9 +295,9 @@ var hole1 = <?php
 
 <div id="parameterBlock">
 <p>&#x1F321 Ambient Temperature:  <span id="temp"></span>&#176C</p>
-<p>&#x1F325 Feels Like:  <span id="feelsLike"></span>&#176C, <span id="desc"></span>. </p>
+<p>&#x1F325 Feels Like:  <span id="feelsLike"></span>&#176C</p> 
 
- <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
+<!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS FOR SOIL TEMP--------------------------------------------->
 
 <?php
 
@@ -188,7 +326,7 @@ var hole1 = <?php
 <div id="parameterBlock" style = "position:relative; left:800px; top:-850px;">
 <p>Battery Life of Communication Devices </p>
 
- <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
+<!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS FOR BATTERY LIFE--------------------------------------------->
 
 <?php
 
@@ -229,7 +367,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b1
 .then(response => response.json())
 .then(data=>{
   
-    document.getElementById("desc").innerHTML = data['weather'][0]['description'];
     document.getElementById("feelsLike").innerHTML =  data['main']['feels_like'];
     document.getElementById("temp").innerHTML = data['main']['temp'];
 
@@ -239,14 +376,30 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b1
                 riseDate.toDateString();
                 var hours = riseDate.getHours();
                 var minutes = riseDate.getMinutes();
-                var time = hours + ":"+ minutes;
+
+                if(minutes < 10)
+                {
+                  var time = hours + ":0"+ minutes;
+                }
+                else{
+                  var time = hours + ":"+ minutes;
+                }
+                
 
                 var setTime = data['sys']['sunset'] * 1000;
                 var setDate = new Date(setTime);
                 setDate.toDateString();
                 var hours1 = setDate.getHours() - 12;
                 var minutes1 = setDate.getMinutes();
-                var time1 = hours1 + ":"+ minutes1;
+
+                if(minutes1 < 10)
+                {
+                  var time1 = hours1 + ":0"+ minutes1;
+                }
+                else{
+                  var time1 = hours1 + ":"+ minutes1;
+                }
+                
 
     document.getElementById("rise").innerHTML = time;
     document.getElementById("set").innerHTML = time1;
@@ -265,30 +418,3 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b1
   })
   </script>
   
-  
-  <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS--------------------------------------------->
- 
-  <?php
-
-  $db = mysqli_connect("localhost", "root", "", "capstone");
-  if ($db->connect_error)
-  {
-      die ("Connection failed: " . $db->connect_error);
-
-  }
-
-  $q = "SELECT * FROM data";
-  $results = $db->query($q);
-
-  if($results->num_rows > 0){
-    while($row = $results->fetch_assoc()){
-      echo "time: ".$row['dataDate']. "- moisture: ".$row['moisture']."- salt index: ".$row['salt']."- temperature: ".$row['temp']."- water used: ".$row['waterUsed']. "- battery life: ".$row['battery']."<br>";
-  }
-  }
-
-  else {
-  echo "0 results";
-  }
-
-  $db->close();
-  ?>
