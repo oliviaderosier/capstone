@@ -197,20 +197,24 @@ static void MX_GPIO_Init(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 {
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 24);
-	switch (uartBufferRX[3])
+	if (uartBufferRX[0] == 0x7E)
 	{
-	case 0x92:
-		processIO();
-		break;
+		switch (uartBufferRX[3])
+		{
+		case 0x92:
+			processIO(uartBufferRX);
+			break;
 
-	case 0x87:
-		processTempRequest();
-		break;
+		case 0x97:
+			processATResponse();
+			break;
 
-	default:
-		break;
+		default:
+			break;
+		}
 	}
+
+	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 24);
 
 	return;
 }
