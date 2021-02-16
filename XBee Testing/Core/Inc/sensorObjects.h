@@ -114,7 +114,7 @@ void processIO(uint8_t *ioData)
 				match = 0;
 			}
 		}
-
+		//This is to help update Github; delete later
 		if (match == 1)
 		{
 			fairways[i].resistive 	= sensorResistive;
