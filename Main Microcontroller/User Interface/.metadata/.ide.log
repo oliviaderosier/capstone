@@ -621,3 +621,171 @@
 2021-02-17 13:10:49,016 [INFO] ServerAccessManage:348 - Download File stm32cube_fw_f1_v180.zip
 2021-02-17 13:11:26,763 [INFO] FileExtend:225 - Unzip File : stm32cube_fw_f1_v180.zip
 2021-02-17 13:11:26,763 [INFO] FileExtend:240 - Standard Zip Deflate
+2021-02-17 13:11:55,386 [INFO] ServerAccessManage:348 - Download File stm32cube_fw_f1_v183.zip
+2021-02-17 13:12:08,835 [INFO] FileExtend:225 - Unzip File : stm32cube_fw_f1_v183.zip
+2021-02-17 13:12:08,835 [INFO] FileExtend:240 - Standard Zip Deflate
+2021-02-17 13:12:10,137 [INFO] LoadServerPackagesThread:169 - End of LoadServerPackages Thread
+2021-02-17 13:12:10,160 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 723064600 Bytes (1073741824)
+2021-02-17 13:12:10,222 [INFO] CheckServerUpdateThread:102 - End of CheckServer Thread
+2021-02-17 13:12:10,548 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-02-17 13:12:10,548 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-02-17 13:12:10,548 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-02-17 13:12:10,548 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-02-17 13:12:10,548 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-02-17 13:12:10,549 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-02-17 13:12:10,861 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-02-17 13:12:11,141 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-02-17 13:12:11,252 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-02-17 13:12:11,332 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-02-17 13:12:11,406 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-02-17 13:12:11,434 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-02-17 13:12:11,523 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-02-17 13:12:11,530 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-02-17 13:12:11,591 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-02-17 13:12:11,622 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-02-17 13:12:11,721 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-02-17 13:12:11,728 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-02-17 13:12:11,775 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-02-17 13:12:11,804 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-02-17 13:12:11,869 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-02-17 13:12:11,925 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-02-17 13:12:11,983 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-02-17 13:12:11,994 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-02-17 13:12:12,071 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-02-17 13:12:12,426 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 68mS.
+2021-02-17 13:12:12,432 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-02-17 13:12:12,611 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-02-17 13:12:12,636 [INFO] ApiDbMcu:456 - Load IP Config File for FATFS
+2021-02-17 13:12:12,667 [INFO] ApiDbMcu:456 - Load IP Config File for FREERTOS
+2021-02-17 13:12:12,694 [INFO] ApiDbMcu:456 - Load IP Config File for USB_DEVICE
+2021-02-17 13:12:17,569 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 5137mS.
+2021-02-17 13:12:17,570 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
+2021-02-17 13:12:17,571 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-02-17 13:12:17,985 [INFO] ApiDb:263 - Save user favorites file C:\Users\anima/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2021-02-17 13:12:17,985 [INFO] ApiDb:267 - User favorites MCUs=[]
+2021-02-17 13:12:17,986 [INFO] ApiDb:263 - Save user favorites file C:\Users\anima/.stm32cubeide/favorites.boards.txt: 0 item(s)
+2021-02-17 13:12:17,987 [INFO] ApiDb:267 - User favorites Boards=[]
+2021-02-17 13:19:20,611 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:33,366 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:33,382 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:33,416 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:33,430 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:40,228 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:40,243 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:40,278 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:40,291 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:42,841 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:42,856 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:42,882 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:42,897 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:45,262 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:45,277 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:45,302 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:45,316 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:47,505 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:47,518 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:47,544 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:47,558 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:49,642 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:49,655 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:49,679 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:49,691 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:51,955 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:51,969 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:51,994 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:52,007 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:53,795 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:53,808 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:53,832 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:53,844 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:56,200 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:56,213 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:56,237 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:56,251 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:59,013 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:59,032 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:32:59,054 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:32:59,067 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:01,147 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:01,160 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:01,184 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:01,196 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:05,747 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:05,760 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:05,789 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:05,801 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:08,103 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:08,116 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:08,139 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:08,151 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:19,709 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:19,722 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:19,746 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:19,759 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:47,175 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:47,189 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:47,213 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:47,225 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:54,384 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:54,396 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:54,419 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:54,432 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:56,437 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:56,450 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:56,473 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:56,485 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:59,890 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:59,902 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:33:59,931 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 13:33:59,943 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 13:34:40,771 [INFO] CtxDoc:706 - title: RCC; link: Reference manual - Connectivity line 
+2021-02-17 13:34:41,787 [INFO] ServerAccessManage:348 - Download File RM0008.pdf
+2021-02-17 13:34:46,866 [INFO] LoadUrlFilesThread:135 - End of LoadUrlFiles Thread
+2021-02-17 13:34:46,867 [INFO] CtxDocViewerPdf:139 - Open pdf file: C:/Users/anima/STM32Cube/Repository/\RM0008.pdf in chapter: Connectivity line devices: reset and clock control (RCC)
+2021-02-17 13:34:47,329 [INFO] CtxDocViewerPdf:234 - Opening file: C:/Users/anima/STM32Cube/Repository/\RM0008.pdf at page: 1
+2021-02-17 13:34:48,928 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Feb 17, 2021 1:34:48 PM java.util.prefs.WindowsPreferences <init>
+2021-02-17 13:34:48,929 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+2021-02-17 13:34:48,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-02-17 13:38:01,905 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 227480680 Bytes (447741952)
+2021-02-17 13:38:03,829 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 235784120 Bytes (447741952)
+2021-02-17 13:38:10,219 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 332381288 Bytes (447741952)
+2021-02-17 13:38:10,378 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-02-17 13:38:10,378 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-02-17 13:38:10,378 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-02-17 13:38:10,379 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-02-17 13:38:10,379 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-02-17 13:38:10,380 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-02-17 13:38:10,521 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-02-17 13:38:10,560 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-02-17 13:38:10,605 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-02-17 13:38:10,702 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-02-17 13:38:10,748 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-02-17 13:38:10,779 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-02-17 13:38:10,849 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-02-17 13:38:10,854 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-02-17 13:38:10,908 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-02-17 13:38:10,936 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-02-17 13:38:11,009 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-02-17 13:38:11,013 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-02-17 13:38:11,050 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-02-17 13:38:11,077 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-02-17 13:38:11,142 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-02-17 13:38:11,185 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-02-17 13:38:11,241 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-02-17 13:38:11,254 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-02-17 13:38:11,374 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-02-17 13:38:11,879 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 100mS.
+2021-02-17 13:38:11,882 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-02-17 13:38:12,102 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-02-17 13:38:13,213 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1331mS.
+2021-02-17 13:38:13,214 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
+2021-02-17 13:38:13,216 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-02-17 15:51:48,480 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 15:51:48,495 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 15:51:48,521 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 15:51:48,533 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 16:01:12,797 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 16:01:12,809 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 16:01:12,832 [INFO] Gpio:248 - dependency for GPIO [RCC, SYS, USART2]
+2021-02-17 16:01:12,844 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-02-17 23:52:06,243 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
