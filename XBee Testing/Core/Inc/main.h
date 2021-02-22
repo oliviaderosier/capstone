@@ -54,6 +54,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+void uartInterruptInit(uint8_t);
+void uartTransmit(uint8_t *, uint8_t);
 
 /* USER CODE END EFP */
 
