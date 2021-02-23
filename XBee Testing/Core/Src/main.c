@@ -43,8 +43,6 @@
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-uint8_t uartBufferRX[50];
-uint8_t uartBufferTX[50];
 uint16_t xbeeIODataLines[2];
 
 /* USER CODE END PV */
@@ -78,9 +76,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  struct sensorNode Blue;
-  struct sensorNode Green;
-  struct sensorNode Red;
 
   /* USER CODE END Init */
 
@@ -95,7 +90,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 24);
+ initializeNodes();
+uartInterruptInit(24);
 
   /* USER CODE END 2 */
 
@@ -193,7 +189,19 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void uartInterruptInit(uint8_t length)
+{
+	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], length);
 
+	return;
+}
+
+void uartTransmit(uint8_t *buffer, uint8_t length)
+{
+	HAL_UART_Transmit(&huart3, buffer, length, 1);
+
+	return;
+}
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 {
@@ -206,15 +214,16 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 			break;
 
 		case 0x97:
-			processATResponse();
+			processATResponse(uartBufferRX);
 			break;
 
-		default:
+		default://if it wasnt an expected data type just throw it out
+			uartInterruptInit(24);
 			break;
 		}
 	}
 
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 24);
+
 
 	return;
 }
