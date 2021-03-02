@@ -145,6 +145,7 @@ void processIO(uint8_t *ioData)
 {
 	uint16_t sensorResistive 	= 0;
 	uint16_t sensorCapacative 	= 0;
+	uint16_t sensorTemperature 	= 0;
 	uint8_t	 match = 0;
 
 	if(!verifyChecksum(ioData))
@@ -153,8 +154,9 @@ void processIO(uint8_t *ioData)
 	}
 	else
 	{
-		sensorResistive = ioData[19]*256 + ioData[20]; //ADC0
-		sensorCapacative = ioData [21]*256 + ioData[22];//ADC1
+		sensorResistive 	= ioData[19]*256 + ioData[20]; //ADC0
+		sensorCapacative	= ioData [21]*256 + ioData[22];//ADC1
+		sensorTemperature 	= ioData [23]*256 + ioData[24];//ADC2
 	}
 
 	//Determine which sensor it belongs to
@@ -179,8 +181,9 @@ void processIO(uint8_t *ioData)
 
 		if (match == 1)
 		{
-			fairways[nodeNumber].resistive	= sensorResistive;
-			fairways[nodeNumber].capacative	= sensorCapacative;
+			fairways[nodeNumber].resistive		= sensorResistive;
+			fairways[nodeNumber].capacative		= sensorCapacative;
+			fairways[nodeNumber].temperature	= sensorTemperature;
 
 			break;
 			//i = 37; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.
@@ -189,7 +192,7 @@ void processIO(uint8_t *ioData)
 	//__HAL_UART_CLEAR_FLAG(&huart3, UART_FLAG_TC);
 
 	uartInterruptInit(21);
-	sendTempRequest(nodeNumber);
+	sendBattRequest(nodeNumber);
 
   return;
 }
@@ -216,6 +219,8 @@ void processATResponse(uint8_t *ATResponse)
 			if (match == 1)
 			{
 				//get which data type it is
+				//no longer need the first "IF" because the temp is now coming from an ADC
+				//we will keep in so we could add ambient field temp in the future.
 				if (ATResponse[15] == 0x54 && ATResponse[16] == 0x50) //if the AT command was "TP"
 				{
 					fairways[nodeNum].temperature = ATResponse[18] *256 + ATResponse[19]; //store temp data then request battery data
@@ -225,11 +230,11 @@ void processATResponse(uint8_t *ATResponse)
 				else if (ATResponse[15] == 0x25 && ATResponse[16] == 0x56) //if the AT command was "%V"
 				{
 					fairways[nodeNum].battery = ATResponse[18]*256 + ATResponse[19];
-					uartInterruptInit(24);//Listen for IO data becasue we should have both requests received
+					uartInterruptInit(26);//Listen for IO data becasue we should have both requests received
 				}
 				else
 				{	//if we got an unexpected AT Command Type, give up and try again next time data is transmitted
-					uartInterruptInit(24);
+					uartInterruptInit(26);
 				}
 
 				nodeNum = 255; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.
@@ -267,6 +272,8 @@ void sendBattRequest(uint8_t nodeNumber)
 
 void sendTempRequest(uint8_t nodeNumber)
 {
+	//no longer needed within the scope of the project but kept so we could add ambient air temperature readings
+	//if we wanted to.
 	uartBufferTX[0] = 0x7E; //startDelim
 	uartBufferTX[1] = 0x00; //length byte 1
 	uartBufferTX[2] = 0x0F; //length byte 2

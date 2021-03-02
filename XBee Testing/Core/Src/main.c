@@ -91,7 +91,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
  initializeNodes();
-uartInterruptInit(24);
+uartInterruptInit(26);
 
   /* USER CODE END 2 */
 
@@ -218,7 +218,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 			break;
 
 		default://if it wasnt an expected data type just throw it out
-			uartInterruptInit(24);
+			uartInterruptInit(26);
 			break;
 		}
 	}
