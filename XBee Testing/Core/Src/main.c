@@ -43,7 +43,7 @@
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-uint16_t xbeeIODataLines[2];
+//uint16_t xbeeIODataLines[2];
 
 /* USER CODE END PV */
 
@@ -191,6 +191,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void uartInterruptInit(uint8_t length)
 {
+	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], length);
 
 	return;
@@ -198,6 +199,7 @@ void uartInterruptInit(uint8_t length)
 
 void uartTransmit(uint8_t *buffer, uint8_t length)
 {
+	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	HAL_UART_Transmit(&huart3, buffer, length, 1);
 
 	return;
@@ -205,6 +207,7 @@ void uartTransmit(uint8_t *buffer, uint8_t length)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 {
+	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	if (uartBufferRX[0] == 0x7E)
 	{
 		switch (uartBufferRX[3])
