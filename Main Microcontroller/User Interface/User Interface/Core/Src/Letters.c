@@ -33,11 +33,11 @@ void letter(char L)
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);//D0	//:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);//D0	//-
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);//D4
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);//D5
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -138,7 +138,7 @@ void letter(char L)
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
 
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
-		  Hal_Delay(2);
+		  HAL_Delay(2);
 	}
 	if(L == 'a')
 	{
@@ -508,7 +508,7 @@ void letter(char L)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 0)
+	if(L == '0')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -524,7 +524,7 @@ void letter(char L)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 1)
+	if(L == '1')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -540,7 +540,7 @@ void letter(char L)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 2)
+	if(L == '2')
 	{
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -555,7 +555,7 @@ void letter(char L)
 
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 	}
-	if(L == 3)
+	if(L == '3')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -571,7 +571,7 @@ void letter(char L)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 4)
+	if(L == '4')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -587,7 +587,7 @@ void letter(char L)
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 5)
+	if(L == '5')
 	{
 		 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -603,7 +603,7 @@ void letter(char L)
 				  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 6)
+	if(L == '6')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -619,7 +619,7 @@ void letter(char L)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 7)
+	if(L == '7')
 	{
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -635,7 +635,7 @@ void letter(char L)
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 8)
+	if(L == '8')
 	{
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 
@@ -651,7 +651,7 @@ void letter(char L)
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 		HAL_Delay(2);
 	}
-	if(L == 9)
+	if(L =='9')
 	{
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
 

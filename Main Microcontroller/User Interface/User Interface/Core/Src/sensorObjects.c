@@ -2,9 +2,8 @@
  * sensorObjects.c
  *
  *  Created on: Mar. 2, 2021
- *      Author: colto
+ *      Author: Colton Moore
  */
-
 #include "sensorObjects.h"
 
 void initializeNodes()
@@ -72,7 +71,8 @@ void processATResponse(uint8_t *ATResponse)
 				}
 				else
 				{	//if we got an unexpected AT Command Type, give up and try again next time data is transmitted
-					uartInterruptInit(26);
+					//uartInterruptInit(26);
+					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
 				}
 
 				nodeNum = 255; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.

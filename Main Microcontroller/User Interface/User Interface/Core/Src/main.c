@@ -55,8 +55,6 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
 
-UART_HandleTypeDef huart3;
-
 /* Definitions for XbeeTask */
 osThreadId_t XbeeTaskHandle;
 const osThreadAttr_t XbeeTask_attributes = {
@@ -626,14 +624,14 @@ void correct()
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
-	letters(C);
-	letters(o);
-	letters(r);
-	letters(r);
-	letters(e);
-	letters(c);
-	letters(t);
-	letters('!');
+	letter('C');
+	letter('o');
+	letter('r');
+	letter('r');
+	letter('e');
+	letter('c');
+	letter('t');
+	letter('!');
 }
 void getVal(int max)
 {
@@ -645,7 +643,7 @@ void getVal(int max)
 
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
-		  letters(1);
+		  letter('1');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)
 		  {}
@@ -655,7 +653,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
-		  letters(2);
+		  letter('2');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)
 		  {}
@@ -665,7 +663,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
-		  letters(3);
+		  letter('3');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)
 		  {}
@@ -678,7 +676,7 @@ void getVal(int max)
 
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
-		  letters(4);
+		  letter('4');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)
 		  {}
@@ -688,7 +686,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
-		  letters(5);
+		  letter('5');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)
 		  {}
@@ -698,7 +696,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
-		  letters(6);
+		  letter('6');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)
 		  {}
@@ -712,7 +710,7 @@ void getVal(int max)
 
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
-		  letters(7);
+		  letter('7');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)
 		  {}
@@ -722,7 +720,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
-		  letters(8);
+		  letter('8');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)
 		  {}
@@ -732,7 +730,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
-		  letters(9);
+		  letter('9');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)
 		  {}
@@ -746,7 +744,7 @@ void getVal(int max)
 
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
-		  letters('*');
+		  letter('*');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)
 		  {}
@@ -756,7 +754,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
-		  letters(0);
+		  letter('0');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)
 		  {}
@@ -766,7 +764,7 @@ void getVal(int max)
 	  }
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
-		  letters('#');
+		  letter('#');
 
 		  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)
 		  {}
@@ -782,35 +780,35 @@ void wrongPass(void)
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
-	letters(W);
-	letters(r);
-	letters(o);
-	letters(n);
-	letters(g);
-	letters(' ');
-	letter(P);
-	letter(a);
-	letter(s);
-	letter(s);
-	letter(w);
-	letter(o);
-	letter(r);
-	letter(d);
+	letter('W');
+	letter('r');
+	letter('o');
+	letter('n');
+	letter('g');
+	letter(' ');
+	letter('P');
+	letter('a');
+	letter('s');
+	letter('s');
+	letter('w');
+	letter('o');
+	letter('r');
+	letter('d');
 }
 void green(void)
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
-	letters(G);
-	letters(r);
-	letters(e);
-	letters(e);
-	letters(n);
-	letters(' ');
-	letters(1);
-	letters('-');
-	letters(3);
-	letters(':');
+	letter('G');
+	letter('r');
+	letter('e');
+	letter('e');
+	letter('n');
+	letter(' ');
+	letter('1');
+	letter('-');
+	letter('3');
+	letter(':');
 
 	getVal(1);
 }
@@ -820,20 +818,21 @@ void timer(void)
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
 
-	letters(T);
-	letters(i);
-	letters(m);
-	letters(e);
-	letters(' ');
-	letters(0);
-	letters(0);
-	letters('-');
-	letters(6);
-	letters(0);
-	letters(m);
-	letters(i);
-	letters(n);
-	letters(':');
+	letter('T');
+	letter('i');
+	letter('m');
+	letter('e');
+	letter(' ');
+	letter('0');
+	letter('0');
+	letter('-');
+	letter('6');
+	letter('0');
+	letter('m');
+	letter('i');
+	letter('n');
+	letter(':');
+
 	getVal(2);
 }
 
@@ -842,22 +841,22 @@ void quit(void)
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
 
-	letters(Q);
-	letters(u);
-	letters(i);
-	letters(t);
-	letters('?');
-	letters(' ');
-	letters(y);
-	letters(e);
-	letters(s);
-	letters('-');
-	letters(1);
-	letters(' ');
-	letters(n);
-	letters(o);
-	letters('-');
-	letters(0);
+	letter('Q');
+	letter('u');
+	letter('i');
+	letter('t');
+	letter('?');
+	letter(' ');
+	letter('y');
+	letter('e');
+	letter('s');
+	letter('-');
+	letter('1');
+	letter(' ');
+	letter('n');
+	letter('o');
+	letter('-');
+	letter('0');
 
 	line2();
 	getVal(1);
@@ -867,22 +866,22 @@ void onOffTime(void)
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
-	letters(0);
-	letters('-');
-	letters(O);
-	letters(n);
-	letters('/');
-	letters(O);
-	letters(f);
-	letters(f);
-	letters(' ');
-	letters(1);
-	letters('-');
-	letters(T);
-	letters(i);
-	letters(m);
-	letters(e);
-	letters(r);
+	letter('0');
+	letter('-');
+	letter('O');
+	letter('n');
+	letter('/');
+	letter('O');
+	letter('f');
+	letter('f');
+	letter(' ');
+	letter('1');
+	letter('-');
+	letter('T');
+	letter('i');
+	letter('m');
+	letter('e');
+	letter('r');
 
 	line2();
 	getVal(1);
@@ -891,17 +890,17 @@ void onOff(void)
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
-	letters(0);
-	letters('-');
-	letters(O);
-	letters(n);
-	letters(' ');
-	letters(1);
-	letters('-');
-	letters(O);
-	letters(f);
-	letters(f);
-	letters(':');
+	letter('0');
+	letter('-');
+	letter('O');
+	letter('n');
+	letter(' ');
+	letter('1');
+	letter('-');
+	letter('O');
+	letter('f');
+	letter('f');
+	letter(':');
 
 	getVal(1);
 }
@@ -1043,10 +1042,12 @@ void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
+	initializeNodes();
+	//uartInterruptInit(26);
+	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
   for(;;)
   {
-	initializeNodes();
-	uartInterruptInit(26);
+
     osDelay(1);
   }
   /* USER CODE END 5 */

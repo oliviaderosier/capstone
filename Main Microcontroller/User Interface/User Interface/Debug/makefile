@@ -32,11 +32,6 @@ endif
 
 -include ../makefile.defs
 
-BUILD_ARTIFACT_NAME := User Interface
-BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX := 
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
-
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
 User\ Interface.elf \
@@ -52,14 +47,11 @@ User\ Interface.bin \
 
 
 # All Target
-all: main-build
-
-# Main-build Target
-main-build: User\ Interface.elf secondary-outputs
+all: User\ Interface.elf secondary-outputs
 
 # Tool invocations
-User\ Interface.elf: $(OBJS) $(USER_OBJS) C:\Users\anima\Desktop\ENEL417\Main\ Microcontroller\User\ Interface\User\ Interface\STM32F103RBTX_FLASH.ld
-	arm-none-eabi-gcc -o "User Interface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+User\ Interface.elf: $(OBJS) $(USER_OBJS) C:\Users\Austin\Desktop\capstone\Main\ Microcontroller\User\ Interface\User\ Interface\STM32F103RBTX_FLASH.ld
+	arm-none-eabi-gcc -o "User Interface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Austin\Desktop\capstone\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -85,14 +77,7 @@ clean:
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
-fail-specified-linker-script-missing:
-	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
-	@exit 2
-
-warn-no-linker-script-specified:
-	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
-
-.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents
 .SECONDARY:
 
 -include ../makefile.targets

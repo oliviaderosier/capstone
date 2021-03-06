@@ -2,13 +2,13 @@
  * sensorObjects.h
  *
  *  Created on: Jan 27, 2021
- *      Author: colto
+ *      Author: Colton Moore
  */
 
 #ifndef INC_SENSOROBJECTS_H_
 #define INC_SENSOROBJECTS_H_
-
 #include "main.h"
+
 
 //Function Prototypes
 void sendBattRequest(uint8_t);
