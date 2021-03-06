@@ -1,0 +1,161 @@
+14:03:02 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'correct':
+../Core/Src/main.c:629:2: warning: implicit declaration of function 'letters'; did you mean 'letter'? [-Wimplicit-function-declaration]
+  letters(C);
+  ^~~~~~~
+  letter
+../Core/Src/main.c:629:10: error: 'C' undeclared (first use in this function)
+  letters(C);
+          ^
+../Core/Src/main.c:629:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:630:10: error: 'o' undeclared (first use in this function)
+  letters(o);
+          ^
+../Core/Src/main.c:631:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:633:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:634:10: error: 'c' undeclared (first use in this function)
+  letters(c);
+          ^
+../Core/Src/main.c:635:10: error: 't' undeclared (first use in this function)
+  letters(t);
+          ^
+../Core/Src/main.c: In function 'wrongPass':
+../Core/Src/main.c:785:10: error: 'W' undeclared (first use in this function)
+  letters(W);
+          ^
+../Core/Src/main.c:786:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:787:10: error: 'o' undeclared (first use in this function)
+  letters(o);
+          ^
+../Core/Src/main.c:788:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c:789:10: error: 'g' undeclared (first use in this function)
+  letters(g);
+          ^
+../Core/Src/main.c:791:9: error: 'P' undeclared (first use in this function)
+  letter(P);
+         ^
+../Core/Src/main.c:792:9: error: 'a' undeclared (first use in this function)
+  letter(a);
+         ^
+../Core/Src/main.c:793:9: error: 's' undeclared (first use in this function)
+  letter(s);
+         ^
+../Core/Src/main.c:795:9: error: 'w' undeclared (first use in this function)
+  letter(w);
+         ^
+../Core/Src/main.c:798:9: error: 'd' undeclared (first use in this function)
+  letter(d);
+         ^
+../Core/Src/main.c: In function 'green':
+../Core/Src/main.c:804:10: error: 'G' undeclared (first use in this function)
+  letters(G);
+          ^
+../Core/Src/main.c:805:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:806:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:808:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c: In function 'timer':
+../Core/Src/main.c:823:10: error: 'T' undeclared (first use in this function)
+  letters(T);
+          ^
+../Core/Src/main.c:824:10: error: 'i' undeclared (first use in this function)
+  letters(i);
+          ^
+../Core/Src/main.c:825:10: error: 'm' undeclared (first use in this function)
+  letters(m);
+          ^
+../Core/Src/main.c:826:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:835:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c: In function 'quit':
+../Core/Src/main.c:845:10: error: 'Q' undeclared (first use in this function)
+  letters(Q);
+          ^
+../Core/Src/main.c:846:10: error: 'u' undeclared (first use in this function)
+  letters(u);
+          ^
+../Core/Src/main.c:847:10: error: 'i' undeclared (first use in this function)
+  letters(i);
+          ^
+../Core/Src/main.c:848:10: error: 't' undeclared (first use in this function)
+  letters(t);
+          ^
+../Core/Src/main.c:851:10: error: 'y' undeclared (first use in this function)
+  letters(y);
+          ^
+../Core/Src/main.c:852:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:853:10: error: 's' undeclared (first use in this function)
+  letters(s);
+          ^
+../Core/Src/main.c:857:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c:858:10: error: 'o' undeclared (first use in this function)
+  letters(o);
+          ^
+../Core/Src/main.c: In function 'onOffTime':
+../Core/Src/main.c:872:10: error: 'O' undeclared (first use in this function); did you mean 'OB'?
+  letters(O);
+          ^
+          OB
+../Core/Src/main.c:873:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c:876:10: error: 'f' undeclared (first use in this function)
+  letters(f);
+          ^
+../Core/Src/main.c:881:10: error: 'T' undeclared (first use in this function)
+  letters(T);
+          ^
+../Core/Src/main.c:882:10: error: 'i' undeclared (first use in this function)
+  letters(i);
+          ^
+../Core/Src/main.c:883:10: error: 'm' undeclared (first use in this function)
+  letters(m);
+          ^
+../Core/Src/main.c:884:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:885:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c: In function 'onOff':
+../Core/Src/main.c:896:10: error: 'O' undeclared (first use in this function); did you mean 'OB'?
+  letters(O);
+          ^
+          OB
+../Core/Src/main.c:897:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c:902:10: error: 'f' undeclared (first use in this function)
+  letters(f);
+          ^
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1188:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period; //frequency;
+            ^~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+14:03:02 Build Failed. 46 errors, 2 warnings. (took 355ms)
+

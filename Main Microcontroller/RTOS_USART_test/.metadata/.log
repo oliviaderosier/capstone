@@ -1,0 +1,33 @@
+!SESSION 2021-02-23 11:18:08.160 -----------------------------------------------
+eclipse.buildId=Version 1.5.1
+java.version=1.8.0_272
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-02-23 11:19:47.875
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-02-23 11:19:47.911
+!MESSAGE Log4j initialized with config file C:\Users\anima\Desktop\ENEL417\Main Microcontroller\RTOS_USART_test\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-02-23 11:19:50.351
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2021-02-23 11:19:50.950
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-23 11:22:05.739
+!MESSAGE Indexed 'RTOS_pin_mapping_test' (19 sources, 77 headers) in 1.81 sec: 3,627 declarations; 13,296 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-23 11:37:08.195
+!MESSAGE Indexed 'User Interface' (20 sources, 96 headers) in 1.1 sec: 7,134 declarations; 30,580 references; 6 unresolved inclusions; 278 syntax errors; 2,072 unresolved names (5.2%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-23 11:37:11.359
+!MESSAGE Indexed 'User Interface' (20 sources, 97 headers) in 0.806 sec: 7,133 declarations; 32,743 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.47%)
+
+!ENTRY org.eclipse.core.jobs 2 2 2021-02-26 18:11:08.766
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2021-02-26 18:11:08.769
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.debug.core.DebugPlugin$EventDispatchJob
