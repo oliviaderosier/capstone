@@ -55,6 +55,9 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
 
+UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart3;
+
 /* Definitions for XbeeTask */
 osThreadId_t XbeeTaskHandle;
 const osThreadAttr_t XbeeTask_attributes = {
@@ -133,6 +136,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART3_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 void StartXbeeTask(void *argument);
 void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
@@ -157,6 +161,7 @@ void onOffTime(void);
 void onOff(void);
 void flow (void);
 void setSolenoids(int, int);
+void error(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -194,6 +199,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART3_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -360,6 +366,39 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * @brief USART3 Initialization Function
   * @param None
   * @retval None
@@ -433,12 +472,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : USART_TX_Pin USART_RX_Pin */
-  GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD2_Pin PA8 PA9 PA10
                            PA11 PA12 */
@@ -904,7 +937,37 @@ void onOff(void)
 
 	getVal(1);
 }
+void error(void)
+{
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
 
+	letter('E');
+	letter('r');
+	letter('r');
+	letter('o');
+	letter('r');
+	letter(',');
+	letter(' ');
+	letter('I');
+	letter('n');
+	letter('v');
+	letter('a');
+	letter('l');
+	letter('i');
+	letter('d');
+
+	line2();
+
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
+	letter('N');
+	letter('u');
+	letter('m');
+	letter('b');
+	letter('e');
+	letter('r');
+}
 void setSolenoids(int grn, int state)
 {
 	if(grn == 1)
@@ -988,13 +1051,13 @@ void flow (void)
 
 }
 
-void uartInterruptInit(uint8_t length)
+/*void uartInterruptInit(uint8_t length)
 {
 	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], length);
 
 	return;
-}
+}*/
 
 void uartTransmit(uint8_t *buffer, uint8_t length)
 {
@@ -1020,7 +1083,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 			break;
 
 		default://if it wasnt an expected data type just throw it out
-			uartInterruptInit(26);
+			HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
 			break;
 		}
 	}
@@ -1063,12 +1126,10 @@ void StartXbeeTask(void *argument)
 void StartUserTask(void *argument)
 {
   /* USER CODE BEGIN StartUserTask */
-	commandToLCD();
-
   while(1)
   {
 	  val[6] = 0;
-	  clear();
+	  commandToLCD();
 	  printPassword();
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
 	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
@@ -1087,23 +1148,54 @@ void StartUserTask(void *argument)
 					  clear();
 					  line1();
 					  correct();
-					  HAL_Delay(2000);
+					  HAL_Delay(1500);
 					  while(val[6] == 0)
 					  {
 						  commandToLCD();
 						  onOffTime();
+						  while(val[0]< 0 || val[0] > 1)
+						  {
+							  commandToLCD();
+							  error();
+							  HAL_Delay(1500);
+							  commandToLCD();
+							  onOffTime();
+						  }
 						  if(val[0] == 0)
 						  {
 							  commandToLCD();
 							  green();
+							  while(val[0]< 1 || val[0] > 3)
+							  {
+								  commandToLCD();
+								  error();
+								  HAL_Delay(1500);
+								  commandToLCD();
+								  green();
+							  }
 							  indc = val[0];///do something with val[0] aka green #
 							  line2();
 							  onOff();
+							  while(val[0]< 0 || val[0] > 1)
+							  {
+								  commandToLCD();
+								  error();
+								  HAL_Delay(1500);
+								  commandToLCD();
+								  onOff();
+							  }
 							  onoff = val[0];///do something with val[0]
 							  setSolenoids(indc, onoff);
 							  clear();
 							  quit();
-							  commandToLCD();
+							  while(val[0]< 0 || val[0] > 1)
+							  {
+								  commandToLCD();
+								  error();
+								  HAL_Delay(1500);
+								  commandToLCD();
+								  quit();
+							  }
 						  }
 
 						  else if(val[0] == 1)
@@ -1111,14 +1203,36 @@ void StartUserTask(void *argument)
 
 								  commandToLCD();
 								  green();
+								  while(val[0]< 1 || val[0] > 3)
+								  {
+									  commandToLCD();
+									  error();
+									  HAL_Delay(1500);
+									  commandToLCD();
+									  green();
+								  }
 								  indc = val[0];///do something with val[0] aka green #
 								  line2();
 								  timer();
+								  while(val[0]< 0 || val[0] > 6 || val[1]< 0 || val[1] > 9 || (val[0]==6 && val[1]!=0))
+								  {
+									  commandToLCD();
+									  error();
+									  HAL_Delay(1500);
+									  commandToLCD();
+									  timer();
+								  }
 								  ///do something with val[0] and val[1]
-								  flow();
 								  clear();
 								  quit();
-								  commandToLCD();
+								  while(val[0]< 0 || val[0] > 1)
+								  {
+									  commandToLCD();
+									  error();
+									  HAL_Delay(1500);
+									  commandToLCD();
+									  quit();
+								  }
 						  }
 					  }
 				  }
@@ -1185,18 +1299,19 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+		uint32_t period;
+		uint32_t tickstart;
+
 		HAL_TIM_Base_Start(&htim2);
-		uint32_t period; //frequency;
-		uint32_t RH1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
-		uint32_t tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-
-
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == RH1)
+		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
 		{}
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) != RH1)
+		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+		{}
+		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
 		{}
 		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
-		//frequency = 10000/period;
+
     osDelay(1);
   }
   /* USER CODE END StartWeatherTask */

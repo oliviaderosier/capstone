@@ -3893,3 +3893,549 @@
 2021-03-06 12:25:25,049 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1420mS.
 2021-03-06 12:25:25,050 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
 2021-03-06 12:25:25,054 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-09 11:39:45,649 [INFO] Activator:170 - 
+
+
+2021-03-09 11:39:45,651 [INFO] Activator:171 - !SESSION log4j initialized
+2021-03-09 11:51:13,339 [INFO] McuFinderGlobals:40 - Set McuFinder mode to 2 (CubeIDE integrated)
+2021-03-09 11:51:13,525 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304
+2021-03-09 11:51:13,534 [INFO] DbMcusXml:71 - Set database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/mcu/
+2021-03-09 11:51:13,537 [INFO] DbBoardsPdsc:57 - Set plugin database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/boardmanager/
+2021-03-09 11:51:13,537 [INFO] DbMcus:259 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,537 [INFO] DbBoards:265 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,539 [INFO] DbExamples:329 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,543 [INFO] DbMcusDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,545 [INFO] DbMcusJson:63 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,546 [INFO] DbBoardsDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,546 [INFO] DbBoardsJson:56 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,696 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/cs/
+2021-03-09 11:51:13,700 [INFO] DbExamplesSqlite:699 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,793 [INFO] RulesReader:52 - Compatibility file has been processed (228 Rules)
+2021-03-09 11:51:13,898 [INFO] MicroXplorer:565 - Detected Java Version = 1.8.0_272
+2021-03-09 11:51:13,899 [INFO] DbMcusXml:71 - Set database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/mcu/
+2021-03-09 11:51:13,900 [INFO] DbBoardsPdsc:57 - Set plugin database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/boardmanager/
+2021-03-09 11:51:13,900 [INFO] DbMcus:259 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,900 [INFO] DbBoards:265 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,900 [INFO] DbExamples:329 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:13,900 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,900 [INFO] DbMcusDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,901 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,901 [INFO] DbMcusJson:63 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,901 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,901 [INFO] DbBoardsDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,901 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,901 [INFO] DbBoardsJson:56 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,901 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,902 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,902 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/cs/
+2021-03-09 11:51:13,902 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:13,902 [INFO] DbExamplesSqlite:699 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:13,972 [INFO] MainPanel:190 - HeapMemory: 335544320
+2021-03-09 11:51:14,017 [INFO] DbMcusXml:71 - Set database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/mcu/
+2021-03-09 11:51:14,017 [INFO] DbBoardsPdsc:57 - Set plugin database path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/boardmanager/
+2021-03-09 11:51:14,018 [INFO] DbMcus:259 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:14,018 [INFO] DbBoards:265 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:14,018 [INFO] DbExamples:329 - Set plugin images path to: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/plugins/mcufinder/images/
+2021-03-09 11:51:14,018 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,019 [INFO] DbMcusDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:14,019 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,019 [INFO] DbMcusJson:63 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:14,019 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,019 [INFO] DbBoardsDocs:112 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:14,019 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,019 [INFO] DbBoardsJson:56 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:14,020 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,020 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,020 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/cs/
+2021-03-09 11:51:14,020 [WARN] DbFile:36 - Overriding database path with different value: C:\Users\anima\.stmcufinder\plugins\mcufinder/ => C:\Users\anima\.stmcufinder\plugins\mcufinder
+2021-03-09 11:51:14,020 [INFO] DbExamplesSqlite:699 - Set database path to: C:\Users\anima\.stmcufinder\plugins\mcufinder//mcu/
+2021-03-09 11:51:14,034 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304
+2021-03-09 11:51:14,035 [INFO] PluginManage:178 - Search for loadable plugins [exclusion list=, ]
+2021-03-09 11:51:14,036 [INFO] PluginManage:292 - Check plugin analytics
+2021-03-09 11:51:14,144 [INFO] AnalyticsPlugin:225 - Accepted Software Licenses: 
+2021-03-09 11:51:14,144 [INFO] AnalyticsPlugin:227 - Accepted CMSIS Pack Licenses: 
+2021-03-09 11:51:14,145 [INFO] AnalyticsPlugin:229 - Accepted Firmware Licenses: 
+2021-03-09 11:51:14,145 [INFO] PluginManage:342 - Loaded plugin analytics (category:tool,tabindex:-1)
+2021-03-09 11:51:14,145 [INFO] PluginManage:292 - Check plugin clock
+2021-03-09 11:51:14,160 [INFO] PluginManage:342 - Loaded plugin clock (category:base,tabindex:2)
+2021-03-09 11:51:14,161 [INFO] PluginManage:292 - Check plugin ddr
+2021-03-09 11:51:14,162 [INFO] PluginManage:342 - Loaded plugin ddr (category:tool,tabindex:6)
+2021-03-09 11:51:14,163 [INFO] PluginManage:292 - Check plugin filemanager
+2021-03-09 11:51:14,253 [INFO] PluginManage:342 - Loaded plugin filemanager (category:base,tabindex:10)
+2021-03-09 11:51:14,253 [INFO] PluginManage:292 - Check plugin ipmanager
+2021-03-09 11:51:14,267 [INFO] PluginManage:342 - Loaded plugin ipmanager (category:base,tabindex:5)
+2021-03-09 11:51:14,267 [INFO] PluginManage:292 - Check plugin pinoutandconfiguration
+2021-03-09 11:51:14,281 [INFO] PluginManage:342 - Loaded plugin pinoutandconfiguration (category:base,tabindex:1)
+2021-03-09 11:51:14,281 [INFO] PluginManage:292 - Check plugin pinoutconfig
+2021-03-09 11:51:14,309 [INFO] PluginManage:342 - Loaded plugin pinoutconfig (category:base,tabindex:0)
+2021-03-09 11:51:14,309 [INFO] PluginManage:292 - Check plugin power
+2021-03-09 11:51:14,321 [INFO] PluginManage:342 - Loaded plugin power (category:power,tabindex:4)
+2021-03-09 11:51:14,321 [INFO] PluginManage:292 - Check plugin projectmanager
+2021-03-09 11:51:14,333 [INFO] PluginManage:342 - Loaded plugin projectmanager (category:projectmanager,tabindex:3)
+2021-03-09 11:51:14,333 [INFO] PluginManage:292 - Check plugin thirdparty
+2021-03-09 11:51:14,476 [INFO] PluginManage:342 - Loaded plugin thirdparty (category:base,tabindex:-1)
+2021-03-09 11:51:14,476 [WARN] IntegrityCheckThread:59 - waiting for thirdparty lock release [integrity check]
+2021-03-09 11:51:14,476 [INFO] PluginManage:292 - Check plugin tools
+2021-03-09 11:51:14,477 [INFO] IntegrityCheckThread:61 - entering critical section [integrity check]
+2021-03-09 11:51:14,477 [INFO] ThirdPartyUpdaterWithRetryManager:56 - Updater plugin not ready yet. [1/15]
+2021-03-09 11:51:14,510 [INFO] PluginManage:342 - Loaded plugin tools (category:base,tabindex:7)
+2021-03-09 11:51:14,510 [INFO] PluginManage:292 - Check plugin tutovideos
+2021-03-09 11:51:14,709 [INFO] PluginManage:342 - Loaded plugin tutovideos (category:base,tabindex:-1)
+2021-03-09 11:51:14,709 [INFO] PluginManage:292 - Check plugin updater
+2021-03-09 11:51:14,717 [INFO] PluginManage:342 - Loaded plugin updater (category:base,tabindex:12)
+2021-03-09 11:51:14,718 [INFO] PluginManage:265 - PluginManage : Loaded plugins [13]
+2021-03-09 11:51:14,898 [INFO] PinOutPanel:1434 - setPackage(No Configuration,No Configuration)
+2021-03-09 11:51:15,017 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,017 [INFO] PluginManager:203 - loadIPPluginJar : add adc
+2021-03-09 11:51:15,040 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,041 [INFO] PluginManager:203 - loadIPPluginJar : add aes
+2021-03-09 11:51:15,070 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,070 [INFO] PluginManager:203 - loadIPPluginJar : add can
+2021-03-09 11:51:15,087 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,087 [INFO] PluginManager:203 - loadIPPluginJar : add comp
+2021-03-09 11:51:15,106 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,106 [INFO] PluginManager:203 - loadIPPluginJar : add cryp
+2021-03-09 11:51:15,125 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,125 [INFO] PluginManager:203 - loadIPPluginJar : add dfsdm
+2021-03-09 11:51:15,134 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,134 [INFO] PluginManager:203 - loadIPPluginJar : add dma
+2021-03-09 11:51:15,148 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,149 [INFO] PluginManager:203 - loadIPPluginJar : add fatfs
+2021-03-09 11:51:15,179 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,179 [INFO] PluginManager:203 - loadIPPluginJar : add fmc
+2021-03-09 11:51:15,188 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,188 [INFO] PluginManager:203 - loadIPPluginJar : add freertos
+2021-03-09 11:51:15,203 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,203 [INFO] PluginManager:203 - loadIPPluginJar : add genericplugin
+2021-03-09 11:51:15,251 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,251 [INFO] PluginManager:203 - loadIPPluginJar : add gfxmmu
+2021-03-09 11:51:15,317 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,317 [INFO] PluginManager:203 - loadIPPluginJar : add gic
+2021-03-09 11:51:15,324 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,324 [INFO] PluginManager:203 - loadIPPluginJar : add gpio
+2021-03-09 11:51:15,363 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,363 [INFO] PluginManager:203 - loadIPPluginJar : add gtzc
+2021-03-09 11:51:15,382 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,382 [INFO] PluginManager:203 - loadIPPluginJar : add hash
+2021-03-09 11:51:15,412 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,412 [INFO] PluginManager:203 - loadIPPluginJar : add i2c
+2021-03-09 11:51:15,436 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,437 [INFO] PluginManager:203 - loadIPPluginJar : add i2s
+2021-03-09 11:51:15,443 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,444 [INFO] PluginManager:203 - loadIPPluginJar : add ipddr
+2021-03-09 11:51:15,464 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,465 [INFO] PluginManager:203 - loadIPPluginJar : add lorawan
+2021-03-09 11:51:15,486 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,487 [INFO] PluginManager:203 - loadIPPluginJar : add ltdc
+2021-03-09 11:51:15,493 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,494 [INFO] PluginManager:203 - loadIPPluginJar : add mdma
+2021-03-09 11:51:15,500 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,500 [INFO] PluginManager:203 - loadIPPluginJar : add nvic
+2021-03-09 11:51:15,521 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,521 [INFO] PluginManager:203 - loadIPPluginJar : add opamp
+2021-03-09 11:51:15,555 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,556 [INFO] PluginManager:203 - loadIPPluginJar : add openamp
+2021-03-09 11:51:15,580 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,580 [INFO] PluginManager:203 - loadIPPluginJar : add pdm2pcm
+2021-03-09 11:51:15,589 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,591 [INFO] PluginManager:203 - loadIPPluginJar : add plateformsettings
+2021-03-09 11:51:15,607 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,607 [INFO] PluginManager:203 - loadIPPluginJar : add quadspi
+2021-03-09 11:51:15,613 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,614 [INFO] PluginManager:203 - loadIPPluginJar : add resmgrutility
+2021-03-09 11:51:15,659 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,659 [INFO] PluginManager:203 - loadIPPluginJar : add sai
+2021-03-09 11:51:15,684 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,684 [INFO] PluginManager:203 - loadIPPluginJar : add spi
+2021-03-09 11:51:15,714 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,714 [INFO] PluginManager:203 - loadIPPluginJar : add stm32_wpan
+2021-03-09 11:51:15,729 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,729 [INFO] PluginManager:203 - loadIPPluginJar : add tim
+2021-03-09 11:51:15,765 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,766 [INFO] PluginManager:203 - loadIPPluginJar : add touchsensing
+2021-03-09 11:51:15,781 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,781 [INFO] PluginManager:203 - loadIPPluginJar : add tracer_emb
+2021-03-09 11:51:15,797 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,797 [INFO] PluginManager:203 - loadIPPluginJar : add ts
+2021-03-09 11:51:15,812 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,812 [INFO] PluginManager:203 - loadIPPluginJar : add tsc
+2021-03-09 11:51:15,827 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,827 [INFO] PluginManager:203 - loadIPPluginJar : add ucpd
+2021-03-09 11:51:15,854 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:15,854 [INFO] PluginManager:203 - loadIPPluginJar : add usart
+2021-03-09 11:51:16,097 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:16,199 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:16,231 [WARN] DetailPanel:347 - Failed to get advertising image, set to default
+2021-03-09 11:51:16,233 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:16,234 [WARN] DetailPanel:347 - Failed to get advertising image, set to default
+2021-03-09 11:51:16,286 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:16,286 [WARN] ThirdParty:783 - waiting for thirdparty lock release [close project]
+2021-03-09 11:51:17,492 [INFO] ThirdPartyUpdaterWithRetryManager:56 - Updater plugin not ready yet. [2/15]
+2021-03-09 11:51:20,502 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:20,502 [ERROR] AbstractThirdPartyUpdaterManager:153 - java.lang.Integer cannot be cast to java.util.List
+2021-03-09 11:51:20,502 [INFO] ThirdParty:887 - Integrity check success = false
+2021-03-09 11:51:20,502 [INFO] IntegrityCheckThread:75 - exiting critical section [integrity check]
+2021-03-09 11:51:20,502 [INFO] IntegrityCheckThread:78 - End integrity checks thread
+2021-03-09 11:51:20,502 [INFO] ThirdParty:785 - entering critical section [close project]
+2021-03-09 11:51:20,504 [INFO] ThirdParty:796 - exiting critical section [close project]
+2021-03-09 11:51:20,507 [INFO] PinOutPanel:1434 - setPackage(No Configuration,No Configuration)
+2021-03-09 11:51:20,508 [FATAL] Updater:284 - Updater called before beeing initialized
+2021-03-09 11:51:20,519 [ERROR] Updater:1065 - MainUpdater not yet initialized. External WinMGr cannot be set.
+2021-03-09 11:51:20,526 [INFO] Updater:1002 - Updater Version found : 6.1.1
+2021-03-09 11:51:20,541 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304
+2021-03-09 11:51:20,767 [INFO] MainUpdater:2644 - connection check result : 10
+2021-03-09 11:51:20,768 [INFO] MainUpdater:3332 - Updater definition file requires update
+2021-03-09 11:51:20,769 [INFO] MainUpdater:249 - Updater Check For Update Now.
+2021-03-09 11:51:20,769 [INFO] MicroXplorer:415 - Change Database Version : DB.6.0.10
+2021-03-09 11:51:20,827 [INFO] ServerAccessManage:348 - Download File updaters.zip
+2021-03-09 11:51:21,006 [INFO] FileExtend:225 - Unzip File : updaters.zip
+2021-03-09 11:51:21,006 [INFO] FileExtend:240 - Standard Zip Deflate
+2021-03-09 11:51:22,211 [INFO] ServerAccessManage:348 - Download File PacksControlFlags.xml
+2021-03-09 11:51:22,308 [INFO] ServerAccessManage:348 - Download File cubemx.pidx
+2021-03-09 11:51:22,384 [INFO] LoadServerUpdatesThread:329 - End of LoadServerUpdate Thread
+2021-03-09 11:51:22,408 [INFO] CheckServerUpdateThread:102 - End of CheckServer Thread
+2021-03-09 11:51:22,460 [INFO] MainUpdater:2644 - connection check result : 10
+2021-03-09 11:51:22,465 [INFO] MainUpdater:2644 - connection check result : 10
+2021-03-09 11:51:22,599 [INFO] MicroXplorer:385 - Change Database Path : 
+2021-03-09 11:51:22,600 [INFO] MicroXplorer:415 - Change Database Version : DB.6.0.10
+2021-03-09 11:51:22,600 [WARN] ThirdParty:783 - waiting for thirdparty lock release [close project]
+2021-03-09 11:51:22,600 [INFO] ThirdParty:785 - entering critical section [close project]
+2021-03-09 11:51:22,600 [INFO] ThirdParty:796 - exiting critical section [close project]
+2021-03-09 11:51:22,602 [INFO] PinOutPanel:1434 - setPackage(No Configuration,No Configuration)
+2021-03-09 11:51:22,602 [INFO] UtilMem:74 - Begin LoadConfig() Used Memory: 282447688 Bytes (883949568)
+2021-03-09 11:51:22,603 [INFO] MicroXplorer:385 - Change Database Path : 
+2021-03-09 11:51:22,603 [INFO] MicroXplorer:415 - Change Database Version : DB.6.0.10
+2021-03-09 11:51:22,603 [INFO] OpenFileManager:274 - Change cursor
+2021-03-09 11:51:22,605 [WARN] ThirdParty:204 - Use empty third party IP manager
+2021-03-09 11:51:22,619 [WARN] IntegrityCheckThread:59 - waiting for thirdparty lock release [integrity check]
+2021-03-09 11:51:22,619 [INFO] IntegrityCheckThread:61 - entering critical section [integrity check]
+2021-03-09 11:51:22,692 [WARN] ConditionMgr:437 - getConditionDescription Invalid condition id : SIGFOX STM32 LIB Condition cause : null
+2021-03-09 11:51:22,692 [WARN] ConditionMgr:437 - getConditionDescription Invalid condition id : Sigfox Third Party LIB Condition cause : null
+2021-03-09 11:51:22,694 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : SIGFOX STM32 LIB Condition cause : null
+2021-03-09 11:51:22,694 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : Sigfox Third Party LIB Condition cause : null
+2021-03-09 11:51:22,695 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : Sigfox Third Party LIB Condition cause : null
+2021-03-09 11:51:22,695 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : SIGFOX STM32 LIB Condition cause : null
+2021-03-09 11:51:22,695 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : SIGFOX STM32 LIB Condition cause : null
+2021-03-09 11:51:22,695 [WARN] ConditionMgr:1040 - genDependencies : Invalid condition id : Sigfox Third Party LIB Condition cause : null
+2021-03-09 11:51:23,118 [INFO] ThirdParty:887 - Integrity check success = true
+2021-03-09 11:51:23,118 [INFO] IntegrityCheckThread:75 - exiting critical section [integrity check]
+2021-03-09 11:51:23,118 [INFO] IntegrityCheckThread:78 - End integrity checks thread
+2021-03-09 11:51:23,858 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.0.0: no header file found
+2021-03-09 11:51:23,858 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.0.0: no header file found
+2021-03-09 11:51:23,858 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.0.0: no header file found
+2021-03-09 11:51:23,862 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SUBG2.3.0.1: no header file found
+2021-03-09 11:51:23,862 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SUBG2.3.0.1: no header file found
+2021-03-09 11:51:23,862 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SUBG2.3.0.1: no header file found
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,868 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,869 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,870 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,871 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,871 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,871 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,871 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,871 [WARN] ModelIntegratedComponent:51 - No mode defined for component null
+2021-03-09 11:51:23,872 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.2.0.0: no header file found
+2021-03-09 11:51:23,872 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SFXS2LP1.2.0.0: no header file found
+2021-03-09 11:51:23,872 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.2.0.0: no header file found
+2021-03-09 11:51:23,875 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.0.0: no header file found
+2021-03-09 11:51:23,875 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SUBG2.4.0.0: no header file found
+2021-03-09 11:51:23,875 [WARN] ApiManager:294 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.0.0: no header file found
+2021-03-09 11:51:23,910 [WARN] ApiManager:294 - Cannot register API 'Board Extension:IKS01A3' from pack STMicroelectronics.X-CUBE-MEMS1.8.2.0: no header file found
+2021-03-09 11:51:23,910 [WARN] ApiManager:294 - Cannot register API 'Board Extension:IKS01A2' from pack STMicroelectronics.X-CUBE-MEMS1.8.2.0: no header file found
+2021-03-09 11:51:23,910 [WARN] ApiManager:294 - Cannot register API 'Board Extension:IKS02A1' from pack STMicroelectronics.X-CUBE-MEMS1.8.2.0: no header file found
+2021-03-09 11:51:23,916 [WARN] ApiManager:294 - Cannot register API 'Board Extension:EEPRMA1' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.0.0: no header file found
+2021-03-09 11:51:23,916 [WARN] ApiManager:294 - Cannot register API 'Board Extension:EEPRMA2' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.0.0: no header file found
+2021-03-09 11:51:23,918 [INFO] RtosManager:464 - Registered RTOS mode: class=CMSIS, group=RTOS, mode=CMSIS_V1, owner=FREERTOS
+2021-03-09 11:51:23,918 [INFO] RtosManager:464 - Registered RTOS mode: class=CMSIS, group=RTOS2, mode=CMSIS_V2, owner=FREERTOS
+2021-03-09 11:51:23,918 [INFO] RtosManager:464 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V1, owner=FREERTOS
+2021-03-09 11:51:23,918 [INFO] RtosManager:464 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V2, owner=FREERTOS
+2021-03-09 11:51:23,918 [WARN] ModelIntegratedComponent:182 - Missing modes for component STMicroelectronics:FreeRTOS:0.0.1:STMicroelectronics:RTOS:FreeRTOS:Core:::10.2.0:
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Board Extension:GNSS1A1' from pack STMicroelectronics.X-CUBE-GNSS1.5.1.0: no header file found
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Board Support:Custom' from pack STMicroelectronics.X-CUBE-GNSS1.5.1.0: no header file found
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Data Exchange:lib_gnss' from pack STMicroelectronics.X-CUBE-GNSS1.5.1.0: no header file found
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Board Extension:GNSS1A1' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Board Support:Custom' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-03-09 11:51:23,920 [WARN] ApiManager:294 - Cannot register API 'Data Exchange:lib_gnss' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-03-09 11:51:23,921 [WARN] ApiManager:294 - Cannot register API 'Wireless:BlueNRG-MS' from pack STMicroelectronics.X-CUBE-BLE1.6.1.0: no header file found
+2021-03-09 11:51:23,921 [WARN] ApiManager:294 - Cannot register API 'Board Extension:NFC04A1' from pack STMicroelectronics.X-CUBE-NFC4.2.0.2: no header file found
+2021-03-09 11:51:23,922 [WARN] ApiManager:294 - Cannot register API 'Board Extension:NFC04A1' from pack STMicroelectronics.X-CUBE-NFC4.2.0.1: no header file found
+2021-03-09 11:51:23,923 [WARN] ApiManager:294 - Cannot register API 'Wireless:BlueNRG-2' from pack STMicroelectronics.X-CUBE-BLE2.3.1.0: no header file found
+2021-03-09 11:51:23,923 [WARN] ApiManager:294 - Cannot register API 'Wireless:BlueNRG-2' from pack STMicroelectronics.X-CUBE-BLE2.3.2.0: no header file found
+2021-03-09 11:51:24,102 [INFO] RtosManager:778 - Current active RTOS is FREERTOS [Cortex-M3NS]
+2021-03-09 11:51:24,110 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Parameter (ADCFreqValue) has invalid value (32000000)
+2021-03-09 11:51:24,110 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (FamilyName)
+2021-03-09 11:51:24,110 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Parameter (MCOFreq_Value) has invalid value (64000000)
+2021-03-09 11:51:24,110 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Parameter (USBFreq_Value) has invalid value (64000000)
+2021-03-09 11:51:24,174 [INFO] UtilMem:74 - End LoadConfig() Used Memory: 699552720 Bytes (883949568)
+2021-03-09 11:51:24,175 [INFO] DbMcusXml:97 - Load MCU database from C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\/mcu/families.xml
+2021-03-09 11:51:24,570 [INFO] DbMcusJson:92 - JSON generation date=Thu Nov 05 10:05:07 CST 2020 (1604592307)
+2021-03-09 11:51:24,979 [INFO] DbMcus:176 - Found 1835 MCUs (1796 are supported by CubeMX, 1796 are visible in CubeMX)
+2021-03-09 11:51:24,979 [INFO] ApiDb:238 - Load user favorites file C:\Users\anima/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2021-03-09 11:51:24,979 [INFO] ApiDb:242 - User favorites MCUs=[]
+2021-03-09 11:51:24,979 [INFO] DbMcus:188 - Set 0 / 0 favorites MCUs
+2021-03-09 11:51:24,986 [WARN] ThirdParty:749 - waiting for thirdparty lock release [change project]
+2021-03-09 11:51:24,986 [INFO] ThirdParty:751 - entering critical section [change project]
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :RoweBots I-CUBE-UNISONRTOS 5.5.0-4
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SFXS2LP1 3.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 2.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SUBG2 3.0.1
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 3.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics HAL Drivers 0.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.16.2
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SFXS2LP1 2.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.14.1
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SUBG2 4.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-H7 1.0.0
+2021-03-09 11:51:24,986 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 2.0.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-MEMS1 8.2.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-EEPRMA1 3.0.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-DISPLAY 1.0.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics FreeRTOS 0.0.1
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 1.0.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALGOBUILD 1.1.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALGOBUILD 1.2.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-GNSS1 5.1.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-GNSS1 5.2.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE1 6.1.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.0.3
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.1.2
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 1.0.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 2.0.2
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 2.0.1
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :wolfSSL I-CUBE-wolfSSL 4.7.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOUCHGFX 4.16.1
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AI 5.2.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.1.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOUCHGFX 4.16.0
+2021-03-09 11:51:24,987 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.2.0
+2021-03-09 11:51:24,988 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE2 3.1.0
+2021-03-09 11:51:24,988 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.3.0
+2021-03-09 11:51:24,988 [INFO] ThirdParty:939 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE2 3.2.0
+2021-03-09 11:51:24,988 [INFO] ThirdParty:757 - exiting critical section [change project]
+2021-03-09 11:51:25,147 [INFO] PinOutPanel:1434 - setPackage(No Configuration,No Configuration)
+2021-03-09 11:51:25,148 [INFO] PinOutPanel:1434 - setPackage(STM32F103RBTx,LQFP64)
+2021-03-09 11:51:25,394 [INFO] UtilMem:74 - Before build in PCC Used Memory: 710072136 Bytes (883949568)
+2021-03-09 11:51:25,734 [INFO] SharedServices:72 - Folder for power plug-in: C:/Users/anima/.stm32cubemx/plugins/power
+2021-03-09 11:51:25,793 [INFO] SharedServices:72 - Folder for power plug-in: C:/Users/anima/.stm32cubemx/plugins/power
+2021-03-09 11:51:25,819 [INFO] SharedServices:72 - Folder for power plug-in: C:/Users/anima/.stm32cubemx/plugins/power
+2021-03-09 11:51:25,822 [INFO] SharedServices:72 - Folder for power plug-in: C:/Users/anima/.stm32cubemx/plugins/power
+2021-03-09 11:51:25,932 [INFO] UtilMem:74 - After build in PCC Used Memory: 368692992 Bytes (883949568)
+2021-03-09 11:51:25,987 [INFO] ApiDbMcu:456 - Load IP Config File for FREERTOS
+2021-03-09 11:51:26,005 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,005 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,005 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,006 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,007 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,008 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,009 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,009 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,009 [INFO] IPUIPlugin:64 - create IPUIPlugin
+2021-03-09 11:51:26,036 [WARN] FreeRTOS:980 - Null or empty value: should not occur! (nothing added to the table)
+2021-03-09 11:51:26,057 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] toolchainItems.length=====1
+2021-03-09 11:51:26,128 [INFO] RtosManager:591 - Active RTOS found at IOC load: FREERTOS [Cortex-M3NS]
+2021-03-09 11:51:26,130 [INFO] OpenFileManager:294 - Restore cursor
+2021-03-09 11:52:31,292 [INFO] DbMcusDocs:145 - JSON generation date=Thu Nov 05 10:05:07 CST 2020 (1604592307)
+2021-03-09 11:52:31,383 [INFO] DbMcusDocs:81 - Found 601 MCUs documents
+2021-03-09 11:53:34,452 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 440825952 Bytes (883949568)
+2021-03-09 11:53:42,896 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 637958240 Bytes (883949568)
+2021-03-09 11:53:44,269 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 647395424 Bytes (883949568)
+2021-03-09 11:53:50,833 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 402028640 Bytes (883949568)
+2021-03-09 11:53:51,126 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-03-09 11:53:51,126 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: FREERTOS
+2021-03-09 11:53:51,126 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-09 11:53:51,127 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-09 11:53:51,127 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8F1
+2021-03-09 11:53:51,127 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-03-09 11:53:51,127 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-03-09 11:53:51,127 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-03-09 11:53:51,128 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-03-09 11:53:51,379 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-03-09 11:53:51,672 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-03-09 11:53:51,750 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-03-09 11:53:51,832 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-03-09 11:53:52,036 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 11:53:52,050 [INFO] Middleware:1252 - No code input for Bsp Dependency
+2021-03-09 11:53:52,075 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp_save
+2021-03-09 11:53:52,126 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp
+2021-03-09 11:53:52,133 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp_save
+2021-03-09 11:53:52,187 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp
+2021-03-09 11:53:52,194 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp_save
+2021-03-09 11:53:52,240 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp
+2021-03-09 11:53:52,248 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp_save
+2021-03-09 11:53:52,300 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp
+2021-03-09 11:53:52,313 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp_save
+2021-03-09 11:53:52,368 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp
+2021-03-09 11:53:52,376 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp_save
+2021-03-09 11:53:52,427 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp
+2021-03-09 11:53:52,439 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp_save
+2021-03-09 11:53:52,496 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp
+2021-03-09 11:53:52,504 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp_save
+2021-03-09 11:53:52,551 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp
+2021-03-09 11:53:52,558 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp_save
+2021-03-09 11:53:52,608 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp
+2021-03-09 11:53:52,625 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h_save
+2021-03-09 11:53:52,693 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h
+2021-03-09 11:53:52,710 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c_save
+2021-03-09 11:53:52,777 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c
+2021-03-09 11:53:52,779 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 11:53:52,780 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 11:53:52,813 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-03-09 11:53:52,901 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-03-09 11:53:52,911 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-03-09 11:53:52,972 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-03-09 11:53:53,005 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-03-09 11:53:53,114 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-03-09 11:53:53,123 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-03-09 11:53:53,166 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-03-09 11:53:53,176 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c_save
+2021-03-09 11:53:53,236 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c
+2021-03-09 11:53:53,266 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-03-09 11:53:53,335 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-03-09 11:53:53,354 [WARN] IPConfigManager:2967 - IP not found : TIM
+2021-03-09 11:53:53,355 [WARN] CodeGenerator:3177 - IP not found : null
+2021-03-09 11:53:53,385 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-03-09 11:53:53,455 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-03-09 11:53:53,475 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-03-09 11:53:53,689 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-03-09 11:53:54,648 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 548mS.
+2021-03-09 11:53:54,655 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-03-09 11:53:54,853 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-03-09 11:53:54,863 [INFO] ApiDbMcu:456 - Load IP Config File for FATFS
+2021-03-09 11:53:54,871 [INFO] ApiDbMcu:456 - Load IP Config File for USB_DEVICE
+2021-03-09 11:53:56,880 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 2225mS.
+2021-03-09 11:53:56,881 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-09 11:53:56,886 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-09 11:54:21,803 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-09 12:04:48,372 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 418481328 Bytes (942669824)
+2021-03-09 12:04:50,646 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 428967088 Bytes (942669824)
+2021-03-09 12:04:52,042 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 489262248 Bytes (942669824)
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: FREERTOS
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8F1
+2021-03-09 12:04:52,169 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-03-09 12:04:52,170 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-03-09 12:04:52,170 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-03-09 12:04:52,170 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-03-09 12:04:52,323 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-03-09 12:04:52,361 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-03-09 12:04:52,395 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-03-09 12:04:52,437 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-03-09 12:04:52,541 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 12:04:52,551 [INFO] Middleware:1252 - No code input for Bsp Dependency
+2021-03-09 12:04:52,570 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp_save
+2021-03-09 12:04:52,613 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp
+2021-03-09 12:04:52,617 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp_save
+2021-03-09 12:04:52,665 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp
+2021-03-09 12:04:52,672 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp_save
+2021-03-09 12:04:52,752 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp
+2021-03-09 12:04:52,761 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp_save
+2021-03-09 12:04:52,800 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp
+2021-03-09 12:04:52,808 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp_save
+2021-03-09 12:04:52,848 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp
+2021-03-09 12:04:52,856 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp_save
+2021-03-09 12:04:52,896 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp
+2021-03-09 12:04:52,902 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp_save
+2021-03-09 12:04:52,940 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp
+2021-03-09 12:04:52,943 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp_save
+2021-03-09 12:04:52,984 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp
+2021-03-09 12:04:52,987 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp_save
+2021-03-09 12:04:53,023 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp
+2021-03-09 12:04:53,035 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h_save
+2021-03-09 12:04:53,091 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h
+2021-03-09 12:04:53,103 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c_save
+2021-03-09 12:04:53,152 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c
+2021-03-09 12:04:53,154 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 12:04:53,155 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-09 12:04:53,183 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-03-09 12:04:53,241 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-03-09 12:04:53,246 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-03-09 12:04:53,296 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-03-09 12:04:53,327 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-03-09 12:04:53,402 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-03-09 12:04:53,406 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-03-09 12:04:53,444 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-03-09 12:04:53,453 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c_save
+2021-03-09 12:04:53,500 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c
+2021-03-09 12:04:53,525 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-03-09 12:04:53,589 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-03-09 12:04:53,606 [WARN] IPConfigManager:2967 - IP not found : TIM
+2021-03-09 12:04:53,606 [WARN] CodeGenerator:3177 - IP not found : null
+2021-03-09 12:04:53,635 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-03-09 12:04:53,686 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-03-09 12:04:53,699 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-03-09 12:04:53,828 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-03-09 12:04:54,393 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 124mS.
+2021-03-09 12:04:54,397 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-03-09 12:04:54,563 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-03-09 12:04:55,748 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1351mS.
+2021-03-09 12:04:55,749 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
+2021-03-09 12:04:55,754 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-09 12:58:13,709 [ERROR] RtosPanel:542 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2021-03-09 13:01:23,610 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
+2021-03-09 13:01:23,610 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
+2021-03-09 13:01:23,610 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,610 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
+2021-03-09 13:01:23,611 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
+2021-03-09 13:01:23,611 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
+2021-03-09 13:01:23,611 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-09 13:01:23,611 [WARN] TasksAndQueuesTab:749 - max value is: 1250.0
