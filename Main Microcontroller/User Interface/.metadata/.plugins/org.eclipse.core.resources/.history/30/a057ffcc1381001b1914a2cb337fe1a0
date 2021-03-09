@@ -1343,19 +1343,11 @@ void StartFlowTask(void *argument)
 void StartProcessingTask(void *argument)
 {
   /* USER CODE BEGIN StartProcessingTask */
-	uint8_t val[15];
-	uint8_t input, d;
   /* Infinite loop */
-	for(;;)
-	{
-		d = 0;
-		val[3] =
-		while(osMessageQueueGet(UserQueueHandle, &input, NULL, 0U) == osOK)
-
-			val[d] = input;
-			d++;
-		}
-	}
+  for(;;)
+  {
+    osDelay(1);
+  }
   /* USER CODE END StartProcessingTask */
 }
 

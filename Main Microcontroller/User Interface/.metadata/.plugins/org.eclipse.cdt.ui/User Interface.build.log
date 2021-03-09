@@ -1,24 +1,23 @@
-12:55:15 **** Incremental Build of configuration Debug for project User Interface ****
+13:26:25 **** Incremental Build of configuration Debug for project User Interface ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartUserTask':
+../Core/Src/main.c:1190:49: error: expected expression before ']' token
+          osMessageQueuePut(UserQueueHandle,&val[],1U,0U);
+                                                 ^
+../Core/Src/main.c:1231:50: error: 'd' undeclared (first use in this function)
+           osMessageQueuePut(UserQueueHandle,&val[d],1U,0U);
+                                                  ^
+../Core/Src/main.c:1231:50: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1128:13: warning: unused variable 'time' [-Wunused-variable]
+   int indc, time;
+             ^~~~
 ../Core/Src/main.c: In function 'StartWeatherTask':
-../Core/Src/main.c:1304:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+../Core/Src/main.c:1309:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
    uint32_t period;
             ^~~~~~
-arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: User Interface.elf
- 
-arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
-arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
-arm-none-eabi-size   User\ Interface.elf 
-   text	   data	    bss	    dec	    hex	filename
-  30816	     24	  11008	  41848	   a378	User Interface.elf
-Finished building: default.size.stdout
- 
-Finished building: User Interface.bin
- 
-Finished building: User Interface.list
- 
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-12:55:16 Build Finished. 0 errors, 1 warnings. (took 933ms)
+13:26:26 Build Failed. 3 errors, 2 warnings. (took 353ms)
 

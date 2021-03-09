@@ -1,7 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 FREERTOS.FootprintOK=true
 FREERTOS.IPParameters=Tasks01,FootprintOK,Queues01,configTOTAL_HEAP_SIZE
-FREERTOS.Queues01=FlowQueue,16,uint16_t,0,Dynamic,NULL,NULL;WeatherQueue,16,uint16_t,0,Dynamic,NULL,NULL;XbeeQueue,16,uint16_t,0,Dynamic,NULL,NULL;SolenoidQueue,16,uint16_t,0,Dynamic,NULL,NULL;UserQueue,16,uint16_t,0,Dynamic,NULL,NULL
+FREERTOS.Queues01=FlowQueue,8,uint16_t,0,Dynamic,NULL,NULL;WeatherQueue,8,uint16_t,0,Dynamic,NULL,NULL;XbeeQueue,8,uint16_t,0,Dynamic,NULL,NULL;SolenoidQueue,8,uint16_t,0,Dynamic,NULL,NULL;UserQueue,8,uint16_t,0,Dynamic,NULL,NULL
 FREERTOS.Tasks01=XbeeTask,33,128,StartXbeeTask,Default,NULL,Dynamic,NULL,NULL;UserTask,34,128,StartUserTask,Default,NULL,Dynamic,NULL,NULL;SolenoidTask,35,128,StartSolenoidTask,Default,NULL,Dynamic,NULL,NULL;WeatherTask,36,128,StartWeatherTask,Default,NULL,Dynamic,NULL,NULL;FlowTask,37,128,StartFlowTask,Default,NULL,Dynamic,NULL,NULL;ProcessingTask,38,128,StartProcessingTask,Default,NULL,Dynamic,NULL,NULL
 FREERTOS.configTOTAL_HEAP_SIZE=5000
 File.Version=6
