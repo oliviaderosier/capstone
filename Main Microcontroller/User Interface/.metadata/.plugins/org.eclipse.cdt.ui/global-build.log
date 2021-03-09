@@ -4141,3 +4141,223 @@ arm-none-eabi-size   User\ Interface.elf
   29944	     24	  10904	  40872	   9fa8	User Interface.elf
 Finished building: default.size.stdout
  
+17:39:25 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/sensorObjects.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sensorObjects.d" -MT"Core/Src/sensorObjects.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sensorObjects.o"
+arm-none-eabi-gcc "../Core/Src/Letters.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Letters.d" -MT"Core/Src/Letters.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Letters.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/Letters.c: In function 'letter':
+../Core/Src/Letters.c:141:5: warning: implicit declaration of function 'Hal_Delay'; did you mean 'HAL_Delay'? [-Wimplicit-function-declaration]
+     Hal_Delay(2);
+     ^~~~~~~~~
+     HAL_Delay
+../Core/Src/sensorObjects.c: In function 'processATResponse':
+../Core/Src/sensorObjects.c:65:27: error: 'huart3' undeclared (first use in this function)
+      HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+                           ^~~~~~
+../Core/Src/sensorObjects.c:65:27: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'correct':
+../Core/Src/main.c:625:2: warning: implicit declaration of function 'letters'; did you mean 'letter'? [-Wimplicit-function-declaration]
+  letters(C);
+  ^~~~~~~
+  letter
+../Core/Src/main.c:625:10: error: 'C' undeclared (first use in this function)
+  letters(C);
+          ^
+../Core/Src/main.c:625:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:626:10: error: 'o' undeclared (first use in this function)
+  letters(o);
+          ^
+../Core/Src/main.c:627:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:629:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:630:10: error: 'c' undeclared (first use in this function)
+  letters(c);
+          ^
+../Core/Src/main.c:631:10: error: 't' undeclared (first use in this function)
+  letters(t);
+          ^
+../Core/Src/main.c: In function 'wrongPass':
+../Core/Src/main.c:782:10: error: 'W' undeclared (first use in this function)
+  letters(W);
+          ^
+../Core/Src/main.c:783:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:784:10: error: 'o' undeclared (first use in this function)
+  letters(o);
+          ^
+../Core/Src/main.c:785:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c:786:10: error: 'g' undeclared (first use in this function)
+  letters(g);
+          ^
+../Core/Src/main.c:788:9: error: 'P' undeclared (first use in this function)
+  letter(P);
+         ^
+../Core/Src/main.c:789:9: error: 'a' undeclared (first use in this function)
+  letter(a);
+         ^
+../Core/Src/main.c:790:9: error: 's' undeclared (first use in this function)
+  letter(s);
+         ^
+../Core/Src/main.c:792:9: error: 'w' undeclared (first use in this function)
+  letter(w);
+         ^
+../Core/Src/main.c:795:9: error: 'd' undeclared (first use in this function)
+  letter(d);
+         ^
+../Core/Src/main.c: In function 'green':
+../Core/Src/main.c:802:10: error: 'G' undeclared (first use in this function)
+  letters(G);
+          ^
+../Core/Src/main.c:803:10: error: 'r' undeclared (first use in this function)
+  letters(r);
+          ^
+../Core/Src/main.c:804:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/main.c:806:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/main.c: In function 'timer':
+../Core/Src/main.c:823:1: error: version control conflict marker in file
+ <<<<<<< HEAD
+ ^~~~~~~
+../Core/Src/main.c:842:1: error: version control conflict marker in file
+ =======
+ ^~~~~~~
+../Core/Src/sensorObjects.c:75:6: warning: implicit declaration of function 'uartInterruptInit' [-Wimplicit-function-declaration]
+      uartInterruptInit(26);
+      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:844:10: error: 'i' undeclared (first use in this function)
+  letters(i);
+          ^
+../Core/Src/main.c:845:10: error: 'm' undeclared (first use in this function)
+  letters(m);
+          ^
+../Core/Src/main.c:846:10: error: 'e' undeclared (first use in this function)
+  letters(e);
+          ^
+../Core/Src/sensorObjects.c: In function 'processIO':
+../Core/Src/main.c:855:10: error: 'n' undeclared (first use in this function)
+  letters(n);
+          ^
+../Core/Src/sensorObjects.c:135:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+                       ^~~~~~
+../Core/Src/main.c:857:2: error: too many arguments to function 'getVal'
+  getVal(2);
+  ^~~~~~
+../Core/Src/main.c:634:5: note: declared here
+ int getVal(void)
+     ^~~~~~
+../Core/Src/main.c:858:1: error: version control conflict marker in file
+ >>>>>>> parent of c184258 (Edited some of colton's code to help it function with mine better.)
+ ^~~~~~~
+../Core/Src/sensorObjects.c: In function 'sendBattRequest':
+../Core/Src/sensorObjects.c:166:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+                       ^~~~~~
+../Core/Src/main.c:858:49: warning: missing terminating ' character
+ >>>>>>> parent of c184258 (Edited some of colton's code to help it function with mine better.)
+                                                 ^
+../Core/Src/main.c:858:49: error: missing terminating ' character
+ >>>>>>> parent of c184258 (Edited some of colton's code to help it function with mine better.)
+                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/sensorObjects.c: In function 'sendTempRequest':
+../Core/Src/sensorObjects.c:194:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+                       ^~~~~~
+../Core/Src/main.c:986:49: warning: missing terminating ' character
+ >>>>>>> parent of c184258 (Edited some of colton's code to help it function with mine better.)
+                                                 ^
+../Core/Src/main.c:986:49: error: missing terminating ' character
+ >>>>>>> parent of c184258 (Edited some of colton's code to help it function with mine better.)
+                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/sensorObjects.c: In function 'uartTransmit':
+../Core/Src/sensorObjects.c:253:21: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Transmit(&huart3, buffer, length, 1);
+                     ^~~~~~
+../Core/Src/main.c:1376:1: error: expected declaration or statement at end of input
+ }
+ ^
+../Core/Src/sensorObjects.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/sensorObjects.c:274:25: error: 'huart3' undeclared (first use in this function); did you mean 'huart'?
+    HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+                         ^~~~~~
+                         huart
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:51: Core/Src/sensorObjects.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:52:11 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/Letters.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Letters.d" -MT"Core/Src/Letters.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Letters.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sensorObjects.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sensorObjects.d" -MT"Core/Src/sensorObjects.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sensorObjects.o"
+../Core/Src/sensorObjects.c: In function 'processATResponse':
+../Core/Src/sensorObjects.c:64:27: error: 'huart3' undeclared (first use in this function)
+      HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+                           ^~~~~~
+../Core/Src/sensorObjects.c:64:27: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/sensorObjects.c: In function 'processIO':
+../Core/Src/sensorObjects.c:135:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+                       ^~~~~~
+../Core/Src/sensorObjects.c: In function 'sendBattRequest':
+../Core/Src/sensorObjects.c:166:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+                       ^~~~~~
+../Core/Src/sensorObjects.c: In function 'sendTempRequest':
+../Core/Src/sensorObjects.c:194:23: error: 'huart3' undeclared (first use in this function)
+  HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+                       ^~~~~~
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1301:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1410:1: error: stray '\302' in program
+ © 2021 GitHub, Inc.
+ ^
+../Core/Src/main.c:1410:2: error: stray '\251' in program
+ © 2021 GitHub, Inc.
+  ^
+../Core/Src/main.c:1410:4: error: expected identifier or '(' before numeric constant
+ © 2021 GitHub, Inc.
+    ^~~~
+make: *** [Core/Src/subdir.mk:51: Core/Src/sensorObjects.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:53:40 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/Letters.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Letters.d" -MT"Core/Src/Letters.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Letters.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sensorObjects.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sensorObjects.d" -MT"Core/Src/sensorObjects.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sensorObjects.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1301:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30720	     24	  11008	  41752	   a318	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+Finished building: User Interface.list
+ 
+ 

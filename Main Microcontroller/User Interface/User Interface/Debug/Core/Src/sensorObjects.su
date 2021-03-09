@@ -5,5 +5,3 @@ sensorObjects.c:144:6:sendBattRequest	16	static
 sensorObjects.c:170:6:sendTempRequest	16	static
 sensorObjects.c:201:9:verifyChecksum	32	static
 sensorObjects.c:226:9:generateChecksum	24	static
-sensorObjects.c:250:6:uartTransmit	16	static
-sensorObjects.c:258:6:HAL_UART_RxCpltCallback	16	static
