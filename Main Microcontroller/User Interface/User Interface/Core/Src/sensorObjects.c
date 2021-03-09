@@ -102,7 +102,7 @@ void processIO(uint8_t *ioData)
 
 	//Determine which sensor it belongs to
 	//get the address, if it exists, put the data into it
-	//if the addres doesnt already exist then make a new object to put data into
+	//if the address doesn't already exist then make a new object to put data into
 	//for now we will just use the three that we have
 	uint8_t nodeNumber = 0;
 	for (nodeNumber = 0; nodeNumber<36; nodeNumber++) //to cycle through the 36 available nodes.
@@ -245,5 +245,38 @@ uint8_t generateChecksum(uint8_t *frame)
 
 	return (0xFF - sum);
 }
+//interrupt and transmit functions
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void uartTransmit(uint8_t *buffer, uint8_t length)
+{
+	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+	HAL_UART_Transmit(&huart3, buffer, length, 1);
+
+	return;
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
+{
+	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+	if (uartBufferRX[0] == 0x7E)
+	{
+		switch (uartBufferRX[3])
+		{
+		case 0x92:
+			processIO(uartBufferRX);
+			break;
+
+		case 0x97:
+			processATResponse(uartBufferRX);
+			break;
+
+		default://if it wasnt an expected data type just throw it out
+			HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+			break;
+		}
+	}
 
 
+
+	return;
+}
