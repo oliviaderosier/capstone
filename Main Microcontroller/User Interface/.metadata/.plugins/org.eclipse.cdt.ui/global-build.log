@@ -4361,3 +4361,215 @@ Finished building: User Interface.bin
 Finished building: User Interface.list
  
  
+18:00:26 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartUserTask':
+../Core/Src/main.c:1097:10: error: 'onoff' undeclared (first use in this function); did you mean 'onOff'?
+          onoff = val[0];///do something with val[0]
+          ^~~~~
+          onOff
+../Core/Src/main.c:1097:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1194:8: error: 'grn' undeclared (first use in this function); did you mean 'green'?
+     if(grn == 1)
+        ^~~
+        green
+../Core/Src/main.c:1196:9: error: 'state' undeclared (first use in this function)
+      if(state == 0)
+         ^~~~~
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1245:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+18:01:35 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1244:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30736	     24	  11000	  41760	   a320	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:02:29 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1244:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30720	     24	  11000	  41744	   a310	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:02:51 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30720	     24	  11000	  41744	   a310	User Interface.elf
+Finished building: default.size.stdout
+ 
+18:03:45 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1244:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30736	     24	  11000	  41760	   a320	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:04:22 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30736	     24	  11000	  41760	   a320	User Interface.elf
+Finished building: default.size.stdout
+ 
+18:05:42 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1244:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30544	     24	  11000	  41568	   a260	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:09:27 **** Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1152:1: error: expected expression before '/' token
+ / {
+ ^
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+18:09:40 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29944	     24	  10904	  40872	   9fa8	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:11:53 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29944	     24	  10904	  40872	   9fa8	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:16:26 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'timer':
+../Core/Src/main.c:839:10: warning: implicit declaration of function 'getval'; did you mean 'getVal'? [-Wimplicit-function-declaration]
+  check = getval();
+          ^~~~~~
+          getVal
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Core/Src/main.o: In function `timer':
+C:/Users/anima/Desktop/User Interface/User Interface/Debug/../Core/Src/main.c:839: undefined reference to `getval'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:62: User Interface.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+18:16:39 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29960	     24	  10904	  40888	   9fb8	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+18:18:16 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29960	     24	  10904	  40888	   9fb8	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 

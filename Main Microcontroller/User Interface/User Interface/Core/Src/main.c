@@ -128,7 +128,7 @@ const osMessageQueueAttr_t UserQueue_attributes = {
 /* USER CODE BEGIN PV */
 int count=0;
 int val[6];
-int indc, time, onoff;
+int indc;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -968,95 +968,7 @@ void error(void)
 	letter('e');
 	letter('r');
 }
-void setSolenoids(int grn, int state)
-{
-	if(grn == 1)
-	{
-		if(state == 0)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-		}
-		else if(state == 1)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
-		}
-	}
-	else if(grn == 2)
-	{
-		if(state == 0)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-		}
-		else if(state == 1)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
-		}
-	}
-	else if(grn == 3)
-	{
-		if(state == 0)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
-		}
-		else if(state == 1)
-		{
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
-		}
-	}
-}
-void flow (void)
-{
-	uint32_t tickstart = HAL_GetTick();
-	uint32_t wait = 1000;
-	uint32_t F1,F2,F3;
-	uint32_t C1=0;
-	uint32_t C2=0;
-	uint32_t C3=0;
-	uint32_t L1 =0;
-	uint32_t L2 =0;
-	uint32_t L3 =0;
 
-	/* Add a freq to guarantee minimum wait */
-	if (wait < HAL_MAX_DELAY)
-	{
-	wait += (uint32_t)(uwTickFreq);
-	}
-
-	while ((HAL_GetTick() - tickstart) < wait)
-	{
-		F1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
-		F2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);
-		F3 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
-		if(F1 == 1 && F1!=L1)
-		{
-			C1++;
-		}
-		if(F2 == 1 && F2!=L2)
-		{
-			C2++;
-		}
-		if(F3 == 1 && F3!=L3)
-		{
-			C3++;
-		}
-		L1=F1;
-		L2=F2;
-		L3=F3;
-
-	}
-
-	//C1= C1*60;
-
-
-
-}
-
-/*void uartInterruptInit(uint8_t length)
-{
-	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], length);
-	return;
-}*/
 
 void uartTransmit(uint8_t *buffer, uint8_t length)
 {
@@ -1105,7 +1017,6 @@ void StartXbeeTask(void *argument)
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
 	initializeNodes();
-	//uartInterruptInit(26);
 	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
   for(;;)
   {
@@ -1183,8 +1094,7 @@ void StartUserTask(void *argument)
 								  commandToLCD();
 								  onOff();
 							  }
-							  onoff = val[0];///do something with val[0]
-							  setSolenoids(indc, onoff);
+							  //onoff = val[0];///do something with val[0]
 							  clear();
 							  quit();
 							  while(val[0]< 0 || val[0] > 1)
@@ -1280,6 +1190,39 @@ void StartSolenoidTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+//	  	if(grn == 1)
+//	  	{
+//	  		if(state == 0)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+//	  		}
+//	  		else if(state == 1)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+//	  		}
+//	  	}
+//	  	else if(grn == 2)
+//	  	{
+//	  		if(state == 0)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+//	  		}
+//	  		else if(state == 1)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
+//	  		}
+//	  	}
+//	  	else if(grn == 3)
+//	  	{
+//	  		if(state == 0)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
+//	  		}
+//	  		else if(state == 1)
+//	  		{
+//	  			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
+//	  		}
+//	  	}
     osDelay(1);
   }
   /* USER CODE END StartSolenoidTask */
@@ -1329,6 +1272,45 @@ void StartFlowTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
+//	  	uint32_t tickstart = HAL_GetTick();
+//	  	uint32_t wait = 1000;
+//	  	uint32_t F1,F2,F3;
+//	  	uint32_t C1=0;
+//	  	uint32_t C2=0;
+//	  	uint32_t C3=0;
+//	  	uint32_t L1 =0;
+//	  	uint32_t L2 =0;
+//	  	uint32_t L3 =0;
+//
+//	  	/* Add a freq to guarantee minimum wait */
+//	  	if (wait < HAL_MAX_DELAY)
+//	  	{
+//	  	wait += (uint32_t)(uwTickFreq);
+//	  	}
+//
+//	  	while ((HAL_GetTick() - tickstart) < wait)
+//	  	{
+//	  		F1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
+//	  		F2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);
+//	  		F3 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+//	  		if(F1 == 1 && F1!=L1)
+//	  		{
+//	  			C1++;
+//	  		}
+//	  		if(F2 == 1 && F2!=L2)
+//	  		{
+//	  			C2++;
+//	  		}
+//	  		if(F3 == 1 && F3!=L3)
+//	  		{
+//	  			C3++;
+//	  		}
+//	  		L1=F1;
+//	  		L2=F2;
+//	  		L3=F3;
+//
+//	  	}
 
     osDelay(1);
   }
