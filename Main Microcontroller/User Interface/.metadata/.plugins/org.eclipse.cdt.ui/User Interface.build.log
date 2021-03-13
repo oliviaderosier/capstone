@@ -1,4 +1,4 @@
-18:18:16 **** Incremental Build of configuration Debug for project User Interface ****
+17:20:46 **** Incremental Build of configuration Debug for project User Interface ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -8,7 +8,7 @@ arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
 arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
 arm-none-eabi-size   User\ Interface.elf 
    text	   data	    bss	    dec	    hex	filename
-  29960	     24	  10904	  40888	   9fb8	User Interface.elf
+  30216	     24	  10904	  41144	   a0b8	User Interface.elf
 Finished building: default.size.stdout
  
 Finished building: User Interface.bin
@@ -16,5 +16,5 @@ Finished building: User Interface.bin
 Finished building: User Interface.list
  
 
-18:18:17 Build Finished. 0 errors, 0 warnings. (took 792ms)
+17:20:48 Build Finished. 0 errors, 0 warnings. (took 1s.938ms)
 

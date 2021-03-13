@@ -56,7 +56,7 @@
 TIM_HandleTypeDef htim2;
 
 UART_HandleTypeDef huart2;
-
+UART_HandleTypeDef huart3;
 
 /* Definitions for XbeeTask */
 osThreadId_t XbeeTaskHandle;
@@ -221,19 +221,19 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of FlowQueue */
-  FlowQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &FlowQueue_attributes);
+  FlowQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &FlowQueue_attributes);
 
   /* creation of WeatherQueue */
-  WeatherQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &WeatherQueue_attributes);
+  WeatherQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &WeatherQueue_attributes);
 
   /* creation of XbeeQueue */
-  XbeeQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &XbeeQueue_attributes);
+  XbeeQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &XbeeQueue_attributes);
 
   /* creation of SolenoidQueue */
-  SolenoidQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &SolenoidQueue_attributes);
+  SolenoidQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &SolenoidQueue_attributes);
 
   /* creation of UserQueue */
-  UserQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &UserQueue_attributes);
+  UserQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &UserQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
