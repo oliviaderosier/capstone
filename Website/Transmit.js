@@ -18,7 +18,7 @@
                 var setTime = resp2.data['sys']['sunset'] * 1000;
                 var setDate = new Date(setTime);
                 setDate.toDateString();
-                var hours1 = setDate.getHours() - 12;
+                var hours1 = setDate.getHours();
                 var minutes1 = setDate.getMinutes();
 
                 if(minutes1 < 10)
@@ -30,11 +30,36 @@
                 }
             console.log(time1);
 
+            let currentDate = new Date();
+            let hours = currentDate.getHours() 
+            let minutes = currentDate.getMinutes();
+            console.log(hours + ':' + minutes);
+
+            var sunset;
+
+            if (hours< hours1)
+            {
+             sunset = 0;
+            }
+
+            else if (hours = hours1)
+            {
+                if(minutes < minutes1)
+                {
+                 sunset = 0;
+                }
+                
+                if(minutes > minutes1)
+                {
+                sunset = 1;
+                }
+            }
+        
             let userpassword = "olivia.derosier@gmail.com:CAPSTONE!";
             let encodedAuth = Buffer.from(userpassword).toString('base64');
             
             //encoding data
-            let data = rain + "XXX" + time1;
+            let data = rain + "X" + sunset;
             
             console.log(data);
             
