@@ -99,105 +99,104 @@ var m4 = <?php
                 $db->close();
   ?>
 
-var s1 = <?php
+var m5 = <?php
                 $db = mysqli_connect("localhost", "root", "", "capstone");
                 if ($db->connect_error)
                     {
                       die ("Connection failed: " . $db->connect_error);
   
                     }
-                $q = "SELECT MAX(id) FROM data";
+                $q = "SELECT MAX(id) FROM data2";
                 $results = $db->query($q);
                 $row = mysqli_fetch_array($results);
                 $N = $row[0];
   
-                 $q = "SELECT salt FROM data where id = $N";
+                 $q = "SELECT moisture FROM data2 where id = $N";
                  $results = $db->query($q);
                  $row = $results->fetch_assoc();
-                 $M = $row['salt'];
+                 $M = $row['moisture'];
                  echo $M;
   
                 $db->close();
   ?>
 
-var s2 = <?php
+var m6 = <?php
                 $db = mysqli_connect("localhost", "root", "", "capstone");
                 if ($db->connect_error)
                     {
                       die ("Connection failed: " . $db->connect_error);
   
                     }
-                $q = "SELECT MAX(id) FROM data";
+                $q = "SELECT MAX(id) FROM data2";
                 $results = $db->query($q);
                 $row = mysqli_fetch_array($results);
                 $N = $row[0];
-                $N = $N -1;
+                $N = $N-1;
   
-                 $q = "SELECT salt FROM data where id = $N";
+                 $q = "SELECT moisture FROM data2 where id = $N";
                  $results = $db->query($q);
                  $row = $results->fetch_assoc();
-                 $M = $row['salt'];
+                 $M = $row['moisture'];
                  echo $M;
   
                 $db->close();
   ?>
 
-var s3 = <?php
+var m7 = <?php
                 $db = mysqli_connect("localhost", "root", "", "capstone");
                 if ($db->connect_error)
                     {
                       die ("Connection failed: " . $db->connect_error);
   
                     }
-                $q = "SELECT MAX(id) FROM data";
+                $q = "SELECT MAX(id) FROM data2";
                 $results = $db->query($q);
                 $row = mysqli_fetch_array($results);
                 $N = $row[0];
-                $N = $N -2;
+                $N = $N-2;
   
-                 $q = "SELECT salt FROM data where id = $N";
+                 $q = "SELECT moisture FROM data2 where id = $N";
                  $results = $db->query($q);
                  $row = $results->fetch_assoc();
-                 $M = $row['salt'];
+                 $M = $row['moisture'];
                  echo $M;
   
                 $db->close();
   ?>
 
-var s4 = <?php
+var m8 = <?php
                 $db = mysqli_connect("localhost", "root", "", "capstone");
                 if ($db->connect_error)
                     {
                       die ("Connection failed: " . $db->connect_error);
   
                     }
-                $q = "SELECT MAX(id) FROM data";
+                $q = "SELECT MAX(id) FROM data2";
                 $results = $db->query($q);
                 $row = mysqli_fetch_array($results);
                 $N = $row[0];
-                $N = $N -3;
+                $N = $N-3;
   
-                 $q = "SELECT salt FROM data where id = $N";
+                 $q = "SELECT moisture FROM data2 where id = $N";
                  $results = $db->query($q);
                  $row = $results->fetch_assoc();
-                 $M = $row['salt'];
+                 $M = $row['moisture'];
                  echo $M;
   
                 $db->close();
   ?>
-
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Moisture Level', 'Salinity Level'],
-          ['Monday',  m1, s1],
-          ['Tuesday',  m2,      s2],
-          ['Wednesday',  m3,       s3],
-          ['Thursday',  m4,      s4]
+          ['Week Day', 'Hole 1', 'Hole 2'],
+          ['Monday', m1, m5],
+          ['Tuesday', m2, m6],
+          ['Wednesday', m3, m7],
+          ['Thursday', m4, m8]
         ]);
 
         var options = {
-          title: 'Soil Moisture and Salinity Levels in PPM',
+          title: 'Soil Moisture Level (Unitless)',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -236,18 +235,36 @@ var hole1 = <?php
         $db->close();
 ?>
 
+var hole2 = <?php
+
+        $db = mysqli_connect("localhost", "root", "", "capstone");
+        if ($db->connect_error)
+            {
+               die ("Connection failed: " . $db->connect_error);
+
+            }
+        $q = "SELECT * FROM data2 ORDER BY id DESC LIMIT 1";
+        $results = $db->query($q);
+        $row = $results->fetch_assoc();
+        $hole2= $row["waterUsed"];
+
+        echo $hole2; 
+
+        $db->close();
+?>
+
   function drawStuff() {
     var data = new google.visualization.arrayToDataTable([
       ['Hole Number', 'Amount of Water Used to Date (L)'],
       ["Hole 1", hole1],
-      ["Hole 2", 31],
+      ["Hole 2", hole2],
       ["Hole 3", 12],
       ["Hole 4", 10],
       ["Hole 5", 13],
       ["Hole 6", 19],
       ["Hole 7", 21],
       ["Hole 8", 13],
-      ["Hole 9", 43]
+      ["Hole 9", 9]
     ]);
    
     var options = {
@@ -274,6 +291,10 @@ var hole1 = <?php
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!---------------------------------------------------REFRESH CODE--------------------------------------------->
+
+<meta http-equiv="refresh" content="900">
 
 </head>
 
@@ -323,7 +344,50 @@ var hole1 = <?php
 <p>&#x263E Time of Sunset: <span id="set"></span> PM </p>
 </div>
 
-<div id="parameterBlock" style = "position:relative; left:800px; top:-850px;">
+<div id="parameterBlock" style = "position:relative; left:800px; top:-850px; width: 250px;">
+<p>Soil Salt Index (Unitless) </p>
+
+<?php
+
+  $db = mysqli_connect("localhost", "root", "", "capstone");
+  if ($db->connect_error)
+  {
+      die ("Connection failed: " . $db->connect_error);
+
+  }
+
+  $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
+  $results = $db->query($q);
+
+  $salt1 =$row['salt'];
+
+  echo '<p>&#x1F3CC	Hole 1: ' .$salt1. ' </p>';
+
+  $db->close();
+?>
+
+<?php
+
+  $db = mysqli_connect("localhost", "root", "", "capstone");
+  if ($db->connect_error)
+  {
+      die ("Connection failed: " . $db->connect_error);
+
+  }
+
+  $q = "SELECT * FROM data2 ORDER BY id DESC LIMIT 1";
+  $results = $db->query($q);
+
+  $salt2 =$row['salt'];
+
+  echo '<p>&#x1F3CC Hole 2: ' .$salt2. ' </p>';
+
+  $db->close();
+?>
+
+</div>
+
+<div id="parameterBlock" style = "position:relative; left:800px; top:-800px;">
 <p>Battery Life of Communication Devices </p>
 
 <!-------------------------------------------PHP SQL DATABASE CONNECTION AND DATA ACCESS FOR BATTERY LIFE--------------------------------------------->
@@ -347,7 +411,25 @@ var hole1 = <?php
   $db->close();
 ?>
 
-<p>&#x1F50B Device 2: 75%</p>
+<?php
+
+  $db = mysqli_connect("localhost", "root", "", "capstone");
+  if ($db->connect_error)
+  {
+      die ("Connection failed: " . $db->connect_error);
+
+  }
+
+  $q2 = "SELECT * FROM data2 ORDER BY id DESC LIMIT 1";
+  $results = $db->query($q2);
+
+  $battery2 =$row['battery'];
+
+  echo '<p>&#x1F50B Device 2: ' .$battery2. '%</p>';
+
+  $db->close();
+?>
+
 <p>&#x1F50B Device 3: 95%</p>
 
 </div>
