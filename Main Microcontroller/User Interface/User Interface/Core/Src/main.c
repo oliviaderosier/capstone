@@ -1017,33 +1017,33 @@ void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-//	initializeNodes();
-//	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
+	initializeNodes();
+	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
 	 // HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
-//	  if(HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 100) == HAL_OK)
-//	  {
-//			HAL_UART_Transmit(&huart2, uartBufferRX, 26, 100);
-//			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-//			if (uartBufferRX[0] == 0x7E)
-//			{
-//				switch (uartBufferRX[3])
-//				{
-//				case 0x92:
-//					processIO(uartBufferRX);
-//					break;
-//
-//				case 0x97:
-//					processATResponse(uartBufferRX);
-//					break;
-//
-//				default://if it wasnt an expected data type just throw it out
-//					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
-//					break;
-//				}
-//			}
-//	  }
+	  if(HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000) == HAL_OK)
+	  {
+			HAL_UART_Transmit(&huart2, uartBufferRX, 26, 1000);
+			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+			if (uartBufferRX[0] == 0x7E)
+			{
+				switch (uartBufferRX[3])
+				{
+				case 0x92:
+					processIO(uartBufferRX);
+					break;
+
+				case 0x97:
+					processATResponse(uartBufferRX);
+					break;
+
+				default://if it wasnt an expected data type just throw it out
+					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+					break;
+				}
+			}
+	  }
     osDelay(1);
   }
   /* USER CODE END 5 */
