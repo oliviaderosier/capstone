@@ -1,0 +1,29 @@
+/*
+ * Letters.c
+ *
+ *  Created on: Mar.6, 2021
+ *      Author: Austin Waldron
+ *
+ * Description: This file will have the code needed to print letters to my LCD
+ *	screen as many are repeats and they take 11 lines of code each.
+ *
+ */
+
+#include "Letters.h"
+
+void letter(char L)
+{
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high
+
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);//D0	//P
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 1);//D6
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
+
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
+	HAL_Delay(2);
+}

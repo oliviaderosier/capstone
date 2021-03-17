@@ -1,0 +1,12 @@
+/*
+ * Letters.c
+ *
+ *  Created on: Mar.6, 2021
+ *      Author: Austin Waldron
+ *
+ * Description: This file wil have the code needed to print letters to my LCD
+ *	screen as many are repeats and they take 11 lines of code each.
+ *
+ */
+
+#include "Letters.h"

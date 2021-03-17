@@ -1,0 +1,10 @@
+18:08:52 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20916	     20	   1676	  22612	   5854	User Interface.elf
+Finished building: default.size.stdout
+ 
+
+18:08:53 Build Finished. 0 errors, 0 warnings. (took 240ms)
+
