@@ -74,6 +74,7 @@ void Error_Handler(void);
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 /* USER CODE END Private defines */
 

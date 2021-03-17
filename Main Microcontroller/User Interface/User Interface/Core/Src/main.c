@@ -381,7 +381,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -414,7 +414,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
+  huart3.Init.BaudRate = 9600;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -980,6 +980,7 @@ void uartTransmit(uint8_t *buffer, uint8_t length)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
 {
+	HAL_UART_Transmit(&huart2, uartBufferRX, 26, 10);
 	//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	if (uartBufferRX[0] == 0x7E)
 	{
@@ -1016,11 +1017,33 @@ void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-	initializeNodes();
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+//	initializeNodes();
+//	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
-
+	 // HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
+//	  if(HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 100) == HAL_OK)
+//	  {
+//			HAL_UART_Transmit(&huart2, uartBufferRX, 26, 100);
+//			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+//			if (uartBufferRX[0] == 0x7E)
+//			{
+//				switch (uartBufferRX[3])
+//				{
+//				case 0x92:
+//					processIO(uartBufferRX);
+//					break;
+//
+//				case 0x97:
+//					processATResponse(uartBufferRX);
+//					break;
+//
+//				default://if it wasnt an expected data type just throw it out
+//					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+//					break;
+//				}
+//			}
+//	  }
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -1036,7 +1059,8 @@ void StartXbeeTask(void *argument)
 void StartUserTask(void *argument)
 {
   /* USER CODE BEGIN StartUserTask */
-  while(1)
+	initializeNodes();
+  for(;;)
   {
 	  val[6] = 0;
 	  commandToLCD();
@@ -1046,7 +1070,29 @@ void StartUserTask(void *argument)
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW4
 
-	  getVal(4);
+	  if(HAL_UART_Receive(&huart3, &uartBufferRX[26], 26, 3000) == HAL_OK)
+		  {
+				HAL_UART_Transmit(&huart2, &uartBufferRX[13], 13, 500);
+				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+//				if (uartBufferRX[0] == 0x7E)
+//				{
+//					switch (uartBufferRX[3])
+//					{
+//					case 0x92:
+//						processIO(uartBufferRX);
+//						break;
+//
+//					case 0x97:
+//						processATResponse(uartBufferRX);
+//						break;
+//
+//					default://if it wasnt an expected data type just throw it out
+//						HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
+//						break;
+//					}
+//				}
+		  }
+	  //getVal(4);
 	  if(val[0] == 1)
 	  {
 		  if(val[1] == 2)
@@ -1172,7 +1218,7 @@ void StartUserTask(void *argument)
 		  wrongPass();
 		  HAL_Delay(2000);
 	  }
-
+	    osDelay(1);
   }
   /* USER CODE END StartUserTask */
 }

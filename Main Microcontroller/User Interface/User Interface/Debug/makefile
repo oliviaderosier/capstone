@@ -1,5 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -32,6 +33,12 @@ endif
 
 -include ../makefile.defs
 
+OPTIONAL_TOOL_DEPS := \
+$(wildcard ../makefile.defs) \
+$(wildcard ../makefile.init) \
+$(wildcard ../makefile.targets) \
+
+
 BUILD_ARTIFACT_NAME := User Interface
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
@@ -58,22 +65,22 @@ all: main-build
 main-build: User\ Interface.elf secondary-outputs
 
 # Tool invocations
-User\ Interface.elf: $(OBJS) $(USER_OBJS) C:\Users\anima\Desktop\ENEL417\Main\ Microcontroller\User\ Interface\User\ Interface\STM32F103RBTX_FLASH.ld
-	arm-none-eabi-gcc -o "User Interface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+User\ Interface.elf: $(OBJS) $(USER_OBJS) C:\Users\Austin\Desktop\capstone\Main\ Microcontroller\User\ Interface\User\ Interface\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "User Interface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Austin\Desktop\capstone\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-default.size.stdout: $(EXECUTABLES)
+default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-size  $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-User\ Interface.list: $(EXECUTABLES)
+User\ Interface.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "User Interface.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-User\ Interface.bin: $(EXECUTABLES)
+User\ Interface.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "User Interface.bin"
 	@echo 'Finished building: $@'
 	@echo ' '

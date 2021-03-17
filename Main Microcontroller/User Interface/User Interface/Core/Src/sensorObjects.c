@@ -102,7 +102,7 @@ void processIO(uint8_t *ioData)
 
 	//Determine which sensor it belongs to
 	//get the address, if it exists, put the data into it
-	//if the addres doesnt already exist then make a new object to put data into
+	//if the address doesn't already exist then make a new object to put data into
 	//for now we will just use the three that we have
 	uint8_t nodeNumber = 0;
 	for (nodeNumber = 0; nodeNumber<36; nodeNumber++) //to cycle through the 36 available nodes.
