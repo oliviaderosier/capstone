@@ -55,6 +55,7 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
 
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
@@ -137,6 +138,7 @@ static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartXbeeTask(void *argument);
 void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
@@ -200,6 +202,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART3_UART_Init();
   MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -366,6 +369,39 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -381,7 +417,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -414,7 +450,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 9600;
+  huart3.Init.BaudRate = 115200;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -447,8 +483,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_4
@@ -473,10 +509,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin PA8 PA9 PA10
-                           PA11 PA12 */
-  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pins : LD2_Pin PA7 PA8 PA11
+                           PA12 */
+  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -538,7 +574,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2//letter font, 1 = 5x11, 0 = 5x8
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3//number of lines, 1 = 2, 0 = 1
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -554,7 +590,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1//cursor on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//display on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -572,7 +608,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//right
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -609,7 +645,7 @@ void line1(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -627,7 +663,7 @@ void line2(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 1);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -645,7 +681,7 @@ void clear()
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -1092,7 +1128,7 @@ void StartUserTask(void *argument)
 //					}
 //				}
 		  }
-	  //getVal(4);
+	  getVal(4);
 	  if(val[0] == 1)
 	  {
 		  if(val[1] == 2)

@@ -5678,3 +5678,79 @@
 2021-03-12 18:59:42,479 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 2401mS.
 2021-03-12 18:59:42,480 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
 2021-03-12 18:59:42,485 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
+2021-03-19 15:36:54,440 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:36:54,503 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:37:18,073 [INFO] DbMcusDocs:145 - JSON generation date=Thu Nov 05 10:05:07 CST 2020 (1604592307)
+2021-03-19 15:37:18,153 [INFO] DbMcusDocs:81 - Found 601 MCUs documents
+2021-03-19 15:37:35,338 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:42:24,418 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:42:25,794 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:42:27,673 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:42:28,153 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-03-19 15:42:40,172 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 522812992 Bytes (930086912)
+2021-03-19 15:42:42,070 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 534136456 Bytes (930086912)
+2021-03-19 15:42:44,587 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 704417352 Bytes (930086912)
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: FREERTOS
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8F1
+2021-03-19 15:42:44,763 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-03-19 15:42:44,764 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-03-19 15:42:44,764 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-03-19 15:42:44,764 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-03-19 15:42:44,993 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-03-19 15:42:45,045 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-03-19 15:42:45,096 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-03-19 15:42:45,151 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-03-19 15:42:45,375 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-19 15:42:45,384 [INFO] Middleware:1252 - No code input for Bsp Dependency
+2021-03-19 15:42:45,411 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp_save
+2021-03-19 15:42:45,455 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp
+2021-03-19 15:42:45,463 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp_save
+2021-03-19 15:42:45,507 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp
+2021-03-19 15:42:45,514 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp_save
+2021-03-19 15:42:45,559 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp
+2021-03-19 15:42:45,566 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp_save
+2021-03-19 15:42:45,603 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp
+2021-03-19 15:42:45,615 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp_save
+2021-03-19 15:42:45,662 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp
+2021-03-19 15:42:45,670 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp_save
+2021-03-19 15:42:45,712 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp
+2021-03-19 15:42:45,723 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp_save
+2021-03-19 15:42:45,769 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp
+2021-03-19 15:42:45,777 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp_save
+2021-03-19 15:42:45,822 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp
+2021-03-19 15:42:45,829 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp_save
+2021-03-19 15:42:45,873 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp
+2021-03-19 15:42:45,889 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h_save
+2021-03-19 15:42:45,949 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h
+2021-03-19 15:42:45,965 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c_save
+2021-03-19 15:42:46,021 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c
+2021-03-19 15:42:46,023 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-19 15:42:46,024 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-19 15:42:46,055 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-03-19 15:42:46,126 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-03-19 15:42:46,137 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-03-19 15:42:46,197 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-03-19 15:42:46,232 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-03-19 15:42:46,365 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-03-19 15:42:46,376 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-03-19 15:42:46,418 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-03-19 15:42:46,428 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c_save
+2021-03-19 15:42:46,483 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c
+2021-03-19 15:42:46,517 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-03-19 15:42:46,633 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-03-19 15:42:46,649 [WARN] IPConfigManager:2967 - IP not found : TIM
+2021-03-19 15:42:46,649 [WARN] CodeGenerator:3177 - IP not found : null
+2021-03-19 15:42:46,681 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-03-19 15:42:46,753 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-03-19 15:42:46,774 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-03-19 15:42:46,918 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-03-19 15:42:47,730 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 536mS.
+2021-03-19 15:42:47,735 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-03-19 15:42:48,130 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-03-19 15:42:49,392 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1657mS.
+2021-03-19 15:42:49,393 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-19 15:42:49,399 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.
