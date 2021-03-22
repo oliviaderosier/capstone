@@ -61,7 +61,7 @@ void processATResponse(uint8_t *ATResponse)
 				if (ATResponse[15] == 0x54 && ATResponse[16] == 0x50) //if the AT command was "TP"
 				{
 					fairways[nodeNum].temperature = ATResponse[18] *256 + ATResponse[19]; //store temp data then request battery data
-					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+					HAL_UART_Receive(&huart3, &uartBufferRX[0], 21, 100);
 					sendBattRequest(nodeNum);
 				}
 				else if (ATResponse[15] == 0x25 && ATResponse[16] == 0x56) //if the AT command was "%V"
@@ -163,7 +163,7 @@ void sendBattRequest(uint8_t nodeNumber)
 	uartBufferTX[17] = 0x56;//AT Command Byte 2 - 0x56 is 'V'
 	uartBufferTX[18] = generateChecksum(uartBufferTX);//Checksum (as calculated by XCTU)
 
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+	HAL_UART_Receive(&huart3, &uartBufferRX[0], 19, 100);
 	return;
 }
 
