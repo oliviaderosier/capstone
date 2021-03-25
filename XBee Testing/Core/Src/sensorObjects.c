@@ -2,8 +2,9 @@
  * sensorObjects.c
  *
  *  Created on: Mar. 2, 2021
- *      Author: Colton Moore
+ *      Author: colto
  */
+
 #include "sensorObjects.h"
 
 void initializeNodes()
@@ -61,18 +62,17 @@ void processATResponse(uint8_t *ATResponse)
 				if (ATResponse[15] == 0x54 && ATResponse[16] == 0x50) //if the AT command was "TP"
 				{
 					fairways[nodeNum].temperature = ATResponse[18] *256 + ATResponse[19]; //store temp data then request battery data
-					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+					uartInterruptInit(21);
 					sendBattRequest(nodeNum);
 				}
 				else if (ATResponse[15] == 0x25 && ATResponse[16] == 0x56) //if the AT command was "%V"
 				{
 					fairways[nodeNum].battery = ATResponse[18]*256 + ATResponse[19];
-					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);//Listen for IO data becasue we should have both requests received
+					uartInterruptInit(26);//Listen for IO data becasue we should have both requests received
 				}
 				else
 				{	//if we got an unexpected AT Command Type, give up and try again next time data is transmitted
-					//uartInterruptInit(26);
-					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+					uartInterruptInit(26);
 				}
 
 				nodeNum = 255; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.
@@ -95,9 +95,12 @@ void processIO(uint8_t *ioData)
 	}
 	else
 	{
-		sensorResistive 	= ioData[19]*256 + ioData[20]; //ADC0
-		sensorCapacative	= ioData [21]*256 + ioData[22];//ADC1
-		sensorTemperature 	= ioData [23]*256 + ioData[24];//ADC2
+		sensorTemperature = calcTemp(ioData[19], ioData[20]);
+		//sensorTemperature 	= ioData[19]*256 + ioData[20];//ADC0
+		sensorResistive = calcPercent(ioData[21], ioData[22]);
+		//sensorResistive		= ioData[21]*256 + ioData[22];//ADC1
+		sensorCapacative = calcPercent(ioData[23], ioData[24]);
+		//sensorCapacative	= ioData[23]*256 + ioData[24];//ADC2
 	}
 
 	//Determine which sensor it belongs to
@@ -132,7 +135,7 @@ void processIO(uint8_t *ioData)
 	}
 	//__HAL_UART_CLEAR_FLAG(&huart3, UART_FLAG_TC);
 
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 21);
+	uartInterruptInit(21);
 	sendBattRequest(nodeNumber);
 
   return;
@@ -163,7 +166,7 @@ void sendBattRequest(uint8_t nodeNumber)
 	uartBufferTX[17] = 0x56;//AT Command Byte 2 - 0x56 is 'V'
 	uartBufferTX[18] = generateChecksum(uartBufferTX);//Checksum (as calculated by XCTU)
 
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+	uartTransmit(uartBufferTX, 19);
 	return;
 }
 
@@ -191,11 +194,40 @@ void sendTempRequest(uint8_t nodeNumber)
 	uartBufferTX[17] = 0x50;//AT Command Byte 2 - 0x50 is 'P'
 	uartBufferTX[18] = generateChecksum(uartBufferTX);//passes the address of the struct
 
-	HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 19);
+	uartTransmit(uartBufferTX, 19);
 	return;
 }
 
+void sensorToGateway(uint8_t nodeNumber)
+{
+	uint8_t Res1	= (fairways[nodeNumber].resistive/256);
+	uint8_t Res2	= (fairways[nodeNumber].resistive%256);
 
+	uint8_t Temp1	= (fairways[nodeNumber].temperature/256);
+	uint8_t Temp2	= (fairways[nodeNumber].temperature%256);
+
+	uint8_t Cap1	= (fairways[nodeNumber].capacative/256);
+	uint8_t Cap2	= (fairways[nodeNumber].capacative%256);
+
+	uint8_t Batt1	= (fairways[nodeNumber].battery/256);
+	uint8_t Batt2	= (fairways[nodeNumber].battery%256);
+
+	uartBufferTX[0] = 0x7E; //startDelim
+	uartBufferTX[1] = nodeNumber; //startDelim
+	uartBufferTX[2] = Res1;
+	uartBufferTX[3] = Res2;
+	uartBufferTX[4] = Temp1;
+	uartBufferTX[5] = Temp2;
+	uartBufferTX[6] = Cap1;
+	uartBufferTX[7] = Cap2;
+	uartBufferTX[8] = Batt1;
+	uartBufferTX[9] = Batt2;
+	//uartBufferTX[10] = //Humidity Data
+	//uartBufferTX[11] = //Humidity Data
+
+
+	uartTransmit(uartBufferTX, 11);
+}
 //Checksum Functions
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 uint8_t verifyChecksum(uint8_t *ioData)
@@ -245,4 +277,27 @@ uint8_t generateChecksum(uint8_t *frame)
 
 	return (0xFF - sum);
 }
+
+//Calculations
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+uint16_t calcTemp(uint8_t ADC0_19, uint8_t ADC0_20)
+{
+	uint16_t ADC = ADC0_19*256 + ADC0_20; //wrt real ground, range of 0 (0V) to 1023 (2.5V)
+	uint16_t virtualGround = 401;//virtual ground is 981mV: (981/2500)*1023 = 401
+	ADC = ADC - virtualGround;//wrt to virtual ground now
+	float voltage = ADC * 2.5; //convert the ADC value to a real voltage
+	voltage = voltage*100; // same as dividing by 0.01 mV/degree
+	uint16_t temperature = (uint16_t)voltage;//cast into uint16_t
+
+	return temperature;
+}
+
+uint16_t calcPercent(uint8_t ADC_A, uint8_t ADC_B)
+{
+	float ADC = ADC_A*256 + ADC_B; //wrt real ground, range of 0 (0V) to 1023 (2.5V)
+	ADC = (ADC/1023)*100; //divide by the full range, multiply by 100 to get the percent
+	return (uint16_t)ADC;//cast as uint16_t and return
+}
+
+
 
