@@ -55,7 +55,7 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
 
-UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
 /* Definitions for XbeeTask */
@@ -136,7 +136,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART3_UART_Init(void);
-static void MX_USART2_UART_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartXbeeTask(void *argument);
 void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
@@ -199,7 +199,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART3_UART_Init();
-  MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -366,35 +366,35 @@ static void MX_TIM2_Init(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
+  * @brief USART1 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_USART2_UART_Init(void)
+static void MX_USART1_UART_Init(void)
 {
 
-  /* USER CODE BEGIN USART2_Init 0 */
+  /* USER CODE BEGIN USART1_Init 0 */
 
-  /* USER CODE END USART2_Init 0 */
+  /* USER CODE END USART1_Init 0 */
 
-  /* USER CODE BEGIN USART2_Init 1 */
+  /* USER CODE BEGIN USART1_Init 1 */
 
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 9600;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN USART2_Init 2 */
+  /* USER CODE BEGIN USART1_Init 2 */
 
-  /* USER CODE END USART2_Init 2 */
+  /* USER CODE END USART1_Init 2 */
 
 }
 
@@ -447,8 +447,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_4
@@ -473,10 +473,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin PA8 PA9 PA10
-                           PA11 PA12 */
-  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pins : USART_TX_Pin USART_RX_Pin */
+  GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LD2_Pin PA7 PA8 PA11
+                           PA12 */
+  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -538,7 +544,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2//letter font, 1 = 5x11, 0 = 5x8
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3//number of lines, 1 = 2, 0 = 1
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -554,7 +560,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1//cursor on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//display on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -572,7 +578,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//right
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -609,7 +615,7 @@ void line1(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -627,7 +633,7 @@ void line2(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 1);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -645,7 +651,7 @@ void clear()
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -1018,32 +1024,32 @@ void StartXbeeTask(void *argument)
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
 	initializeNodes();
-	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
+//	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
 	 // HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
-	  if(HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000) == HAL_OK)
-	  {
-			HAL_UART_Transmit(&huart2, uartBufferRX, 26, 1000);
+//	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 1000) == HAL_OK)
+//	  {
+//			HAL_UART_Transmit(&huart1, uartBufferRX, 26, 1000);
 			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-			if (uartBufferRX[0] == 0x7E)
-			{
-				switch (uartBufferRX[3])
-				{
-				case 0x92:
-					processIO(uartBufferRX);
-					break;
-
-				case 0x97:
-					processATResponse(uartBufferRX);
-					break;
-
-				default://if it wasnt an expected data type just throw it out
-					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
-					break;
-				}
-			}
-	  }
+//			if (uartBufferRX[0] == 0x7E)
+//			{
+//				switch (uartBufferRX[3])
+//				{
+//				case 0x92:
+//					processIO(uartBufferRX);
+//					break;
+//
+//				case 0x97:
+//					processATResponse(uartBufferRX);
+//					break;
+//
+//				default://if it wasnt an expected data type just throw it out
+//					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
+//					break;
+//				}
+//			}
+//	  }
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -1060,19 +1066,26 @@ void StartUserTask(void *argument)
 {
   /* USER CODE BEGIN StartUserTask */
 	initializeNodes();
+	uint8_t uartBufferTX[] = {0x30, 0x32, 0x32, 0x33, 0x34, 0x35, 0x31, 0x32, 0x36, 0x37, 0x31, 0x35, 0x31};
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
   for(;;)
   {
-	  val[6] = 0;
-	  commandToLCD();
-	  printPassword();
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW4
-
-	  if(HAL_UART_Receive(&huart3, &uartBufferRX[26], 26, 3000) == HAL_OK)
+//	  val[6] = 0;
+//	  commandToLCD();
+//	  printPassword();
+//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
+//	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
+//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
+//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW4
+	  if(HAL_UART_Receive(&huart1, uartBufferRX, 3, 100) == HAL_OK)
+	  {
+		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
+	  }
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
 		  {
-				HAL_UART_Transmit(&huart2, &uartBufferRX[13], 13, 500);
+		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
 				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 //				if (uartBufferRX[0] == 0x7E)
 //				{
@@ -1091,134 +1104,134 @@ void StartUserTask(void *argument)
 //						break;
 //					}
 //				}
-		  }
-	  //getVal(4);
-	  if(val[0] == 1)
-	  {
-		  if(val[1] == 2)
-		  {
-			  if(val[2] == 3)
-			  {
-				  if(val[3] == 4)
-				  {
-					  clear();
-					  line1();
-					  correct();
-					  HAL_Delay(1500);
-					  while(val[6] == 0)
-					  {
-						  commandToLCD();
-						  onOffTime();
-						  while(val[0]< 0 || val[0] > 1)
-						  {
-							  commandToLCD();
-							  error();
-							  HAL_Delay(1500);
-							  commandToLCD();
-							  onOffTime();
-						  }
-						  if(val[0] == 0)
-						  {
-							  commandToLCD();
-							  green();
-							  while(val[0]< 1 || val[0] > 3)
-							  {
-								  commandToLCD();
-								  error();
-								  HAL_Delay(1500);
-								  commandToLCD();
-								  green();
-							  }
-							  indc = val[0];///do something with val[0] aka green #
-							  line2();
-							  onOff();
-							  while(val[0]< 0 || val[0] > 1)
-							  {
-								  commandToLCD();
-								  error();
-								  HAL_Delay(1500);
-								  commandToLCD();
-								  onOff();
-							  }
-							  //onoff = val[0];///do something with val[0]
-							  clear();
-							  quit();
-							  while(val[0]< 0 || val[0] > 1)
-							  {
-								  commandToLCD();
-								  error();
-								  HAL_Delay(1500);
-								  commandToLCD();
-								  quit();
-							  }
-						  }
-
-						  else if(val[0] == 1)
-						  {
-
-								  commandToLCD();
-								  green();
-								  while(val[0]< 1 || val[0] > 3)
-								  {
-									  commandToLCD();
-									  error();
-									  HAL_Delay(1500);
-									  commandToLCD();
-									  green();
-								  }
-								  indc = val[0];///do something with val[0] aka green #
-								  line2();
-								  timer();
-								  while(val[0]< 0 || val[0] > 6 || val[1]< 0 || val[1] > 9 || (val[0]==6 && val[1]!=0))
-								  {
-									  commandToLCD();
-									  error();
-									  HAL_Delay(1500);
-									  commandToLCD();
-									  timer();
-								  }
-								  ///do something with val[0] and val[1]
-								  clear();
-								  quit();
-								  while(val[0]< 0 || val[0] > 1)
-								  {
-									  commandToLCD();
-									  error();
-									  HAL_Delay(1500);
-									  commandToLCD();
-									  quit();
-								  }
-						  }
-					  }
-				  }
-				  else
-				  {
-					  line2();
-					  wrongPass();
-					  HAL_Delay(2000);
-				  }
-			  }
-			  else
-			  {
-				  line2();
-				  wrongPass();
-				  HAL_Delay(2000);
-			  }
-		  }
-		  else
-		  {
-			  line2();
-			  wrongPass();
-			  HAL_Delay(2000);
-		  }
 	  }
-	  else
-	  {
-		  line2();
-		  wrongPass();
-		  HAL_Delay(2000);
-	  }
-	    osDelay(1);
+//	  getVal(4);
+//	  if(val[0] == 1)
+//	  {
+//		  if(val[1] == 2)
+//		  {
+//			  if(val[2] == 3)
+//			  {
+//				  if(val[3] == 4)
+//				  {
+//					  clear();
+//					  line1();
+//					  correct();
+//					  HAL_Delay(1500);
+//					  while(val[6] == 0)
+//					  {
+//						  commandToLCD();
+//						  onOffTime();
+//						  while(val[0]< 0 || val[0] > 1)
+//						  {
+//							  commandToLCD();
+//							  error();
+//							  HAL_Delay(1500);
+//							  commandToLCD();
+//							  onOffTime();
+//						  }
+//						  if(val[0] == 0)
+//						  {
+//							  commandToLCD();
+//							  green();
+//							  while(val[0]< 1 || val[0] > 3)
+//							  {
+//								  commandToLCD();
+//								  error();
+//								  HAL_Delay(1500);
+//								  commandToLCD();
+//								  green();
+//							  }
+//							  indc = val[0];///do something with val[0] aka green #
+//							  line2();
+//							  onOff();
+//							  while(val[0]< 0 || val[0] > 1)
+//							  {
+//								  commandToLCD();
+//								  error();
+//								  HAL_Delay(1500);
+//								  commandToLCD();
+//								  onOff();
+//							  }
+//							  //onoff = val[0];///do something with val[0]
+//							  clear();
+//							  quit();
+//							  while(val[0]< 0 || val[0] > 1)
+//							  {
+//								  commandToLCD();
+//								  error();
+//								  HAL_Delay(1500);
+//								  commandToLCD();
+//								  quit();
+//							  }
+//						  }
+//
+//						  else if(val[0] == 1)
+//						  {
+//
+//								  commandToLCD();
+//								  green();
+//								  while(val[0]< 1 || val[0] > 3)
+//								  {
+//									  commandToLCD();
+//									  error();
+//									  HAL_Delay(1500);
+//									  commandToLCD();
+//									  green();
+//								  }
+//								  indc = val[0];///do something with val[0] aka green #
+//								  line2();
+//								  timer();
+//								  while(val[0]< 0 || val[0] > 6 || val[1]< 0 || val[1] > 9 || (val[0]==6 && val[1]!=0))
+//								  {
+//									  commandToLCD();
+//									  error();
+//									  HAL_Delay(1500);
+//									  commandToLCD();
+//									  timer();
+//								  }
+//								  ///do something with val[0] and val[1]
+//								  clear();
+//								  quit();
+//								  while(val[0]< 0 || val[0] > 1)
+//								  {
+//									  commandToLCD();
+//									  error();
+//									  HAL_Delay(1500);
+//									  commandToLCD();
+//									  quit();
+//								  }
+//						  }
+//					  }
+//				  }
+//				  else
+//				  {
+//					  line2();
+//					  wrongPass();
+//					  HAL_Delay(2000);
+//				  }
+//			  }
+//			  else
+//			  {
+//				  line2();
+//				  wrongPass();
+//				  HAL_Delay(2000);
+//			  }
+//		  }
+//		  else
+//		  {
+//			  line2();
+//			  wrongPass();
+//			  HAL_Delay(2000);
+//		  }
+//	  }
+//	  else
+//	  {
+//		  line2();
+//		  wrongPass();
+//		  HAL_Delay(2000);
+//	  }
+//	    osDelay(1);
   }
   /* USER CODE END StartUserTask */
 }
@@ -1236,6 +1249,7 @@ void StartSolenoidTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
 //	  	if(grn == 1)
 //	  	{
 //	  		if(state == 0)
@@ -1287,18 +1301,18 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		uint32_t period;
-		uint32_t tickstart;
-
-		HAL_TIM_Base_Start(&htim2);
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-		{}
-		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-		{}
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-		{}
-		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
+//		uint32_t period;
+//		uint32_t tickstart;
+//
+//		HAL_TIM_Base_Start(&htim2);
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//		{}
+//		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+//		{}
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//		{}
+//		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
 
     osDelay(1);
   }

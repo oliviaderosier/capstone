@@ -1,10 +1,24 @@
-15:35:30 **** Incremental Build of configuration Debug for project User Interface ****
+18:16:05 **** Incremental Build of configuration Debug for project User Interface ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1326:12: warning: variable 'period' set but not used [-Wunused-but-set-variable]
+   uint32_t period;
+            ^~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
 arm-none-eabi-size   User\ Interface.elf 
    text	   data	    bss	    dec	    hex	filename
-  30640	     24	  11000	  41664	   a2c0	User Interface.elf
+  32624	     24	  11016	  43664	   aa90	User Interface.elf
 Finished building: default.size.stdout
  
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
 
-15:35:30 Build Finished. 0 errors, 0 warnings. (took 241ms)
+18:16:06 Build Finished. 0 errors, 1 warnings. (took 868ms)
 
