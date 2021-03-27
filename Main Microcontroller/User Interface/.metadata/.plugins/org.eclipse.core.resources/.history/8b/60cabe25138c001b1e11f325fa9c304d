@@ -53,9 +53,11 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+ADC_HandleTypeDef hadc1;
+
 TIM_HandleTypeDef htim2;
 
-UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
 /* Definitions for XbeeTask */
@@ -136,7 +138,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART3_UART_Init(void);
-static void MX_USART2_UART_Init(void);
+static void MX_USART1_UART_Init(void);
+static void MX_ADC1_Init(void);
 void StartXbeeTask(void *argument);
 void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
@@ -199,7 +202,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART3_UART_Init();
-  MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -291,6 +295,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -300,7 +305,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -314,10 +319,61 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV2;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief ADC1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_ADC1_Init(void)
+{
+
+  /* USER CODE BEGIN ADC1_Init 0 */
+
+  /* USER CODE END ADC1_Init 0 */
+
+  ADC_ChannelConfTypeDef sConfig = {0};
+
+  /* USER CODE BEGIN ADC1_Init 1 */
+
+  /* USER CODE END ADC1_Init 1 */
+  /** Common config
+  */
+  hadc1.Instance = ADC1;
+  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.DiscontinuousConvMode = DISABLE;
+  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc1.Init.NbrOfConversion = 1;
+  if (HAL_ADC_Init(&hadc1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel
+  */
+  sConfig.Channel = ADC_CHANNEL_15;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ADC1_Init 2 */
+
+  /* USER CODE END ADC1_Init 2 */
+
 }
 
 /**
@@ -366,35 +422,35 @@ static void MX_TIM2_Init(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
+  * @brief USART1 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_USART2_UART_Init(void)
+static void MX_USART1_UART_Init(void)
 {
 
-  /* USER CODE BEGIN USART2_Init 0 */
+  /* USER CODE BEGIN USART1_Init 0 */
 
-  /* USER CODE END USART2_Init 0 */
+  /* USER CODE END USART1_Init 0 */
 
-  /* USER CODE BEGIN USART2_Init 1 */
+  /* USER CODE BEGIN USART1_Init 1 */
 
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 9600;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN USART2_Init 2 */
+  /* USER CODE BEGIN USART1_Init 2 */
 
-  /* USER CODE END USART2_Init 2 */
+  /* USER CODE END USART1_Init 2 */
 
 }
 
@@ -447,8 +503,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_4
@@ -473,10 +529,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin PA8 PA9 PA10
-                           PA11 PA12 */
-  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pins : USART_TX_Pin USART_RX_Pin */
+  GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LD2_Pin PA7 PA8 PA11
+                           PA12 */
+  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11
+                          |GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -538,7 +600,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2//letter font, 1 = 5x11, 0 = 5x8
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3//number of lines, 1 = 2, 0 = 1
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 1);//D4//interface bit length, 1 = 8bit, 0 = 4bit
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -554,7 +616,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1//cursor on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//display on = 1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -572,7 +634,7 @@ void commandToLCD(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);//D2//right
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -609,7 +671,7 @@ void line1(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -627,7 +689,7 @@ void line2(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 1);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);//D7
@@ -645,7 +707,7 @@ void clear()
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);//D1
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);//D2
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);//D3
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);//D4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 0);//D4
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);//D5
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, 0);//D6
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);//D7
@@ -1017,15 +1079,15 @@ void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-//	initializeNodes();
+	initializeNodes();
 //	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
 	 // HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
-//	  if(HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 100) == HAL_OK)
+//	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 1000) == HAL_OK)
 //	  {
-//			HAL_UART_Transmit(&huart2, uartBufferRX, 26, 100);
-//			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+//			HAL_UART_Transmit(&huart1, uartBufferRX, 26, 1000);
+			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 //			if (uartBufferRX[0] == 0x7E)
 //			{
 //				switch (uartBufferRX[3])
@@ -1060,6 +1122,10 @@ void StartUserTask(void *argument)
 {
   /* USER CODE BEGIN StartUserTask */
 	initializeNodes();
+	uint8_t uartBufferTX[] = {0x30, 0x32, 0x32, 0x33, 0x34, 0x35, 0x31, 0x32, 0x36, 0x37, 0x31, 0x35, 0x31};
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
   for(;;)
   {
 	  val[6] = 0;
@@ -1069,10 +1135,13 @@ void StartUserTask(void *argument)
 	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW4
-
-	  if(HAL_UART_Receive(&huart3, &uartBufferRX[26], 26, 3000) == HAL_OK)
+	  if(HAL_UART_Receive(&huart1, uartBufferRX, 3, 100) == HAL_OK)
+	  {
+		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
+	  }
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
 		  {
-				HAL_UART_Transmit(&huart2, &uartBufferRX[13], 13, 500);
+		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
 				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 //				if (uartBufferRX[0] == 0x7E)
 //				{
@@ -1091,8 +1160,8 @@ void StartUserTask(void *argument)
 //						break;
 //					}
 //				}
-		  }
-	  //getVal(4);
+	  }
+	  getVal(4);
 	  if(val[0] == 1)
 	  {
 		  if(val[1] == 2)
@@ -1236,6 +1305,7 @@ void StartSolenoidTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
 //	  	if(grn == 1)
 //	  	{
 //	  		if(state == 0)
@@ -1287,18 +1357,18 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		uint32_t period;
-		uint32_t tickstart;
-
-		HAL_TIM_Base_Start(&htim2);
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-		{}
-		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-		{}
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-		{}
-		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
+//		uint32_t period;
+//		uint32_t tickstart;
+//
+//		HAL_TIM_Base_Start(&htim2);
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//		{}
+//		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+//		{}
+//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//		{}
+//		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
 
     osDelay(1);
   }
