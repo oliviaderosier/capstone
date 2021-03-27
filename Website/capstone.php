@@ -331,7 +331,7 @@ var hole2 = <?php
 
   $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
   $results = $db->query($q);
-
+  $row = $results->fetch_assoc();
   $temp =$row['temp'];
 
   echo '<p> &#x1F3CC Soil Temperature: '.$temp.'&#176 C </p>';
@@ -358,7 +358,7 @@ var hole2 = <?php
 
   $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
   $results = $db->query($q);
-
+  $row = $results->fetch_assoc();
   $salt1 =$row['salt'];
 
   echo '<p>&#x1F3CC	Hole 1: ' .$salt1. ' </p>';
@@ -367,7 +367,6 @@ var hole2 = <?php
 ?>
 
 <?php
-
   $db = mysqli_connect("localhost", "root", "", "capstone");
   if ($db->connect_error)
   {
@@ -377,7 +376,7 @@ var hole2 = <?php
 
   $q = "SELECT * FROM data2 ORDER BY id DESC LIMIT 1";
   $results = $db->query($q);
-
+  $row = $results->fetch_assoc();
   $salt2 =$row['salt'];
 
   echo '<p>&#x1F3CC Hole 2: ' .$salt2. ' </p>';
@@ -403,7 +402,7 @@ var hole2 = <?php
 
   $q = "SELECT * FROM data ORDER BY id DESC LIMIT 1";
   $results = $db->query($q);
-
+  $row = $results->fetch_assoc();
   $battery =$row['battery'];
 
   echo '<p>&#x1F50B Device 1: ' .$battery. '%</p>';
@@ -422,7 +421,7 @@ var hole2 = <?php
 
   $q2 = "SELECT * FROM data2 ORDER BY id DESC LIMIT 1";
   $results = $db->query($q2);
-
+  $row = $results->fetch_assoc();
   $battery2 =$row['battery'];
 
   echo '<p>&#x1F50B Device 2: ' .$battery2. '%</p>';
