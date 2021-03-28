@@ -46,6 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
+TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
 
 UART_HandleTypeDef huart1;
@@ -93,6 +94,13 @@ const osThreadAttr_t ProcessingTask_attributes = {
   .priority = (osPriority_t) osPriorityAboveNormal6,
   .stack_size = 128 * 4
 };
+/* Definitions for WebsiteTask */
+osThreadId_t WebsiteTaskHandle;
+const osThreadAttr_t WebsiteTask_attributes = {
+  .name = "WebsiteTask",
+  .priority = (osPriority_t) osPriorityAboveNormal7,
+  .stack_size = 128 * 4
+};
 /* Definitions for FlowQueue */
 osMessageQueueId_t FlowQueueHandle;
 const osMessageQueueAttr_t FlowQueue_attributes = {
@@ -103,11 +111,6 @@ osMessageQueueId_t WeatherQueueHandle;
 const osMessageQueueAttr_t WeatherQueue_attributes = {
   .name = "WeatherQueue"
 };
-/* Definitions for XbeeQueue */
-osMessageQueueId_t XbeeQueueHandle;
-const osMessageQueueAttr_t XbeeQueue_attributes = {
-  .name = "XbeeQueue"
-};
 /* Definitions for SolenoidQueue */
 osMessageQueueId_t SolenoidQueueHandle;
 const osMessageQueueAttr_t SolenoidQueue_attributes = {
@@ -117,6 +120,16 @@ const osMessageQueueAttr_t SolenoidQueue_attributes = {
 osMessageQueueId_t UserQueueHandle;
 const osMessageQueueAttr_t UserQueue_attributes = {
   .name = "UserQueue"
+};
+/* Definitions for WebsiteQueue */
+osMessageQueueId_t WebsiteQueueHandle;
+const osMessageQueueAttr_t WebsiteQueue_attributes = {
+  .name = "WebsiteQueue"
+};
+/* Definitions for Flow2Queue */
+osMessageQueueId_t Flow2QueueHandle;
+const osMessageQueueAttr_t Flow2Queue_attributes = {
+  .name = "Flow2Queue"
 };
 /* USER CODE BEGIN PV */
 
@@ -129,12 +142,14 @@ static void MX_TIM2_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_TIM1_Init(void);
 void StartXbeeTask(void *argument);
 void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
 void StartWeatherTask(void *argument);
 void StartFlowTask(void *argument);
 void StartProcessingTask(void *argument);
+void StartWebsiteTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 void commandToLCD(void);
@@ -190,6 +205,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
   MX_ADC1_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -216,14 +232,17 @@ int main(void)
   /* creation of WeatherQueue */
   WeatherQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &WeatherQueue_attributes);
 
-  /* creation of XbeeQueue */
-  XbeeQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &XbeeQueue_attributes);
-
   /* creation of SolenoidQueue */
   SolenoidQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &SolenoidQueue_attributes);
 
   /* creation of UserQueue */
   UserQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &UserQueue_attributes);
+
+  /* creation of WebsiteQueue */
+  WebsiteQueueHandle = osMessageQueueNew (8, sizeof(uint16_t), &WebsiteQueue_attributes);
+
+  /* creation of Flow2Queue */
+  Flow2QueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &Flow2Queue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -247,6 +266,9 @@ int main(void)
 
   /* creation of ProcessingTask */
   ProcessingTaskHandle = osThreadNew(StartProcessingTask, NULL, &ProcessingTask_attributes);
+
+  /* creation of WebsiteTask */
+  WebsiteTaskHandle = osThreadNew(StartWebsiteTask, NULL, &WebsiteTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -359,6 +381,52 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
+}
+
+/**
+  * @brief TIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM1_Init(void)
+{
+
+  /* USER CODE BEGIN TIM1_Init 0 */
+
+  /* USER CODE END TIM1_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM1_Init 1 */
+
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = 0;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 65535;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
+
+  /* USER CODE END TIM1_Init 2 */
 
 }
 
@@ -959,7 +1027,7 @@ void onOffTime(void)
 	letter('m');
 	letter('e');
 	letter('r');
-
+	line2();
 }
 void onOff(void)
 {
@@ -1027,13 +1095,10 @@ void StartXbeeTask(void *argument)
 //	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
-	  	  if(HAL_UART_Receive(&huart1, uartBufferRX, 3, 100) == HAL_OK)
-	  	  {
-	  		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
-	  	  }
+
 	  	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
 	  		  {
-	  		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
+	  //		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000); // send info to Olivia when recieved
 	  				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	  //				if (uartBufferRX[0] == 0x7E)
 	  //				{
@@ -1053,30 +1118,6 @@ void StartXbeeTask(void *argument)
 	  //					}
 	  //				}
 	    }
-
-	 // HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
-//	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 1000) == HAL_OK)
-//	  {
-//			HAL_UART_Transmit(&huart1, uartBufferRX, 26, 1000);
-			//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-//			if (uartBufferRX[0] == 0x7E)
-//			{
-//				switch (uartBufferRX[3])
-//				{
-//				case 0x92:
-//					processIO(uartBufferRX);
-//					break;
-//
-//				case 0x97:
-//					processATResponse(uartBufferRX);
-//					break;
-//
-//				default://if it wasnt an expected data type just throw it out
-//					HAL_UART_Receive_IT(&huart3, &uartBufferRX[0], 26);
-//					break;
-//				}
-//			}
-//	  }
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -1092,189 +1133,13 @@ void StartXbeeTask(void *argument)
 void StartUserTask(void *argument)
 {
   /* USER CODE BEGIN StartUserTask */
-<<<<<<< HEAD
-	initializeNodes();
-	uint16_t raw;
-	uint8_t uartBufferTX[] = {0x30, 0x32, 0x32, 0x33, 0x34, 0x35, 0x31, 0x32, 0x36, 0x37, 0x31, 0x35, 0x31};
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
+
+	uint16_t num[7];
+	uint16_t indc, m;
+
   for(;;)
   {
-	  HAL_ADC_Start(&hadc1);
-	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-	  raw = HAL_ADC_GetValue(&hadc1);
 
-//	  val[6] = 0;
-//	  commandToLCD();
-//	  printPassword();
-//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
-//	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
-//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
-//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW4
-//	  if(HAL_UART_Receive(&huart1, uartBufferRX, 3, 100) == HAL_OK)
-//	  {
-//		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
-//	  }
-//	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
-//		  {
-//		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
-				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-//				if (uartBufferRX[0] == 0x7E)
-//				{
-//					switch (uartBufferRX[3])
-//					{
-//					case 0x92:
-//						processIO(uartBufferRX);
-//						break;
-//
-//					case 0x97:
-//						processATResponse(uartBufferRX);
-//						break;
-//
-//					default://if it wasnt an expected data type just throw it out
-//						HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
-//						break;
-//					}
-//				}
-//	  }
-//	  getVal(4);
-//	  if(val[0] == 1)
-//	  {
-//		  if(val[1] == 2)
-//		  {
-//			  if(val[2] == 3)
-//			  {
-//				  if(val[3] == 4)
-//				  {
-//					  clear();
-//					  line1();
-//					  correct();
-//					  HAL_Delay(1500);
-//					  while(val[6] == 0)
-//					  {
-//						  commandToLCD();
-//						  onOffTime();
-//						  while(val[0]< 0 || val[0] > 1)
-//						  {
-//							  commandToLCD();
-//							  error();
-//							  HAL_Delay(1500);
-//							  commandToLCD();
-//							  onOffTime();
-//						  }
-//						  if(val[0] == 0)
-//						  {
-//							  commandToLCD();
-//							  green();
-//							  while(val[0]< 1 || val[0] > 3)
-//							  {
-//								  commandToLCD();
-//								  error();
-//								  HAL_Delay(1500);
-//								  commandToLCD();
-//								  green();
-//							  }
-//							  indc = val[0];///do something with val[0] aka green #
-//							  line2();
-//							  onOff();
-//							  while(val[0]< 0 || val[0] > 1)
-//							  {
-//								  commandToLCD();
-//								  error();
-//								  HAL_Delay(1500);
-//								  commandToLCD();
-//								  onOff();
-//							  }
-//							  //onoff = val[0];///do something with val[0]
-//							  clear();
-//							  quit();
-//							  while(val[0]< 0 || val[0] > 1)
-//							  {
-//								  commandToLCD();
-//								  error();
-//								  HAL_Delay(1500);
-//								  commandToLCD();
-//								  quit();
-//							  }
-//						  }
-//
-//						  else if(val[0] == 1)
-//						  {
-//
-//								  commandToLCD();
-//								  green();
-//								  while(val[0]< 1 || val[0] > 3)
-//								  {
-//									  commandToLCD();
-//									  error();
-//									  HAL_Delay(1500);
-//									  commandToLCD();
-//									  green();
-//								  }
-//								  indc = val[0];///do something with val[0] aka green #
-//								  line2();
-//								  timer();
-//								  while(val[0]< 0 || val[0] > 6 || val[1]< 0 || val[1] > 9 || (val[0]==6 && val[1]!=0))
-//								  {
-//									  commandToLCD();
-//									  error();
-//									  HAL_Delay(1500);
-//									  commandToLCD();
-//									  timer();
-//								  }
-//								  ///do something with val[0] and val[1]
-//								  clear();
-//								  quit();
-//								  while(val[0]< 0 || val[0] > 1)
-//								  {
-//									  commandToLCD();
-//									  error();
-//									  HAL_Delay(1500);
-//									  commandToLCD();
-//									  quit();
-//								  }
-//						  }
-//					  }
-//				  }
-//				  else
-//				  {
-//					  line2();
-//					  wrongPass();
-//					  HAL_Delay(2000);
-//				  }
-//			  }
-//			  else
-//			  {
-//				  line2();
-//				  wrongPass();
-//				  HAL_Delay(2000);
-//			  }
-//		  }
-//		  else
-//		  {
-//			  line2();
-//			  wrongPass();
-//			  HAL_Delay(2000);
-//		  }
-//	  }
-//	  else
-//	  {
-//		  line2();
-//		  wrongPass();
-//		  HAL_Delay(2000);
-//	  }
-	    osDelay(1);
-=======
-
-	uint16_t num[6];
-	uint16_t indc;
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
-  for(;;)
-  {
-	num[6] = 0;
 	commandToLCD();
 	printPassword();
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
@@ -1286,12 +1151,13 @@ void StartUserTask(void *argument)
 	{
 		num[i] = getVal();
 	}
-	if(num[0] == 1 && num[1] == 2 && num[2] == 3 && num[3] == 4)
+	if(num[0] == 2 && num[1] == 2 && num[2] == 2 && num[3] == 2)
 	{
 		clear();
 		line1();
 		correct();
 		HAL_Delay(1500);
+		num[6] = 0;
 		while(num[6] == 0)
 		{
 			commandToLCD();
@@ -1308,6 +1174,7 @@ void StartUserTask(void *argument)
 			}
 			if(num[0] == 0)
 			{
+				m = 1;
 				commandToLCD();
 				green();
 				num[0] = getVal();
@@ -1320,7 +1187,7 @@ void StartUserTask(void *argument)
 					green();
 					num[0] = getVal();
 				}
-				indc = num[0];///do something with val[0] aka green #
+				indc = num[0];
 				line2();
 				onOff();
 				num[0] = getVal();
@@ -1333,22 +1200,25 @@ void StartUserTask(void *argument)
 					onOff();
 					num[0] = getVal();
 				}
-				osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);///do something with val[0]
+				osMessageQueuePut(UserQueueHandle, &m, 1U, 0U);
+				osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green
+				osMessageQueuePut(UserQueueHandle, &num[0], 1U, 0U);//do something with state
 				clear();
 				quit();
-				num[0] = getVal();
-				while(num[0]< 0 || num[0] > 1)
+				num[5] = getVal();
+				while(num[5]< 0 || num[5] > 1)
 				{
 					commandToLCD();
 					error();
 					HAL_Delay(1500);
 					commandToLCD();
 					quit();
-					num[0] = getVal();
+					num[5] = getVal();
 				}
 			}
 			else if(num[0] == 1)
 			{
+				m = 2;
 				commandToLCD();
 				green();
 				num[0] = getVal();
@@ -1361,7 +1231,7 @@ void StartUserTask(void *argument)
 					green();
 					num[0] = getVal();
 				}
-				indc = num[0];///do something with val[0] aka green #
+				indc = num[0];
 				line2();
 				timer();
 				num[0] = getVal();
@@ -1376,21 +1246,25 @@ void StartUserTask(void *argument)
 					num[0] = getVal();
 					num[1] = getVal();
 				}
-					  ///do something with val[0] and val[1]
+				osMessageQueuePut(UserQueueHandle, &m, 1U, 0U);
+				osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green and time
+				num[2] = num[1] + (num[0] * 10);
+				osMessageQueuePut(UserQueueHandle, &num[2], 1U, 0U);
+
 				clear();
 				quit();
-				num[0] = getVal();
-				while(num[0]< 0 || num[0] > 1)
+				num[5] = getVal();
+				while(num[5]< 0 || num[5] > 1)
 				{
 					commandToLCD();
 					error();
 					HAL_Delay(1500);
 					commandToLCD();
 					quit();
-					num[0] = getVal();
+					num[5] = getVal();
 				}
 			}
-			if(num[0] == 1)
+			if(num[5] == 1)
 			{
 				num[6] = 5;
 			}
@@ -1403,10 +1277,10 @@ void StartUserTask(void *argument)
 		HAL_Delay(2000);
 	}
 	osDelay(1);
->>>>>>> 57efdb25b7c2c9300249d2fef9e0fd4824485e89
   }
   /* USER CODE END StartUserTask */
 }
+
 /* USER CODE BEGIN Header_StartSolenoidTask */
 /**
 * @brief Function implementing the SolenoidTask thread.
@@ -1420,7 +1294,9 @@ void StartSolenoidTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-
+		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
 //	  	if(grn == 1)
 //	  	{
 //	  		if(state == 0)
@@ -1469,23 +1345,59 @@ void StartSolenoidTask(void *argument)
 void StartWeatherTask(void *argument)
 {
   /* USER CODE BEGIN StartWeatherTask */
+	uint16_t period[20], raw[20];
+	uint16_t tickstart, tickend, totalP, totalT, a, b;
+	uint16_t Pcount = 0;
+
+	HAL_TIM_Base_Start(&htim2);
+
   /* Infinite loop */
   for(;;)
   {
-//		uint32_t period;
-//		uint32_t tickstart;
-//
-//		HAL_TIM_Base_Start(&htim2);
-//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-//		{}
-//		tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-//		{}
-//		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-//		{}
-//		period =  __HAL_TIM_GET_COUNTER(&htim2) - tickstart;
+		while(Pcount < 20)
+		{
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+			{}
+			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+			{}
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+			{}
+			tickend = __HAL_TIM_GET_COUNTER(&htim2);
+			if(tickend > tickstart)
+				period[Pcount] = tickend - tickstart;
+			else
+				period[Pcount] = (65535 - tickstart) + tickend;
 
-    osDelay(1);
+			if(period[Pcount]< 1000)
+				Pcount++;
+		}
+
+		for(int i = 0; i < 20; i++)
+		{
+			HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+			raw[i] = HAL_ADC_GetValue(&hadc1);
+		}
+
+		Pcount = 0;
+		totalT = 0;
+		totalP = 0;
+		for(int i = 0; i < 20; i++)
+		{
+			totalT = totalT +raw[i];
+			totalP = totalP +period[i];
+		}
+		totalT = totalT/20;
+		totalP = totalP/20;
+		if(a != totalT || b != totalP)
+		{
+			osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
+			osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
+			a = totalT;
+			b = totalP;
+		}
+    osDelay(30);
   }
   /* USER CODE END StartWeatherTask */
 }
@@ -1500,50 +1412,144 @@ void StartWeatherTask(void *argument)
 void StartFlowTask(void *argument)
 {
   /* USER CODE BEGIN StartFlowTask */
+  	uint16_t o[3] = {1,1,1};
+  	uint16_t C[20];
+  	uint16_t tickS, tickL, temp, f1, f2, f3, m;
+  	uint16_t F = 0;
+  	uint16_t L = 0;
+  	uint16_t total = 0;
   /* Infinite loop */
   for(;;)
   {
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[0] == 1)
+	  {
+		  m = 1;
+		  for(int j =0; j < 20; j++)
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1);
+			  while((total-tickS)< 327675)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//b7
+				  if(F == 1 && F!=L)
+				  {
+					  C[j]++;
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);
 
-//	  	uint32_t tickstart = HAL_GetTick();
-//	  	uint32_t wait = 1000;
-//	  	uint32_t F1,F2,F3;
-//	  	uint32_t C1=0;
-//	  	uint32_t C2=0;
-//	  	uint32_t C3=0;
-//	  	uint32_t L1 =0;
-//	  	uint32_t L2 =0;
-//	  	uint32_t L3 =0;
-//
-//	  	/* Add a freq to guarantee minimum wait */
-//	  	if (wait < HAL_MAX_DELAY)
-//	  	{
-//	  	wait += (uint32_t)(uwTickFreq);
-//	  	}
-//
-//	  	while ((HAL_GetTick() - tickstart) < wait)
-//	  	{
-//	  		F1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
-//	  		F2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);
-//	  		F3 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
-//	  		if(F1 == 1 && F1!=L1)
-//	  		{
-//	  			C1++;
-//	  		}
-//	  		if(F2 == 1 && F2!=L2)
-//	  		{
-//	  			C2++;
-//	  		}
-//	  		if(F3 == 1 && F3!=L3)
-//	  		{
-//	  			C3++;
-//	  		}
-//	  		L1=F1;
-//	  		L2=F2;
-//	  		L3=F3;
-//
-//	  	}
+				  else
+					  total = total+ temp - tickL;
 
-    osDelay(1);
+				  tickL = temp;
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  for(int j =0; j < 20; j++)
+		  {
+			  f1 = f1 + C[j];
+			  C[j] = 0;
+		  }
+		  f1 = f1 / 100;
+		  osMessageQueuePut(FlowQueueHandle, &m, 1U, 0U);
+		  osMessageQueuePut(FlowQueueHandle, &f1, 1U, 0U);
+		  o[0] = 0;
+	  }
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[0] == 0)
+	  {
+		  o[0] = 1;
+	  }
+
+
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 1 && o[1] == 1)
+	  {
+		  m = 2;
+		  for(int j =0; j < 20; j++)
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1);
+			  while((total-tickS)< 327675)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);//b5
+				  if(F == 1 && F!=L)
+				  {
+					  C[j]++;
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);
+
+				  else
+					  total = total+ temp - tickL;
+
+				  tickL = temp;
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  for(int j =0; j < 20; j++)
+		  {
+			  f2 = f2 + C[j];
+			  C[j] = 0;
+		  }
+		  f2 = f2 / 100;
+		  osMessageQueuePut(FlowQueueHandle, &m, 1U, 0U);
+		  osMessageQueuePut(FlowQueueHandle, &f2, 1U, 0U);
+		  o[1] = 0;
+	  }
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 0 && o[1] == 0)
+	  {
+		  o[1] = 1;
+	  }
+
+
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[2] == 1)
+	  {
+		  m = 3;
+		  for(int j =0; j < 20; j++)
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1);
+			  while((total-tickS)< 327675)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//b4
+				  if(F == 1 && F!=L)
+				  {
+					  C[j]++;
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);
+
+				  else
+					  total = total+ temp - tickL;
+
+				  tickL = temp;
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  for(int j =0; j < 20; j++)
+		  {
+			  f1 = f1 + C[j];
+			  C[j] = 0;
+		  }
+		  f3 = f3 / 100;
+		  osMessageQueuePut(FlowQueueHandle, &m, 1U, 0U);
+		  osMessageQueuePut(FlowQueueHandle, &f3, 1U, 0U);
+		  o[2] = 0;
+	  }
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[2] == 0)
+	  {
+		  o[2] = 1;
+	  }
+
+	  osDelay(1);
   }
   /* USER CODE END StartFlowTask */
 }
@@ -1558,12 +1564,54 @@ void StartFlowTask(void *argument)
 void StartProcessingTask(void *argument)
 {
   /* USER CODE BEGIN StartProcessingTask */
+	uint16_t userOverride[3];
+	uint16_t input;
+	uint16_t C =0;
   /* Infinite loop */
   for(;;)
   {
+	  while(osMessageQueueGet(UserQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  userOverride[C] = input;
+		  C++;
+	  }
+	  while(osMessageQueueGet(WeatherQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  userOverride[C] = input;
+		  C++;
+	  }
     osDelay(1);
   }
   /* USER CODE END StartProcessingTask */
+}
+
+/* USER CODE BEGIN Header_StartWebsiteTask */
+/**
+* @brief Function implementing the WebsiteTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartWebsiteTask */
+void StartWebsiteTask(void *argument)
+{
+  /* USER CODE BEGIN StartWebsiteTask */
+	uint16_t water, input;
+	uint8_t BufferRX[50], BufferTX[50];
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  water = water + input;
+		  HAL_UART_Transmit(&huart1, water, 13, 1000);//*********also send Colton's info************
+	  }
+	  if(HAL_UART_Receive(&huart1, BufferRX, 5, 100) == HAL_OK)
+  	  {
+  		osMessageQueuePut(WebsiteQueueHandle, &BufferRX, 1U, 0U);
+  	  }
+    osDelay(1);
+  }
+  /* USER CODE END StartWebsiteTask */
 }
 
  /**
