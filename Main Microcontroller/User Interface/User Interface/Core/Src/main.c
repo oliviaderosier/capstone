@@ -1291,9 +1291,16 @@ void StartUserTask(void *argument)
 void StartSolenoidTask(void *argument)
 {
   /* USER CODE BEGIN StartSolenoidTask */
+	uint8_t input, C, in[];
   /* Infinite loop */
   for(;;)
   {
+	  C=0;
+	  while(osMessageQueueGet(ProcessQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  in[C] = input;
+		  C++;
+	  }
 		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
 		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
 		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
@@ -1564,7 +1571,7 @@ void StartFlowTask(void *argument)
 void StartProcessingTask(void *argument)
 {
   /* USER CODE BEGIN StartProcessingTask */
-	uint16_t userOverride[3];
+	uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
 	uint16_t input;
 	uint16_t C =0;
   /* Infinite loop */
@@ -1575,11 +1582,26 @@ void StartProcessingTask(void *argument)
 		  userOverride[C] = input;
 		  C++;
 	  }
+	  C = 0;
 	  while(osMessageQueueGet(WeatherQueueHandle, &input, NULL, 0U ) == osOK)
 	  {//when receiving data put it in this array
-		  userOverride[C] = input;
+		  Weather[C] = input;
 		  C++;
 	  }
+	  C = 0;
+	  while(osMessageQueueGet(WebsiteQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  Web[C] = input;
+		  C++;
+	  }
+	  C = 0;
+	  while(osMessageQueueGet(FlowQueueHandle, &input, NULL, 0U ) == osOK)
+	  {//when receiving data put it in this array
+		  in[C] = input;
+		  C++;
+	  }
+	  C = 0;
+	  Flow[(in[0]-1)] = in[1];
     osDelay(1);
   }
   /* USER CODE END StartProcessingTask */
@@ -1596,14 +1618,14 @@ void StartWebsiteTask(void *argument)
 {
   /* USER CODE BEGIN StartWebsiteTask */
 	uint16_t water, input;
-	uint8_t BufferRX[50], BufferTX[50];
+	uint8_t BufferRX[50];
   /* Infinite loop */
   for(;;)
   {
 	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
 	  {//when receiving data put it in this array
 		  water = water + input;
-		  HAL_UART_Transmit(&huart1, water, 13, 1000);//*********also send Colton's info************
+		  HAL_UART_Transmit(&huart1, &water, 13, 1000);//*********also send Colton's info************
 	  }
 	  if(HAL_UART_Receive(&huart1, BufferRX, 5, 100) == HAL_OK)
   	  {

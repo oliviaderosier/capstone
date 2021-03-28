@@ -6,5 +6,5 @@ sensorObjects.c:173:6:sendTempRequest	16	static
 sensorObjects.c:201:6:sensorToGateway	24	static
 sensorObjects.c:233:9:verifyChecksum	32	static
 sensorObjects.c:258:9:generateChecksum	24	static
-sensorObjects.c:283:10:calcTemp	40	static
+sensorObjects.c:283:10:calcTemp	32	static
 sensorObjects.c:295:10:calcPercent	24	static

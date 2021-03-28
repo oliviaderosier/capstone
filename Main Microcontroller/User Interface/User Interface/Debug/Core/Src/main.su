@@ -25,7 +25,7 @@ main.c:1133:6:StartUserTask	40	static
 main.c:1291:6:StartSolenoidTask	16	static
 main.c:1345:6:StartWeatherTask	120	static
 main.c:1412:6:StartFlowTask	112	static
-main.c:1564:6:StartProcessingTask	32	static
-main.c:1595:6:StartWebsiteTask	128	static
-main.c:1625:6:HAL_TIM_PeriodElapsedCallback	16	static
-main.c:1642:6:Error_Handler	4	static,ignoring_inline_asm
+main.c:1564:6:StartProcessingTask	48	static
+main.c:1609:6:StartWebsiteTask	128	static
+main.c:1639:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:1656:6:Error_Handler	4	static,ignoring_inline_asm
