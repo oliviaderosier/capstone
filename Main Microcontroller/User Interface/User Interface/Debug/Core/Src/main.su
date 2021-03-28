@@ -23,9 +23,9 @@ main.c:1049:6:error	8	static
 main.c:1090:6:StartXbeeTask	16	static
 main.c:1133:6:StartUserTask	40	static
 main.c:1291:6:StartSolenoidTask	80	static
-main.c:1450:6:StartWeatherTask	120	static
-main.c:1517:6:StartFlowTask	112	static
-main.c:1669:6:StartProcessingTask	56	static
-main.c:1709:6:StartWebsiteTask	72	static
-main.c:1739:6:HAL_TIM_PeriodElapsedCallback	16	static
-main.c:1756:6:Error_Handler	4	static,ignoring_inline_asm
+main.c:1451:6:StartWeatherTask	120	static
+main.c:1518:6:StartFlowTask	112	static
+main.c:1673:6:StartProcessingTask	40	static
+main.c:1723:6:StartWebsiteTask	72	static
+main.c:1753:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:1770:6:Error_Handler	4	static,ignoring_inline_asm

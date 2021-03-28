@@ -7241,3 +7241,135 @@
 2021-03-27 22:53:37,846 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1321mS.
 2021-03-27 22:53:37,846 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
 2021-03-27 22:53:37,852 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-28 09:08:50,953 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,954 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,954 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,954 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,954 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,954 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,954 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,955 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,955 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:50,955 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:50,955 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:50,955 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,422 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,422 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,422 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,422 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,423 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,423 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,423 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:08:55,423 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:08:55,423 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,164 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,164 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,164 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,164 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,164 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,164 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,164 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,164 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,165 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,165 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,165 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:03,165 [INFO] TasksAndQueuesTab:731 - Dynamic
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:737 - 128 128
+2021-03-28 09:09:03,165 [WARN] TasksAndQueuesTab:749 - max value is: 1500.0
+2021-03-28 09:09:05,754 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 841953632 Bytes (1023410176)
+2021-03-28 09:09:07,801 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 855605808 Bytes (1023410176)
+2021-03-28 09:09:11,645 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 665048136 Bytes (1023410176)
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: FREERTOS
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8F1
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8F1
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-03-28 09:09:11,783 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-03-28 09:09:11,784 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-03-28 09:09:12,025 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp_save
+2021-03-28 09:09:12,071 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\license.tmp
+2021-03-28 09:09:12,195 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp_save
+2021-03-28 09:09:12,249 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\gpio.tmp
+2021-03-28 09:09:12,456 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-28 09:09:12,465 [INFO] Middleware:1252 - No code input for Bsp Dependency
+2021-03-28 09:09:12,489 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp_save
+2021-03-28 09:09:12,532 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_inc.tmp
+2021-03-28 09:09:12,539 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp_save
+2021-03-28 09:09:12,583 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelInit.tmp
+2021-03-28 09:09:12,590 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp_save
+2021-03-28 09:09:12,634 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_kernelStart.tmp
+2021-03-28 09:09:12,641 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp_save
+2021-03-28 09:09:12,681 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_typedefs.tmp
+2021-03-28 09:09:12,691 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp_save
+2021-03-28 09:09:12,735 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_vars.tmp
+2021-03-28 09:09:12,742 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp_save
+2021-03-28 09:09:12,783 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_pfp.tmp
+2021-03-28 09:09:12,793 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp_save
+2021-03-28 09:09:12,838 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_obj_creat.tmp
+2021-03-28 09:09:12,845 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp_save
+2021-03-28 09:09:12,887 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_default_thread.tmp
+2021-03-28 09:09:12,894 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp_save
+2021-03-28 09:09:12,937 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\rtos_threads.tmp
+2021-03-28 09:09:12,952 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h_save
+2021-03-28 09:09:13,015 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\FreeRTOSConfig.h
+2021-03-28 09:09:13,032 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c_save
+2021-03-28 09:09:13,095 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\freertos.c
+2021-03-28 09:09:13,097 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-28 09:09:13,098 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-28 09:09:13,099 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-03-28 09:09:13,130 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c_save
+2021-03-28 09:09:13,201 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_it.c
+2021-03-28 09:09:13,212 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h_save
+2021-03-28 09:09:13,274 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_it.h
+2021-03-28 09:09:13,308 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c_save
+2021-03-28 09:09:13,439 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_msp.c
+2021-03-28 09:09:13,447 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp_save
+2021-03-28 09:09:13,488 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\MXTmpFiles\system.tmp
+2021-03-28 09:09:13,497 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c_save
+2021-03-28 09:09:13,578 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\stm32f1xx_hal_timebase_tim.c
+2021-03-28 09:09:13,606 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h_save
+2021-03-28 09:09:13,679 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\stm32f1xx_hal_conf.h
+2021-03-28 09:09:13,695 [WARN] IPConfigManager:2967 - IP not found : TIM
+2021-03-28 09:09:13,696 [WARN] CodeGenerator:3177 - IP not found : null
+2021-03-28 09:09:13,725 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h_save
+2021-03-28 09:09:13,788 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Inc\main.h
+2021-03-28 09:09:13,804 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c_save
+2021-03-28 09:09:13,952 [INFO] CodeEngine:247 - Generated code: C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\Core\Src\main.c
+2021-03-28 09:09:14,443 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 208mS.
+2021-03-28 09:09:14,449 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-03-28 09:09:14,629 [INFO] ConfigFileManager:1238 - The Die is : DIE410
+2021-03-28 09:09:15,870 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 1421mS.
+2021-03-28 09:09:15,871 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-03-28 09:09:15,876 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 1mS.

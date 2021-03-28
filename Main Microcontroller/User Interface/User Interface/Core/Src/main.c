@@ -1096,29 +1096,29 @@ void StartXbeeTask(void *argument)
   for(;;)
   {
 
-	  	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
-	  		  {
-	  //		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000); // send info to Olivia when recieved
-	  				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-	  //				if (uartBufferRX[0] == 0x7E)
-	  //				{
-	  //					switch (uartBufferRX[3])
-	  //					{
-	  //					case 0x92:
-	  //						processIO(uartBufferRX);
-	  //						break;
-	  //
-	  //					case 0x97:
-	  //						processATResponse(uartBufferRX);
-	  //						break;
-	  //
-	  //					default://if it wasnt an expected data type just throw it out
-	  //						HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
-	  //						break;
-	  //					}
-	  //				}
-	    }
-    osDelay(1);
+//	  	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 10) == HAL_OK)
+//	  		  {
+//	  //		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000); // send info to Olivia when recieved
+//	  				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+//	  				if (uartBufferRX[0] == 0x7E)
+//	  				{
+//	  					switch (uartBufferRX[3])
+//	  					{
+////	  					case 0x92:
+////	  						processIO(uartBufferRX);
+////	  						break;
+////
+////	  					case 0x97:
+////	  						processATResponse(uartBufferRX);
+////	  						break;
+//
+//	  					default://if it wasnt an expected data type just throw it out
+//	  						HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
+//	  						break;
+//	  					}
+//	  				}
+//	  		  }
+	  	  osDelay(1);
   }
   /* USER CODE END 5 */
 }
@@ -1307,7 +1307,7 @@ void StartSolenoidTask(void *argument)
   for(;;)
   {
 
-	  while(timT1< timF1 && timT2 < timF2 && timT3 < timF3)
+	  while((timT1 < timF1) && (timT2 < timF2) && (timT3 < timF3))
 	  {
 		  C=0;
 		  new = 0;
@@ -1413,6 +1413,7 @@ void StartSolenoidTask(void *argument)
 				  timT3 = timT3 + (temp - L3);
 			  L3 = temp;
 		  }
+		  osDelay(1);
 	  }
 	  if(timT1 >= timF1)
 	  {
@@ -1435,7 +1436,7 @@ void StartSolenoidTask(void *argument)
 			timF2 = 10;
 			osMessageQueuePut(SolenoidQueueHandle, &water[2], 1U, 0U);
 	  }
-    osDelay(1);
+	  osDelay(1);
   }
   /* USER CODE END StartSolenoidTask */
 }
@@ -1502,7 +1503,7 @@ void StartWeatherTask(void *argument)
 			a = totalT;
 			b = totalP;
 		}
-    osDelay(30);
+    osDelay(1);
   }
   /* USER CODE END StartWeatherTask */
 }
@@ -1552,6 +1553,7 @@ void StartFlowTask(void *argument)
 			  }
 			  HAL_TIM_Base_Stop(&htim1);
 			  total = 0;
+			  osDelay(1);
 		  }
 		  for(int j =0; j < 20; j++)
 		  {
@@ -1595,6 +1597,7 @@ void StartFlowTask(void *argument)
 			  }
 			  HAL_TIM_Base_Stop(&htim1);
 			  total = 0;
+			  osDelay(1);
 		  }
 		  for(int j =0; j < 20; j++)
 		  {
@@ -1638,6 +1641,7 @@ void StartFlowTask(void *argument)
 			  }
 			  HAL_TIM_Base_Stop(&htim1);
 			  total = 0;
+			  osDelay(1);
 		  }
 		  for(int j =0; j < 20; j++)
 		  {
@@ -1693,7 +1697,17 @@ void StartProcessingTask(void *argument)
 		  C++;
 	  }
 	  C = 0;
-
+	  if(userOverride[0] == 1)
+	  {
+		  osMessageQueuePut(ProcessQueueHandle, &userOverride[1], 1U, 0U);
+		  osMessageQueuePut(ProcessQueueHandle, &userOverride[2], 1U, 0U);
+	  }
+	  if(userOverride[0] == 2)
+	  {
+		  osMessageQueuePut(ProcessQueueHandle, &userOverride[1], 1U, 0U);
+		  osMessageQueuePut(ProcessQueueHandle, &userOverride[2], 1U, 0U);
+		  osMessageQueuePut(ProcessQueueHandle, &userOverride[3], 1U, 0U);
+	  }
     osDelay(1);
   }
   /* USER CODE END StartProcessingTask */
@@ -1714,15 +1728,15 @@ void StartWebsiteTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
-	  {//when receiving data put it in this array
-		  water = water + input;
-		  HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
-	  }
-	  if(HAL_UART_Receive(&huart1, BufferRX, 5, 100) == HAL_OK)
-  	  {
-  		osMessageQueuePut(WebsiteQueueHandle, &BufferRX, 1U, 0U);
-  	  }
+//	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
+//	  {//when receiving data put it in this array
+//		  water = water + input;
+//		  HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+//	  }
+//	  if(HAL_UART_Receive(&huart1, BufferRX, 5, 10) == HAL_OK)
+//  	  {
+//  		osMessageQueuePut(WebsiteQueueHandle, &BufferRX, 1U, 0U);
+//  	  }
     osDelay(1);
   }
   /* USER CODE END StartWebsiteTask */

@@ -7087,3 +7087,11 @@ Cannot execute this command while the selected thread is running.
 java.lang.Exception: Cannot execute this command while the selected thread is running.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-03-28 12:15:08.037
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.actions.DsfResumeCommand$4$1@67bf1836): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Given context: (gdb[39].proc[42000].threadGroup[i1],gdb[39].proc[42000].OSthread[1]).thread[1], is already running. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2021-03-28 12:15:08.037
+!MESSAGE Given context: (gdb[39].proc[42000].threadGroup[i1],gdb[39].proc[42000].OSthread[1]).thread[1], is already running.
+
+!ENTRY org.eclipse.core.jobs 2 2 2021-03-28 12:36:36.939
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob

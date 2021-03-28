@@ -6217,3 +6217,1250 @@ Finished building: User Interface.bin
  
 Finished building: User Interface.list
  
+12:09:07 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1672:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1672:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1730:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:10:49 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1672:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1672:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1730:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:11:06 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+12:12:14 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1672:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1672:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1730:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:15:01 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1673:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1673:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1731:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:15:36 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+12:21:12 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1673:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1673:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1731:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38184	     24	  12096	  50304	   c480	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:25:23 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Core/Src/sensorObjects.o: In function `processATResponse':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:65: undefined reference to `uartInterruptInit'
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:71: undefined reference to `uartInterruptInit'
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:75: undefined reference to `uartInterruptInit'
+Core/Src/sensorObjects.o: In function `processIO':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:138: undefined reference to `uartInterruptInit'
+Core/Src/sensorObjects.o: In function `sendBattRequest':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:169: undefined reference to `uartTransmit'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:62: User Interface.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+12:25:38 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Core/Src/sensorObjects.o: In function `processATResponse':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:65: undefined reference to `uartInterruptInit'
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:71: undefined reference to `uartInterruptInit'
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:75: undefined reference to `uartInterruptInit'
+Core/Src/sensorObjects.o: In function `processIO':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:138: undefined reference to `uartInterruptInit'
+Core/Src/sensorObjects.o: In function `sendBattRequest':
+C:/Users/anima/Desktop/ENEL417/Main Microcontroller/User Interface/User Interface/Debug/../Core/Src/sensorObjects.c:169: undefined reference to `uartTransmit'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:62: User Interface.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+12:27:04 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38248	     24	  12096	  50368	   c4c0	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:28:24 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36952	     24	  12096	  49072	   bfb0	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:28:34 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36952	     24	  12096	  49072	   bfb0	User Interface.elf
+Finished building: default.size.stdout
+ 
+12:29:15 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36904	     24	  12096	  49024	   bf80	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:30:45 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1295:74: warning: unused variable 'temp' [-Wunused-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                          ^~~~
+../Core/Src/main.c:1295:67: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                   ^~~~~
+../Core/Src/main.c:1295:60: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                            ^~~~~
+../Core/Src/main.c:1295:53: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                     ^~~~~
+../Core/Src/main.c:1295:46: warning: variable 'timF3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                              ^~~~~
+../Core/Src/main.c:1295:39: warning: variable 'timF2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                       ^~~~~
+../Core/Src/main.c:1295:32: warning: variable 'timF1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                ^~~~~
+../Core/Src/main.c:1295:25: warning: variable 'timT3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                         ^~~~~
+../Core/Src/main.c:1295:18: warning: variable 'timT2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                  ^~~~~
+../Core/Src/main.c:1295:11: warning: variable 'timT1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+           ^~~~~
+../Core/Src/main.c:1294:59: warning: unused variable 'L3' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                           ^~
+../Core/Src/main.c:1294:55: warning: unused variable 'L2' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                       ^~
+../Core/Src/main.c:1294:51: warning: unused variable 'L1' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                   ^~
+../Core/Src/main.c:1294:46: warning: unused variable 'new' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                              ^~~
+../Core/Src/main.c:1294:36: warning: unused variable 'water' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                    ^~~~~
+../Core/Src/main.c:1294:27: warning: unused variable 'Flow' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                           ^~~~
+../Core/Src/main.c:1294:20: warning: unused variable 'in' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                    ^~
+../Core/Src/main.c:1294:17: warning: unused variable 'C' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                 ^
+../Core/Src/main.c:1294:10: warning: unused variable 'input' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+          ^~~~~
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36104	     24	  12096	  48224	   bc60	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:32:02 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1295:74: warning: unused variable 'temp' [-Wunused-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                          ^~~~
+../Core/Src/main.c:1295:67: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                   ^~~~~
+../Core/Src/main.c:1295:60: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                            ^~~~~
+../Core/Src/main.c:1295:53: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                     ^~~~~
+../Core/Src/main.c:1295:46: warning: variable 'timF3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                              ^~~~~
+../Core/Src/main.c:1295:39: warning: variable 'timF2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                       ^~~~~
+../Core/Src/main.c:1295:32: warning: variable 'timF1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                ^~~~~
+../Core/Src/main.c:1295:25: warning: variable 'timT3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                         ^~~~~
+../Core/Src/main.c:1295:18: warning: variable 'timT2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                  ^~~~~
+../Core/Src/main.c:1295:11: warning: variable 'timT1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+           ^~~~~
+../Core/Src/main.c:1294:59: warning: unused variable 'L3' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                           ^~
+../Core/Src/main.c:1294:55: warning: unused variable 'L2' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                       ^~
+../Core/Src/main.c:1294:51: warning: unused variable 'L1' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                   ^~
+../Core/Src/main.c:1294:46: warning: unused variable 'new' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                              ^~~
+../Core/Src/main.c:1294:36: warning: unused variable 'water' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                    ^~~~~
+../Core/Src/main.c:1294:27: warning: unused variable 'Flow' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                           ^~~~
+../Core/Src/main.c:1294:20: warning: unused variable 'in' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                    ^~
+../Core/Src/main.c:1294:17: warning: unused variable 'C' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                 ^
+../Core/Src/main.c:1294:10: warning: unused variable 'input' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+          ^~~~~
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1456:11: warning: unused variable 'Pcount' [-Wunused-variable]
+  uint16_t Pcount = 0;
+           ^~~~~~
+../Core/Src/main.c:1455:50: warning: unused variable 'b' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                                  ^
+../Core/Src/main.c:1455:47: warning: unused variable 'a' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                               ^
+../Core/Src/main.c:1455:39: warning: unused variable 'totalT' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                       ^~~~~~
+../Core/Src/main.c:1455:31: warning: unused variable 'totalP' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                               ^~~~~~
+../Core/Src/main.c:1455:22: warning: unused variable 'tickend' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                      ^~~~~~~
+../Core/Src/main.c:1455:11: warning: unused variable 'tickstart' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+           ^~~~~~~~~
+../Core/Src/main.c:1454:23: warning: unused variable 'raw' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+                       ^~~
+../Core/Src/main.c:1454:11: warning: unused variable 'period' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+           ^~~~~~
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  34244	     24	  12096	  46364	   b51c	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:33:10 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1295:74: warning: unused variable 'temp' [-Wunused-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                          ^~~~
+../Core/Src/main.c:1295:67: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                   ^~~~~
+../Core/Src/main.c:1295:60: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                            ^~~~~
+../Core/Src/main.c:1295:53: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                     ^~~~~
+../Core/Src/main.c:1295:46: warning: variable 'timF3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                              ^~~~~
+../Core/Src/main.c:1295:39: warning: variable 'timF2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                       ^~~~~
+../Core/Src/main.c:1295:32: warning: variable 'timF1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                ^~~~~
+../Core/Src/main.c:1295:25: warning: variable 'timT3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                         ^~~~~
+../Core/Src/main.c:1295:18: warning: variable 'timT2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                  ^~~~~
+../Core/Src/main.c:1295:11: warning: variable 'timT1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+           ^~~~~
+../Core/Src/main.c:1294:59: warning: unused variable 'L3' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                           ^~
+../Core/Src/main.c:1294:55: warning: unused variable 'L2' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                       ^~
+../Core/Src/main.c:1294:51: warning: unused variable 'L1' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                   ^~
+../Core/Src/main.c:1294:46: warning: unused variable 'new' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                              ^~~
+../Core/Src/main.c:1294:36: warning: unused variable 'water' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                    ^~~~~
+../Core/Src/main.c:1294:27: warning: unused variable 'Flow' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                           ^~~~
+../Core/Src/main.c:1294:20: warning: unused variable 'in' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                    ^~
+../Core/Src/main.c:1294:17: warning: unused variable 'C' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                 ^
+../Core/Src/main.c:1294:10: warning: unused variable 'input' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+          ^~~~~
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1456:11: warning: unused variable 'Pcount' [-Wunused-variable]
+  uint16_t Pcount = 0;
+           ^~~~~~
+../Core/Src/main.c:1455:50: warning: unused variable 'b' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                                  ^
+../Core/Src/main.c:1455:47: warning: unused variable 'a' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                               ^
+../Core/Src/main.c:1455:39: warning: unused variable 'totalT' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                       ^~~~~~
+../Core/Src/main.c:1455:31: warning: unused variable 'totalP' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                               ^~~~~~
+../Core/Src/main.c:1455:22: warning: unused variable 'tickend' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                      ^~~~~~~
+../Core/Src/main.c:1455:11: warning: unused variable 'tickstart' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+           ^~~~~~~~~
+../Core/Src/main.c:1454:23: warning: unused variable 'raw' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+                       ^~~
+../Core/Src/main.c:1454:11: warning: unused variable 'period' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+           ^~~~~~
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1678:11: warning: unused variable 'C' [-Wunused-variable]
+  uint16_t C =0;
+           ^
+../Core/Src/main.c:1677:11: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t input;
+           ^~~~~
+../Core/Src/main.c:1676:40: warning: unused variable 'Web' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: unused variable 'Weather' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c:1676:11: warning: unused variable 'userOverride' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1734:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33972	     24	  12096	  46092	   b40c	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:33:40 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1295:74: warning: unused variable 'temp' [-Wunused-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                          ^~~~
+../Core/Src/main.c:1295:67: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                                   ^~~~~
+../Core/Src/main.c:1295:60: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                            ^~~~~
+../Core/Src/main.c:1295:53: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                                     ^~~~~
+../Core/Src/main.c:1295:46: warning: variable 'timF3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                              ^~~~~
+../Core/Src/main.c:1295:39: warning: variable 'timF2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                       ^~~~~
+../Core/Src/main.c:1295:32: warning: variable 'timF1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                                ^~~~~
+../Core/Src/main.c:1295:25: warning: variable 'timT3' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                         ^~~~~
+../Core/Src/main.c:1295:18: warning: variable 'timT2' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+                  ^~~~~
+../Core/Src/main.c:1295:11: warning: variable 'timT1' set but not used [-Wunused-but-set-variable]
+  uint32_t timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3, temp;
+           ^~~~~
+../Core/Src/main.c:1294:59: warning: unused variable 'L3' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                           ^~
+../Core/Src/main.c:1294:55: warning: unused variable 'L2' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                       ^~
+../Core/Src/main.c:1294:51: warning: unused variable 'L1' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                                   ^~
+../Core/Src/main.c:1294:46: warning: unused variable 'new' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                              ^~~
+../Core/Src/main.c:1294:36: warning: unused variable 'water' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                    ^~~~~
+../Core/Src/main.c:1294:27: warning: unused variable 'Flow' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                           ^~~~
+../Core/Src/main.c:1294:20: warning: unused variable 'in' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                    ^~
+../Core/Src/main.c:1294:17: warning: unused variable 'C' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                 ^
+../Core/Src/main.c:1294:10: warning: unused variable 'input' [-Wunused-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+          ^~~~~
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1456:11: warning: unused variable 'Pcount' [-Wunused-variable]
+  uint16_t Pcount = 0;
+           ^~~~~~
+../Core/Src/main.c:1455:50: warning: unused variable 'b' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                                  ^
+../Core/Src/main.c:1455:47: warning: unused variable 'a' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                               ^
+../Core/Src/main.c:1455:39: warning: unused variable 'totalT' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                       ^~~~~~
+../Core/Src/main.c:1455:31: warning: unused variable 'totalP' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                               ^~~~~~
+../Core/Src/main.c:1455:22: warning: unused variable 'tickend' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                      ^~~~~~~
+../Core/Src/main.c:1455:11: warning: unused variable 'tickstart' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+           ^~~~~~~~~
+../Core/Src/main.c:1454:23: warning: unused variable 'raw' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+                       ^~~
+../Core/Src/main.c:1454:11: warning: unused variable 'period' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+           ^~~~~~
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1678:11: warning: unused variable 'C' [-Wunused-variable]
+  uint16_t C =0;
+           ^
+../Core/Src/main.c:1677:11: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t input;
+           ^~~~~
+../Core/Src/main.c:1676:40: warning: unused variable 'Web' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: unused variable 'Weather' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c:1676:11: warning: unused variable 'userOverride' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1727:10: warning: unused variable 'BufferRX' [-Wunused-variable]
+  uint8_t BufferRX[50];
+          ^~~~~~~~
+../Core/Src/main.c:1726:18: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t water, input;
+                  ^~~~~
+../Core/Src/main.c:1726:11: warning: unused variable 'water' [-Wunused-variable]
+  uint16_t water, input;
+           ^~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32644	     24	  12096	  44764	   aedc	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:34:18 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1456:11: warning: unused variable 'Pcount' [-Wunused-variable]
+  uint16_t Pcount = 0;
+           ^~~~~~
+../Core/Src/main.c:1455:50: warning: unused variable 'b' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                                  ^
+../Core/Src/main.c:1455:47: warning: unused variable 'a' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                               ^
+../Core/Src/main.c:1455:39: warning: unused variable 'totalT' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                       ^~~~~~
+../Core/Src/main.c:1455:31: warning: unused variable 'totalP' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                               ^~~~~~
+../Core/Src/main.c:1455:22: warning: unused variable 'tickend' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                      ^~~~~~~
+../Core/Src/main.c:1455:11: warning: unused variable 'tickstart' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+           ^~~~~~~~~
+../Core/Src/main.c:1454:23: warning: unused variable 'raw' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+                       ^~~
+../Core/Src/main.c:1454:11: warning: unused variable 'period' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+           ^~~~~~
+../Core/Src/main.c: In function 'StartFlowTask':
+../Core/Src/main.c:1526:13: warning: unused variable 'total' [-Wunused-variable]
+    uint16_t total = 0;
+             ^~~~~
+../Core/Src/main.c:1525:13: warning: unused variable 'L' [-Wunused-variable]
+    uint16_t L = 0;
+             ^
+../Core/Src/main.c:1524:13: warning: unused variable 'F' [-Wunused-variable]
+    uint16_t F = 0;
+             ^
+../Core/Src/main.c:1523:45: warning: unused variable 'm' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                             ^
+../Core/Src/main.c:1523:41: warning: unused variable 'f3' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                         ^~
+../Core/Src/main.c:1523:37: warning: unused variable 'f2' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                     ^~
+../Core/Src/main.c:1523:33: warning: unused variable 'f1' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                                 ^~
+../Core/Src/main.c:1523:27: warning: unused variable 'temp' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                           ^~~~
+../Core/Src/main.c:1523:20: warning: unused variable 'tickL' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+                    ^~~~~
+../Core/Src/main.c:1523:13: warning: unused variable 'tickS' [-Wunused-variable]
+    uint16_t tickS, tickL, temp, f1, f2, f3, m;
+             ^~~~~
+../Core/Src/main.c:1522:13: warning: unused variable 'C' [-Wunused-variable]
+    uint16_t C[20];
+             ^
+../Core/Src/main.c:1521:13: warning: unused variable 'o' [-Wunused-variable]
+    uint16_t o[3] = {1,1,1};
+             ^
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1678:11: warning: unused variable 'C' [-Wunused-variable]
+  uint16_t C =0;
+           ^
+../Core/Src/main.c:1677:11: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t input;
+           ^~~~~
+../Core/Src/main.c:1676:40: warning: unused variable 'Web' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: unused variable 'Weather' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c:1676:11: warning: unused variable 'userOverride' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1727:10: warning: unused variable 'BufferRX' [-Wunused-variable]
+  uint8_t BufferRX[50];
+          ^~~~~~~~
+../Core/Src/main.c:1726:18: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t water, input;
+                  ^~~~~
+../Core/Src/main.c:1726:11: warning: unused variable 'water' [-Wunused-variable]
+  uint16_t water, input;
+           ^~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33924	     24	  12096	  46044	   b3dc	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:35:01 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartWeatherTask':
+../Core/Src/main.c:1456:11: warning: unused variable 'Pcount' [-Wunused-variable]
+  uint16_t Pcount = 0;
+           ^~~~~~
+../Core/Src/main.c:1455:50: warning: unused variable 'b' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                                  ^
+../Core/Src/main.c:1455:47: warning: unused variable 'a' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                               ^
+../Core/Src/main.c:1455:39: warning: unused variable 'totalT' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                                       ^~~~~~
+../Core/Src/main.c:1455:31: warning: unused variable 'totalP' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                               ^~~~~~
+../Core/Src/main.c:1455:22: warning: unused variable 'tickend' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+                      ^~~~~~~
+../Core/Src/main.c:1455:11: warning: unused variable 'tickstart' [-Wunused-variable]
+  uint16_t tickstart, tickend, totalP, totalT, a, b;
+           ^~~~~~~~~
+../Core/Src/main.c:1454:23: warning: unused variable 'raw' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+                       ^~~
+../Core/Src/main.c:1454:11: warning: unused variable 'period' [-Wunused-variable]
+  uint16_t period[20], raw[20];
+           ^~~~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1727:10: warning: unused variable 'BufferRX' [-Wunused-variable]
+  uint8_t BufferRX[50];
+          ^~~~~~~~
+../Core/Src/main.c:1726:18: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t water, input;
+                  ^~~~~
+../Core/Src/main.c:1726:11: warning: unused variable 'water' [-Wunused-variable]
+  uint16_t water, input;
+           ^~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35476	     24	  12096	  47596	   b9ec	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+12:35:25 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                                        ^~~
+../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2];
+                            ^~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1727:10: warning: unused variable 'BufferRX' [-Wunused-variable]
+  uint8_t BufferRX[50];
+          ^~~~~~~~
+../Core/Src/main.c:1726:18: warning: unused variable 'input' [-Wunused-variable]
+  uint16_t water, input;
+                  ^~~~~
+../Core/Src/main.c:1726:11: warning: unused variable 'water' [-Wunused-variable]
+  uint16_t water, input;
+           ^~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37336	     24	  12096	  49456	   c130	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
