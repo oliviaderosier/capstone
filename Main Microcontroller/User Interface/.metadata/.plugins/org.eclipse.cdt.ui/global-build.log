@@ -5721,3 +5721,499 @@ Finished building: User Interface.bin
  
 Finished building: User Interface.list
  
+09:19:44 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/croutine.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/croutine.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/croutine.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/event_groups.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/event_groups.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/event_groups.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/list.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/list.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/list.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/list.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/queue.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/queue.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/queue.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/queue.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/tasks.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/tasks.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/tasks.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/tasks.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/timers.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/timers.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/timers.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/timers.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f103rbtx.d" -MT"Core/Startup/startup_stm32f103rbtx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Startup/startup_stm32f103rbtx.o" "../Core/Startup/startup_stm32f103rbtx.s"
+arm-none-eabi-gcc "../Core/Src/Letters.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Letters.d" -MT"Core/Src/Letters.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Letters.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sensorObjects.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sensorObjects.d" -MT"Core/Src/sensorObjects.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sensorObjects.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_timebase_tim.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_hal_timebase_tim.d" -MT"Core/Src/stm32f1xx_hal_timebase_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_timebase_tim.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1308:43: error: 'timeT3' undeclared (first use in this function); did you mean 'timT3'?
+    while(timT1< timF1 || timT2 < timF2 || timeT3 < timF3)
+                                           ^~~~~~
+                                           timT3
+../Core/Src/main.c:1308:43: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1366:29: error: 'flowQueueHandle' undeclared (first use in this function); did you mean 'FlowQueueHandle'?
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sysmem.o"
+     while(osMessageQueueGet(flowQueueHandle, &input, NULL, 0U ) == osOK)
+                             ^~~~~~~~~~~~~~~
+                             FlowQueueHandle
+../Core/Src/main.c:1294:97: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                                 ^~~~~
+../Core/Src/main.c:1294:90: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                          ^~~~~
+../Core/Src/main.c:1294:83: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                   ^~~~~
+../Core/Src/main.c:1294:55: warning: variable 'timT3' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                       ^~~~~
+../Core/Src/main.c:1294:27: warning: variable 'Flow' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                           ^~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1645:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1645:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1645:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1645:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1645:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1693:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 13, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/sensorObjects.c: In function 'processATResponse':
+../Core/Src/sensorObjects.c:65:6: warning: implicit declaration of function 'uartInterruptInit' [-Wimplicit-function-declaration]
+      uartInterruptInit(21);
+      ^~~~~~~~~~~~~~~~~
+../Core/Src/sensorObjects.c: In function 'sendBattRequest':
+../Core/Src/sensorObjects.c:169:2: warning: implicit declaration of function 'uartTransmit' [-Wimplicit-function-declaration]
+  uartTransmit(uartBufferTX, 19);
+  ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+09:20:15 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f1xx.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f1xx.d" -MT"Core/Src/system_stm32f1xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f1xx.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1294:97: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                                 ^~~~~
+../Core/Src/main.c:1294:90: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                          ^~~~~
+../Core/Src/main.c:1294:83: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                   ^~~~~
+../Core/Src/main.c:1294:27: warning: variable 'Flow' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                           ^~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1645:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1645:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1645:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1645:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1645:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1693:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 13, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37640	     24	  12096	  49760	   c260	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+09:20:52 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1294:97: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                                 ^~~~~
+../Core/Src/main.c:1294:90: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                          ^~~~~
+../Core/Src/main.c:1294:83: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                   ^~~~~
+../Core/Src/main.c:1294:27: warning: variable 'Flow' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                           ^~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1645:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1645:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1645:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1645:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1645:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1693:32: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+     HAL_UART_Transmit(&huart1, &water, 1, 1000);//*********also send Colton's info************
+                                ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37640	     24	  12096	  49760	   c260	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+09:21:18 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1294:97: warning: variable 'timS3' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                                 ^~~~~
+../Core/Src/main.c:1294:90: warning: variable 'timS2' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                          ^~~~~
+../Core/Src/main.c:1294:83: warning: variable 'timS1' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                                                                                   ^~~~~
+../Core/Src/main.c:1294:27: warning: variable 'Flow' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                           ^~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1645:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1645:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1645:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1645:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1645:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1693:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37640	     24	  12096	  49760	   c260	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 
+09:22:02 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37640	     24	  12096	  49760	   c260	User Interface.elf
+Finished building: default.size.stdout
+ 
+10:55:27 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1383:6: error: 'temp' undeclared (first use in this function)
+      temp = __HAL_TIM_GET_COUNTER(&htim2);
+      ^~~~
+../Core/Src/main.c:1383:6: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1384:14: error: 'L1' undeclared (first use in this function)
+      if(temp<L1)
+              ^~
+../Core/Src/main.c:1388:15: error: 'TimT1' undeclared (first use in this function); did you mean 'timT1'?
+       timT1 = TimT1 + (temp - L1);
+               ^~~~~
+               timT1
+../Core/Src/main.c:1396:14: error: 'L2' undeclared (first use in this function); did you mean 'L1'?
+      if(temp<L2)
+              ^~
+              L1
+../Core/Src/main.c:1400:15: error: 'TimT2' undeclared (first use in this function); did you mean 'TimT1'?
+       timT2 = TimT2 + (temp - L2);
+               ^~~~~
+               TimT1
+../Core/Src/main.c:1408:14: error: 'L3' undeclared (first use in this function); did you mean 'L2'?
+      if(temp<L3)
+              ^~
+              L2
+../Core/Src/main.c:1412:15: error: 'TimT3' undeclared (first use in this function); did you mean 'TimT2'?
+       timT3 = TimT3 + (temp - L3);
+               ^~~~~
+               TimT2
+../Core/Src/main.c:1294:27: warning: variable 'Flow' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], new, timT1, timT2, timT3, timF1, timF2, timF3, timS1, timS2, timS3;
+                           ^~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1665:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1665:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1665:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1665:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1665:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1713:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:58:16 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1384:14: error: 'L1' undeclared (first use in this function)
+      if(temp<L1)
+              ^~
+../Core/Src/main.c:1384:14: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1388:15: error: 'TimT1' undeclared (first use in this function); did you mean 'timT1'?
+       timT1 = TimT1 + (temp - L1);
+               ^~~~~
+               timT1
+../Core/Src/main.c:1396:14: error: 'L2' undeclared (first use in this function); did you mean 'L1'?
+      if(temp<L2)
+              ^~
+              L1
+../Core/Src/main.c:1400:15: error: 'TimT2' undeclared (first use in this function); did you mean 'TimT1'?
+       timT2 = TimT2 + (temp - L2);
+               ^~~~~
+               TimT1
+../Core/Src/main.c:1408:14: error: 'L3' undeclared (first use in this function); did you mean 'L2'?
+      if(temp<L3)
+              ^~
+              L2
+../Core/Src/main.c:1412:15: error: 'TimT3' undeclared (first use in this function); did you mean 'TimT2'?
+       timT3 = TimT3 + (temp - L3);
+               ^~~~~
+               TimT2
+../Core/Src/main.c:1418:4: error: 'water' undeclared (first use in this function)
+    water[0] = Flow[0] * timT1;
+    ^~~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1668:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1668:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1668:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1668:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1668:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1716:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:59:50 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartSolenoidTask':
+../Core/Src/main.c:1389:15: error: 'TimT1' undeclared (first use in this function); did you mean 'timT1'?
+       timT1 = TimT1 + (temp - L1);
+               ^~~~~
+               timT1
+../Core/Src/main.c:1389:15: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1401:15: error: 'TimT2' undeclared (first use in this function); did you mean 'TimT1'?
+       timT2 = TimT2 + (temp - L2);
+               ^~~~~
+               TimT1
+../Core/Src/main.c:1413:15: error: 'TimT3' undeclared (first use in this function); did you mean 'TimT2'?
+       timT3 = TimT3 + (temp - L3);
+               ^~~~~
+               TimT2
+../Core/Src/main.c:1294:36: warning: variable 'water' set but not used [-Wunused-but-set-variable]
+  uint8_t input, C, in[3], Flow[3], water[3], new, L1, L2, L3;
+                                    ^~~~~
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1669:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1669:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1669:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1669:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1669:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1717:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:04:04 **** Incremental Build of configuration Debug for project User Interface ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartProcessingTask':
+../Core/Src/main.c:1672:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1672:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1672:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1672:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1672:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+           ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartWebsiteTask':
+../Core/Src/main.c:1720:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
+                                ^~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: User Interface.elf
+ 
+arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
+arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
+arm-none-eabi-size   User\ Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38072	     24	  12096	  50192	   c410	User Interface.elf
+Finished building: default.size.stdout
+ 
+Finished building: User Interface.bin
+ 
+Finished building: User Interface.list
+ 

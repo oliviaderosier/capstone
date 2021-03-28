@@ -1,13 +1,25 @@
-01:10:26 **** Incremental Build of configuration Debug for project User Interface ****
+11:04:04 **** Incremental Build of configuration Debug for project User Interface ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'StartProcessingTask':
-../Core/Src/main.c:1567:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
-  uint16_t userOverride[3];
+../Core/Src/main.c:1672:57: warning: unused variable 'in' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                         ^~
+../Core/Src/main.c:1672:48: warning: unused variable 'Flow' [-Wunused-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                                ^~~~
+../Core/Src/main.c:1672:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                                        ^~~
+../Core/Src/main.c:1672:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
+                            ^~~~~~~
+../Core/Src/main.c:1672:11: warning: variable 'userOverride' set but not used [-Wunused-but-set-variable]
+  uint16_t userOverride[3], Weather[2], Web[2], Flow[6], in[2];
            ^~~~~~~~~~~~
 ../Core/Src/main.c: In function 'StartWebsiteTask':
-../Core/Src/main.c:1606:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
-     HAL_UART_Transmit(&huart1, water, 13, 1000);//*********also send Colton's info************
+../Core/Src/main.c:1720:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+     HAL_UART_Transmit(&huart1, water, 1, 1000);//*********also send Colton's info************
                                 ^~~~~
 In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
                  from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
@@ -16,9 +28,6 @@ In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t {aka short unsigned int}'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1599:24: warning: unused variable 'BufferTX' [-Wunused-variable]
-  uint8_t BufferRX[50], BufferTX[50];
-                        ^~~~~~~~
 arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: User Interface.elf
  
@@ -26,7 +35,7 @@ arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
 arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
 arm-none-eabi-size   User\ Interface.elf 
    text	   data	    bss	    dec	    hex	filename
-  37188	     24	  12096	  49308	   c09c	User Interface.elf
+  38072	     24	  12096	  50192	   c410	User Interface.elf
 Finished building: default.size.stdout
  
 Finished building: User Interface.bin
@@ -34,5 +43,5 @@ Finished building: User Interface.bin
 Finished building: User Interface.list
  
 
-01:10:27 Build Finished. 0 errors, 3 warnings. (took 876ms)
+11:04:05 Build Finished. 0 errors, 6 warnings. (took 889ms)
 
