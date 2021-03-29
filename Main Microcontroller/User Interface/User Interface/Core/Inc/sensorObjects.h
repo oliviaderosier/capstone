@@ -22,9 +22,14 @@ void initializeNodes(void);
 uint8_t verifyChecksum(uint8_t*);
 uint8_t generateChecksum(uint8_t *frame);
 
+uint16_t calcTemp(uint8_t ADC0_19, uint8_t ADC0_20);
+uint16_t calcPercent(uint8_t ADC_A, uint8_t ADC_B);
+
+void toGateway(uint8_t nodeNumber);
+
 //Global Variables
-uint8_t uartBufferRX[26];
-uint8_t uartBufferTX[26];
+uint8_t uartBufferRX[50];
+uint8_t uartBufferTX[50];
 
 //Remote Command Options
 #define OPTION_APPLY	0x02 //apply changes

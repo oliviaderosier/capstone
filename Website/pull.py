@@ -38,7 +38,7 @@ connection = create_connection("localhost", "root", "", "capstone")
 
 while True:
     # Defines incoming data from Digi Remote Manager via gateway
-    datastream = dc.streams.get_stream_if_exists('00000000-00000000-00409DFF-FF63DD73/xbee.serialIn/[00:13:A2:00:41:68:0B:B9]!')
+    datastream = dc.streams.get_stream_if_exists('00000000-00000000-00409DFF-FF63DD73/xbee.serialIn/[00:13:A2:00:41:68:0B:D5]!')
 
     #datastream = "0 1 23 45 12 67 15 1"
     # If gateway has new data, run program
@@ -57,21 +57,21 @@ while True:
         water_used = l[10] + l[11]
         rain = l[12] 
 
-        #Send  data to SQL database
-        if node_number == 1:
+        #Send  data to designated SQL database
+        if node_number == '1':
             sql = "INSERT INTO data (node_number, moisture, salt, temp, battery, rain, waterUsed) VALUES (%s, %s,%s, %s,%s, %s, %s)"
             val = (node_number, moisture, salt, temp, battery, rain, water_used)
             cursor = connection.cursor()
             cursor.execute(sql, val)
             connection.commit()
-  
-        if node_number == 2:
+   
+        if node_number == '2':
             sql = "INSERT INTO data2 (node_number, moisture, salt, temp, battery, rain, waterUsed) VALUES (%s, %s,%s, %s,%s, %s, %s)"
             val = (node_number, moisture, salt, temp, battery, rain, water_used)
             cursor = connection.cursor()
             cursor.execute(sql, val)
             connection.commit()
-            
+                
         # Prints values to python console
         print(data)
         print(start_delimeter)
