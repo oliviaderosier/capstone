@@ -62,17 +62,17 @@ void processATResponse(uint8_t *ATResponse)
 				if (ATResponse[15] == 0x54 && ATResponse[16] == 0x50) //if the AT command was "TP"
 				{
 					fairways[nodeNum].temperature = ATResponse[18] *256 + ATResponse[19]; //store temp data then request battery data
-					uartInterruptInit(21);
+					HAL_UART_Receive(&huart3, uartBufferRX, 21, 10);
 					sendBattRequest(nodeNum);
 				}
 				else if (ATResponse[15] == 0x25 && ATResponse[16] == 0x56) //if the AT command was "%V"
 				{
 					fairways[nodeNum].battery = ATResponse[18]*256 + ATResponse[19];
-					uartInterruptInit(26);//Listen for IO data becasue we should have both requests received
+					HAL_UART_Receive(&huart3, uartBufferRX, 26, 10);//Listen for IO data becasue we should have both requests received
 				}
 				else
 				{	//if we got an unexpected AT Command Type, give up and try again next time data is transmitted
-					uartInterruptInit(26);
+					HAL_UART_Receive(&huart3, uartBufferRX, 26, 10);
 				}
 
 				nodeNum = 255; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.
@@ -135,7 +135,7 @@ void processIO(uint8_t *ioData)
 	}
 	//__HAL_UART_CLEAR_FLAG(&huart3, UART_FLAG_TC);
 
-	uartInterruptInit(21);
+	HAL_UART_Receive(&huart3, uartBufferRX, 21, 10);
 	sendBattRequest(nodeNumber);
 
   return;
@@ -166,7 +166,7 @@ void sendBattRequest(uint8_t nodeNumber)
 	uartBufferTX[17] = 0x56;//AT Command Byte 2 - 0x56 is 'V'
 	uartBufferTX[18] = generateChecksum(uartBufferTX);//Checksum (as calculated by XCTU)
 
-	uartTransmit(uartBufferTX, 19);
+	 HAL_UART_Transmit(&huart3, uartBufferTX, 19, 1000);
 	return;
 }
 
@@ -194,7 +194,7 @@ void sendTempRequest(uint8_t nodeNumber)
 	uartBufferTX[17] = 0x50;//AT Command Byte 2 - 0x50 is 'P'
 	uartBufferTX[18] = generateChecksum(uartBufferTX);//passes the address of the struct
 
-	uartTransmit(uartBufferTX, 19);
+	HAL_UART_Transmit(&huart3, uartBufferTX, 19, 1000);
 	return;
 }
 
@@ -226,7 +226,7 @@ void sensorToGateway(uint8_t nodeNumber)
 	//uartBufferTX[11] = //Humidity Data
 
 
-	uartTransmit(uartBufferTX, 11);
+	HAL_UART_Transmit(&huart3, uartBufferTX, 11, 1000);
 }
 //Checksum Functions
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

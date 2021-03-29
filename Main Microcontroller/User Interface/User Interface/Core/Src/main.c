@@ -1090,35 +1090,45 @@ void error(void)
 void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
 	initializeNodes();
-//	HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
+  /* Infinite loop */
+
+	//HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 10);
   for(;;)
   {
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 28, 300) == HAL_OK)
+	 	  	 {
+	 	  		 //HAL_UART_Transmit(&huart1, uartBufferRX, 13, 1000); // send info to Olivia when recieved
+	 	  		 //has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+	 	  		 if (uartBufferRX[0] == 0x7E)
+	 	  		 {
+	 	  			 switch (uartBufferRX[3])
+	 	  			 {
+	 	  			 case 0x92:
+	 	  				 processIO(uartBufferRX);
+	 	  				 break;
 
-//	  	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 10) == HAL_OK)
-//	  		  {
-//	  //		  HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000); // send info to Olivia when recieved
-//	  				//has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-//	  				if (uartBufferRX[0] == 0x7E)
-//	  				{
-//	  					switch (uartBufferRX[3])
-//	  					{
-////	  					case 0x92:
-////	  						processIO(uartBufferRX);
-////	  						break;
-////
-////	  					case 0x97:
-////	  						processATResponse(uartBufferRX);
-////	  						break;
-//
-//	  					default://if it wasnt an expected data type just throw it out
-//	  						HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
-//	  						break;
-//	  					}
-//	  				}
-//	  		  }
-	  	  osDelay(1);
+	 	  			 case 0x97:
+	 	  				 processATResponse(uartBufferRX);
+	 	  				 break;
+
+	 	  			 default://if it wasnt an expected data type just throw it out
+	 	  				 HAL_UART_Receive(&huart3, &uartBufferRX[0], 28, 1000);
+	 	  				 break;
+	 	  			 }
+	 	  		  }
+	 	  		 int d =0;
+	 	  		 for(int i = 0; i < 12; i = i + 4)
+	 	  		 {
+	 	  			 uartBufferRX[i] = d+1;
+	 	  			 uartBufferRX[i+1] = fairways[d].resistive;
+	 	  			 uartBufferRX[i+2] = fairways[d].capacative;
+					 uartBufferRX[i+3] = fairways[d].temperature;
+					 d++;
+	 	  		 }
+	 	  		HAL_UART_Transmit(&huart1, uartBufferRX, 12, 1000);
+	 	  	  }
+	  osDelay(1);
   }
   /* USER CODE END 5 */
 }
@@ -1200,9 +1210,17 @@ void StartUserTask(void *argument)
 					onOff();
 					num[0] = getVal();
 				}
-				osMessageQueuePut(UserQueueHandle, &m, 1U, 0U);
-				osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green
-				osMessageQueuePut(UserQueueHandle, &num[0], 1U, 0U);//do something with state
+				UserInfo[0] = UserInfo[0] + 1;
+				UserInfo[1] = m;
+				UserInfo[2] = indc;
+				UserInfo[3] = num[0];
+				//for(int d =0; d<3; d++)
+				///{
+				//	osMessageQueuePut(UserQueueHandle, &num[d], 1U, 0U);
+				//}
+				//osDelay(1);
+				//osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green
+				//osMessageQueuePut(UserQueueHandle, &num, 1U, 0U);//do something with state
 				clear();
 				quit();
 				num[5] = getVal();
@@ -1246,10 +1264,14 @@ void StartUserTask(void *argument)
 					num[0] = getVal();
 					num[1] = getVal();
 				}
-				osMessageQueuePut(UserQueueHandle, &m, 1U, 0U);
-				osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green and time
-				num[2] = num[1] + (num[0] * 10);
-				osMessageQueuePut(UserQueueHandle, &num[2], 1U, 0U);
+				UserInfo[0] = UserInfo[0] + 1;
+				UserInfo[1] = m;
+				UserInfo[2] = indc;
+				UserInfo[3] = num[0];
+				//osMessageQueuePut(UserQueueHandle, &m, 1U, 0U);
+				//osMessageQueuePut(UserQueueHandle, &indc, 1U, 0U);//do something with green and time
+				//num[2] = num[1] + (num[0] * 10);
+				//osMessageQueuePut(UserQueueHandle, &num[2], 1U, 0U);
 
 				clear();
 				quit();
@@ -1307,135 +1329,135 @@ void StartSolenoidTask(void *argument)
   for(;;)
   {
 
-	  while((timT1 < timF1) && (timT2 < timF2) && (timT3 < timF3))
-	  {
-		  C=0;
-		  new = 0;
-		  while(osMessageQueueGet(ProcessQueueHandle, &input, NULL, 0U ) == osOK)
-		  {//when receiving data put it in this array
-			  in[C] = input;
-			  C++;
-			  new = 1;
-		  }
-		  if(new == 1)
-		  {
-			  if(in[0] == 1)
-			  {
-				  if(in[1] == 0)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
-					  new = 0;
-				  }
-				  else if(in[1] == 1)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
-					  new = 0;
-				  }
-				  timF1 = in[2];
-				  timS1 = __HAL_TIM_GET_COUNTER(&htim2);
-			  }
-			  if(in[0] == 2)
-			  {
-				  if(in[1] == 0)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-					  new = 0;
-				  }
-				  else if(in[1] == 1)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
-					  new = 0;
-				  }
-				  timF2 = in[2];
-				  timS2 = __HAL_TIM_GET_COUNTER(&htim2);
-			  }
-			  if(in[0] == 3)
-			  {
-				  if(in[1] == 0)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-					  new = 0;
-				  }
-				  else if(in[1] == 1)
-				  {
-					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
-					  new = 0;
-				  }
-				  timF3 = in[2];
-				  timS3 = __HAL_TIM_GET_COUNTER(&htim2);
-			  }
-		  }
-		  while(osMessageQueueGet(FlowQueueHandle, &input, NULL, 0U ) == osOK)
-		  {//when receiving data put it in this array
-			  in[C] = input;
-			  C++;
-			  new = 1;
-		  }
-		  if(new == 1)
-		  {
-			  Flow[in[0]-1] = in[1];
-			  new =0;
-		  }
-
-		  if(timF1 != 10)
-		  {
-			  timF1 = timF1 + timS1;
-			  timS1 = 0;
-			  temp = __HAL_TIM_GET_COUNTER(&htim2);
-			  if(temp<L1)
-				  timT1 = timT1 + temp + 65535 - L1;
-
-			  else
-				  timT1 = timT1 + (temp - L1);
-			  L1 = temp;
-		  }
-		  if(timF2 != 10)
-		  {
-			  timF2 = timF2 + timS2;
-			  timS2 = 0;
-			  temp = __HAL_TIM_GET_COUNTER(&htim2);
-			  if(temp<L2)
-				  timT2 = timT2 + temp + 65535 - L2;
-
-			  else
-				  timT2 = timT2 + (temp - L2);
-			  L2 = temp;
-		  }
-		  if(timF3 != 10)
-		  {
-			  timF3 = timF3 + timS3;
-			  timS3 = 0;
-			  temp = __HAL_TIM_GET_COUNTER(&htim2);
-			  if(temp<L3)
-				  timT3 = timT3 + temp + 65535 - L3;
-
-			  else
-				  timT3 = timT3 + (temp - L3);
-			  L3 = temp;
-		  }
-		  osDelay(1);
-	  }
-	  if(timT1 >= timF1)
-	  {
-			water[0] = Flow[0] * timT1;
-			timT1 = 0;
-			timF1 = 10;
-			osMessageQueuePut(SolenoidQueueHandle, &water[0], 1U, 0U);
-	  }
-	  if(timT2 >= timF2)
-	  {
-			water[1] = (Flow[1] * timT2)/65535;
-			timT2 = 0;
-			timF2 = 10;
-			osMessageQueuePut(SolenoidQueueHandle, &water[1], 1U, 0U);
-	  }
-	  if(timT2 >= timF2)
-	  {
-			water[2] = Flow[2] * timT3;
-			timT2 = 0;
-			timF2 = 10;
-			osMessageQueuePut(SolenoidQueueHandle, &water[2], 1U, 0U);
-	  }
+//	  while((timT1 < timF1) && (timT2 < timF2) && (timT3 < timF3))
+//	  {
+//		  C=0;
+//		  new = 0;
+//		  while(osMessageQueueGet(ProcessQueueHandle, &input, NULL, 0U ) == osOK)
+//		  {//when receiving data put it in this array
+//			  in[C] = input;
+//			  C++;
+//			  new = 1;
+//		  }
+//		  if(new == 1)
+//		  {
+//			  if(in[0] == 1)
+//			  {
+//				  if(in[1] == 0)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
+//					  new = 0;
+//				  }
+//				  else if(in[1] == 1)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
+//					  new = 0;
+//				  }
+//				  timF1 = in[2];
+//				  timS1 = __HAL_TIM_GET_COUNTER(&htim2);
+//			  }
+//			  if(in[0] == 2)
+//			  {
+//				  if(in[1] == 0)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+//					  new = 0;
+//				  }
+//				  else if(in[1] == 1)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+//					  new = 0;
+//				  }
+//				  timF2 = in[2];
+//				  timS2 = __HAL_TIM_GET_COUNTER(&htim2);
+//			  }
+//			  if(in[0] == 3)
+//			  {
+//				  if(in[1] == 0)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+//					  new = 0;
+//				  }
+//				  else if(in[1] == 1)
+//				  {
+//					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
+//					  new = 0;
+//				  }
+//				  timF3 = in[2];
+//				  timS3 = __HAL_TIM_GET_COUNTER(&htim2);
+//			  }
+//		  }
+//		  while(osMessageQueueGet(FlowQueueHandle, &input, NULL, 0U ) == osOK)
+//		  {//when receiving data put it in this array
+//			  in[C] = input;
+//			  C++;
+//			  new = 1;
+//		  }
+//		  if(new == 1)
+//		  {
+//			  Flow[in[0]-1] = in[1];
+//			  new =0;
+//		  }
+//
+//		  if(timF1 != 10)
+//		  {
+//			  timF1 = timF1 + timS1;
+//			  timS1 = 0;
+//			  temp = __HAL_TIM_GET_COUNTER(&htim2);
+//			  if(temp<L1)
+//				  timT1 = timT1 + temp + 65535 - L1;
+//
+//			  else
+//				  timT1 = timT1 + (temp - L1);
+//			  L1 = temp;
+//		  }
+//		  if(timF2 != 10)
+//		  {
+//			  timF2 = timF2 + timS2;
+//			  timS2 = 0;
+//			  temp = __HAL_TIM_GET_COUNTER(&htim2);
+//			  if(temp<L2)
+//				  timT2 = timT2 + temp + 65535 - L2;
+//
+//			  else
+//				  timT2 = timT2 + (temp - L2);
+//			  L2 = temp;
+//		  }
+//		  if(timF3 != 10)
+//		  {
+//			  timF3 = timF3 + timS3;
+//			  timS3 = 0;
+//			  temp = __HAL_TIM_GET_COUNTER(&htim2);
+//			  if(temp<L3)
+//				  timT3 = timT3 + temp + 65535 - L3;
+//
+//			  else
+//				  timT3 = timT3 + (temp - L3);
+//			  L3 = temp;
+//		  }
+//		  osDelay(1);
+//	  }
+//	  if(timT1 >= timF1)
+//	  {
+//			water[0] = Flow[0] * timT1;
+//			timT1 = 0;
+//			timF1 = 10;
+//			osMessageQueuePut(SolenoidQueueHandle, &water[0], 1U, 0U);
+//	  }
+//	  if(timT2 >= timF2)
+//	  {
+//			water[1] = (Flow[1] * timT2)/65535;
+//			timT2 = 0;
+//			timF2 = 10;
+//			osMessageQueuePut(SolenoidQueueHandle, &water[1], 1U, 0U);
+//	  }
+//	  if(timT2 >= timF2)
+//	  {
+//			water[2] = Flow[2] * timT3;
+//			timT2 = 0;
+//			timF2 = 10;
+//			osMessageQueuePut(SolenoidQueueHandle, &water[2], 1U, 0U);
+//	  }
 	  osDelay(1);
   }
   /* USER CODE END StartSolenoidTask */
@@ -1460,49 +1482,49 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		while(Pcount < 20)
-		{
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-			{}
-			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-			{}
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-			{}
-			tickend = __HAL_TIM_GET_COUNTER(&htim2);
-			if(tickend > tickstart)
-				period[Pcount] = tickend - tickstart;
-			else
-				period[Pcount] = (65535 - tickstart) + tickend;
-
-			if(period[Pcount]< 1000)
-				Pcount++;
-		}
-
-		for(int i = 0; i < 20; i++)
-		{
-			HAL_ADC_Start(&hadc1);
-			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-			raw[i] = HAL_ADC_GetValue(&hadc1);
-		}
-
-		Pcount = 0;
-		totalT = 0;
-		totalP = 0;
-		for(int i = 0; i < 20; i++)
-		{
-			totalT = totalT +raw[i];
-			totalP = totalP +period[i];
-		}
-		totalT = totalT/20;
-		totalP = totalP/20;
-		if(a != totalT || b != totalP)
-		{
-			osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
-			osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
-			a = totalT;
-			b = totalP;
-		}
+//		while(Pcount < 20)
+//		{
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//			{}
+//			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+//			{}
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//			{}
+//			tickend = __HAL_TIM_GET_COUNTER(&htim2);
+//			if(tickend > tickstart)
+//				period[Pcount] = tickend - tickstart;
+//			else
+//				period[Pcount] = (65535 - tickstart) + tickend;
+//
+//			if(period[Pcount]< 1000)
+//				Pcount++;
+//		}
+//
+//		for(int i = 0; i < 20; i++)
+//		{
+//			HAL_ADC_Start(&hadc1);
+//			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+//			raw[i] = HAL_ADC_GetValue(&hadc1);
+//		}
+//
+//		Pcount = 0;
+//		totalT = 0;
+//		totalP = 0;
+//		for(int i = 0; i < 20; i++)
+//		{
+//			totalT = totalT +raw[i];
+//			totalP = totalP +period[i];
+//		}
+//		totalT = totalT/20;
+//		totalP = totalP/20;
+//		if(a != totalT || b != totalP)
+//		{
+//			osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
+//			osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
+//			a = totalT;
+//			b = totalP;
+//		}
     osDelay(1);
   }
   /* USER CODE END StartWeatherTask */
