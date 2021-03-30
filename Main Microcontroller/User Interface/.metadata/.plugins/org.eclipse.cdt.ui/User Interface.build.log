@@ -1,23 +1,16 @@
-12:35:25 **** Incremental Build of configuration Debug for project User Interface ****
+09:54:42 **** Incremental Build of configuration Debug for project User Interface ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'StartProcessingTask':
-../Core/Src/main.c:1676:40: warning: variable 'Web' set but not used [-Wunused-but-set-variable]
-  uint16_t userOverride[3], Weather[2], Web[2];
-                                        ^~~
-../Core/Src/main.c:1676:28: warning: variable 'Weather' set but not used [-Wunused-but-set-variable]
-  uint16_t userOverride[3], Weather[2], Web[2];
-                            ^~~~~~~
-../Core/Src/main.c: In function 'StartWebsiteTask':
-../Core/Src/main.c:1727:10: warning: unused variable 'BufferRX' [-Wunused-variable]
-  uint8_t BufferRX[50];
-          ^~~~~~~~
-../Core/Src/main.c:1726:18: warning: unused variable 'input' [-Wunused-variable]
-  uint16_t water, input;
-                  ^~~~~
-../Core/Src/main.c:1726:11: warning: unused variable 'water' [-Wunused-variable]
-  uint16_t water, input;
-           ^~~~~
+../Core/Src/main.c:1612:11: warning: unused variable 'C' [-Wunused-variable]
+  uint16_t C =0;
+           ^
+../Core/Src/main.c:1611:23: warning: unused variable 'Web' [-Wunused-variable]
+  uint16_t Weather[2], Web[2];
+                       ^~~
+../Core/Src/main.c:1611:11: warning: unused variable 'Weather' [-Wunused-variable]
+  uint16_t Weather[2], Web[2];
+           ^~~~~~~
 arm-none-eabi-gcc -o "User Interface.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\anima\Desktop\ENEL417\Main Microcontroller\User Interface\User Interface\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="User Interface.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: User Interface.elf
  
@@ -25,7 +18,7 @@ arm-none-eabi-objdump -h -S  User\ Interface.elf  > "User Interface.list"
 arm-none-eabi-objcopy  -O binary  User\ Interface.elf  "User Interface.bin"
 arm-none-eabi-size   User\ Interface.elf 
    text	   data	    bss	    dec	    hex	filename
-  37336	     24	  12096	  49456	   c130	User Interface.elf
+  42224	     24	  12152	  54400	   d480	User Interface.elf
 Finished building: default.size.stdout
  
 Finished building: User Interface.bin
@@ -33,5 +26,5 @@ Finished building: User Interface.bin
 Finished building: User Interface.list
  
 
-12:35:26 Build Finished. 0 errors, 5 warnings. (took 938ms)
+09:54:43 Build Finished. 0 errors, 3 warnings. (took 928ms)
 

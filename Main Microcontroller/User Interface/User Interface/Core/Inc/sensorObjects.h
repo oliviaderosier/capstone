@@ -9,7 +9,7 @@
 #define INC_SENSOROBJECTS_H_
 
 #include "main.h"
-
+#include "math.h"
 //Function Prototypes
 void sendBattRequest(uint8_t);
 void sendTempRequest(uint8_t);
@@ -22,8 +22,10 @@ void initializeNodes(void);
 uint8_t verifyChecksum(uint8_t*);
 uint8_t generateChecksum(uint8_t *frame);
 
-uint16_t calcTemp(uint8_t ADC0_19, uint8_t ADC0_20);
-uint16_t calcPercent(uint8_t ADC_A, uint8_t ADC_B);
+void calcTemp(uint8_t, uint8_t, uint8_t*);
+void calcPercent(uint8_t, uint8_t, uint8_t*);
+
+
 
 void toGateway(uint8_t nodeNumber);
 
@@ -37,10 +39,10 @@ uint8_t uartBufferTX[50];
 struct sensorNode {
 	uint8_t address[8];
 
-	uint16_t resistive;
-	uint16_t capacative;
-	uint16_t battery;
-	uint16_t temperature;
+	uint8_t resistive[2];
+	uint8_t capacative[2];
+	uint8_t battery[2];
+	uint8_t temperature[3];
 };
 
 struct sensorNode fairways[36];

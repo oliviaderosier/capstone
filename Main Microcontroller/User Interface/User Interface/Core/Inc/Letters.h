@@ -8,7 +8,7 @@
 #ifndef INC_LETTERS_H_
 #define INC_LETTERS_H_
 #include "main.h"
+//function prototypes
 void letter(char);
-
 
 #endif /* INC_LETTERS_H_ */
