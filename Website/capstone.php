@@ -304,7 +304,7 @@ var hole2 = <?php
 <div id="bulk">
 <div id="header">
 <h1 class="title">Automated Irrigation System Dashboard</h1>
-<h2 class="subtitle">University of Regina Capstone Project 2020</h2>
+<h2 class="subtitle">University of Regina Capstone Project 2021</h2>
 </div>
 
 <div id="curve_chart" class="chart"></div>
