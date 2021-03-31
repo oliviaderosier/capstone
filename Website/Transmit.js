@@ -1,4 +1,4 @@
-
+    //line required to use virtual server
     const axios = require('axios');
 
     (async _ => {
@@ -6,15 +6,15 @@
 
             //rain API
             let resp = await axios.get('http://api.worldweatheronline.com/premium/v1/weather.ashx?key=d1e8c8e0551e4b798d3190230210202&q=Regina&num_of_days=1&format=json&tp=12&mca=no')
-            console.log(resp.data['data']['weather'][0]['hourly'][1]['chanceofrain']); 
+            //console.log(resp.data['data']['weather'][0]['hourly'][1]['chanceofrain']); 
 
             var rain = resp.data['data']['weather'][0]['hourly'][1]['chanceofrain'];
             
-            //set time API
+            //sunset time API
             let resp2 = await axios.get('http://api.openweathermap.org/data/2.5/weather?q=Regina&appid=6676b2af2b110e60dcd8e8d742d5ff8e&units=metric')
-            console.log(resp2.data['sys']['sunset'] * 1000);
+            //console.log(resp2.data['sys']['sunset'] * 1000);
 
-            //time conversion
+            //Unix time conversion to readable time
                 var setTime = resp2.data['sys']['sunset'] * 1000;
                 var setDate = new Date(setTime);
                 setDate.toDateString();
@@ -28,21 +28,22 @@
                 else{
                   var time1 = hours1 + ":"+ minutes1;
                 }
-            console.log(time1);
+            //console.log(time1);
 
             let currentDate = new Date();
             let hours = currentDate.getHours() 
             let minutes = currentDate.getMinutes();
-            console.log(hours + ':' + minutes);
-
+            //console.log(hours + ':' + minutes);
+            
+            //decision logic to send a boolean value whether the sun has set or not
             var sunset;
 
-            if (hours< hours1)
+            if (hours < hours1)
             {
              sunset = 0;
             }
 
-            else if (hours = hours1)
+            else if (hours => hours1)
             {
                 if(minutes < minutes1)
                 {
@@ -55,11 +56,12 @@
                 }
             }
         
+            //signing into digi remote manager
             let userpassword = "olivia.derosier@gmail.com:CAPSTONE!";
             let encodedAuth = Buffer.from(userpassword).toString('base64');
             
             //encoding data
-            let data = rain + "X" + sunset;
+            let data = sunset + rain;
             
             console.log(data);
             
@@ -67,6 +69,7 @@
 
             console.log(encodedData);
     
+            //XML request to send data from digi gateway to Xbee
             const body = `
                 <sci_request version="1.0">
                     <send_message>
@@ -75,7 +78,7 @@
                         </targets>
                         <rci_request version="1.1">
                             <do_command target="xbgw">
-                                <send_serial addr="00:13:A2:00:41:68:0B:D5" encoding="base64">
+                                <send_serial addr="00:13:A2:00:41:68:0B:B9" encoding="base64">
                                     ${encodedData}
                                 </send_serial>
                             </do_command>
@@ -90,7 +93,9 @@
             }
     
             let response = await axios.post("https://remotemanager.digi.com/ws/sci", body, { headers });
-    
+            
+            //printing response data in order to varify transmission, will also
+            //print error message if there is an error with transmission
             console.log(response.data);
         } catch (err) {
             console.log(err)
