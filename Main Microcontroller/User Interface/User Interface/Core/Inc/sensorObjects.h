@@ -27,7 +27,7 @@ void calcPercent(uint8_t, uint8_t, uint8_t*);
 
 
 
-void toGateway(uint8_t nodeNumber);
+void sensorToGateway(uint8_t nodeNumber);
 
 //Global Variables
 uint8_t uartBufferRX[50];

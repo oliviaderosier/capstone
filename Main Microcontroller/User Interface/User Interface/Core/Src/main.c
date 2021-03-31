@@ -1476,7 +1476,7 @@ void StartFlowTask(void *argument)
 		  for(int j =0; j < 20; j++)
 		  {
 			  HAL_TIM_Base_Start(&htim1);
-			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 9830250;
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;
 			  while(total< tickS)
 			  {
 				  F = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);//b7
@@ -1611,14 +1611,13 @@ void StartProcessingTask(void *argument)
   /* USER CODE BEGIN StartProcessingTask */
 
 	initializeNodes();
-	uint16_t Weather[2], Web[2];
-	uint16_t C =0;
+	uint16_t Moisture[3];
+
   /* Infinite loop */
   for(;;)
   {
-	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 100) == HAL_OK)
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 1000) == HAL_OK)
 	 	  	 {
-	 	  		 //HAL_UART_Transmit(&huart1, uartBufferRX, 13, 1000); // send info to Olivia when recieved
 	 	  		 //has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	 	  		 if (uartBufferRX[0] == 0x7E)
 	 	  		 {
@@ -1636,22 +1635,44 @@ void StartProcessingTask(void *argument)
 	 	  				 HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
 	 	  				 break;
 	 	  			 }
+	 	  			 ///green1
+	 	  			fairways[1].capacative[0] -= 0x30;
+	 	  			fairways[1].capacative[1] -= 0x30;
+
+	 	  			Moisture[0] = fairways[1].capacative[0]*10;
+	 	  			Moisture[0] = Moisture[0] + fairways[1].capacative[1];
+	 	  			///green 2
+	 	  			fairways[2].capacative[0] -= 0x30;
+	 	  			fairways[2].capacative[1] -= 0x30;
+
+	 	  			Moisture[1] = fairways[2].capacative[0]*10;
+	 	  			Moisture[1] = Moisture[1] + fairways[2].capacative[1];
+	 	  			/// green 3
+	 	  			fairways[3].capacative[0] -= 0x30;
+	 	  			fairways[3].capacative[1] -= 0x30;
+
+	 	  			Moisture[2] = fairways[3].capacative[0]*10;
+	 	  			Moisture[2] = Moisture[2] + fairways[3].capacative[1];
+
+	 	  			 if(Moisture[0]>= 10)//10 percent is 100 in the initial input
+	 	  			 {
+	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
+	 	  			 }
+
+	 	  			 if(Moisture[1]>= 10)//10 percent is 100 in the initial input
+	 	  			 {
+	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+	 	  			 }
+
+	 	  			 if(Moisture[2]>= 10)//10 percent is 100 in the initial input
+	 	  			 {
+	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
+	 	  			 }
 	 	  		  }
-	 	  		//HAL_UART_Transmit(&huart1, uartBufferRX, 12, 1000);
+	  				 //sensorToGateway(1);
 	 	  	  }
 
-//	  while(osMessageQueueGet(WeatherQueueHandle, &input, NULL, 0U ) == osOK)
-//	  {//when receiving data put it in this array
-//		  Weather[C] = input;
-//		  C++;
-//	  }
-//	  C = 0;
-//	  while(osMessageQueueGet(WebsiteQueueHandle, &input, NULL, 0U ) == osOK)
-//	  {//when receiving data put it in this array
-//		  Web[C] = input;
-//		  C++;
-//	  }
-//	  C = 0;
+//process weather and website data*****************************************************************************************
     osDelay(50);
   }
   /* USER CODE END StartProcessingTask */
@@ -1667,25 +1688,17 @@ void StartProcessingTask(void *argument)
 void StartWebsiteTask(void *argument)
 {
   /* USER CODE BEGIN StartWebsiteTask */
-//	uint16_t water, input;
-	uint8_t BufferRX[50];
+//	uint8_t BufferRX[50];
   /* Infinite loop */
   for(;;)
   {
-//	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
-//	  {//when receiving data put it in this array
-//		  water = water + input;
-//		  HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
-//	  }
-	  if(HAL_UART_Receive(&huart1, BufferRX, 5, 10) == HAL_OK)
-  	  {
-  		web[0]++;
-  		web[1] = BufferRX[0];
-  		web[2] = BufferRX[1];
-  		web[3] = BufferRX[2];
-  		web[4] = BufferRX[3];
-  	  }
-    osDelay(50);
+//	  if(HAL_UART_Receive(&huart1, BufferRX, 2, 300) == HAL_OK)
+//  	  {
+//  		web[0]++;
+//  		web[1] = BufferRX[0];//Sun has set or not
+//  		web[2] = BufferRX[1];//Chance of precipitation
+//  	  }
+    osDelay(1);
   }
   /* USER CODE END StartWebsiteTask */
 }
@@ -1698,6 +1711,13 @@ void StartWebsiteTask(void *argument)
   * @param  htim : TIM handle
   * @retval None
   */
+//	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
+//	  {//when receiving data put it in this array
+//		  water = water + input;
+//		  HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
+//	  }
+//web[3] = BufferRX[2];
+//web[4] = BufferRX[3];
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */

@@ -17,18 +17,18 @@ void initializeNodes()
 	uint8_t i = 0;
 	for (i = 0; i<32; i++)
 	{
-		fairways[i].capacative[0]	= 0;
-		fairways[i].capacative[1]	= 0;
+		fairways[i].capacative[0]	= 0x30;
+		fairways[i].capacative[1]	= 0x30;
 
-		fairways[i].battery[0] 		= 0;
-		fairways[i].battery[1] 		= 0;
+		fairways[i].battery[0] 		= 0x38;
+		fairways[i].battery[1] 		= 0x37;
 
-		fairways[i].resistive[0] 	= 0;
-		fairways[i].resistive[1] 	= 0;
+		fairways[i].resistive[0] 	= 0x30;
+		fairways[i].resistive[1] 	= 0x30;
 
-		fairways[i].temperature[0]	= 0;
-		fairways[i].temperature[1]	= 0;
-		fairways[i].temperature[2]	= 0;
+		fairways[i].temperature[0]	= 0x30;
+		fairways[i].temperature[1]	= 0x30;
+		fairways[i].temperature[2]	= 0x30;
 	}
 
 	for (i= 0; i<8; i++)
@@ -132,17 +132,12 @@ void processIO(uint8_t *ioData)
 				fairways[nodeNumber].resistive[0]	= dataAsASCII[0];
 				fairways[nodeNumber].resistive[1]	= dataAsASCII[1];
 
-				calcPercent(ioData[21], ioData[22], dataAsASCII);
+				calcPercent(ioData[23], ioData[24], dataAsASCII);
 				fairways[nodeNumber].capacative[0]	= dataAsASCII[0];
 				fairways[nodeNumber].capacative[1]	= dataAsASCII[1];
 
 				break;
 				//i = 37; //break the loop. Break would work too but this explicitly breaks the correct loop if i move things.
-			}
-			else
-			{
-				//if a match was not found, just return. Allow this data to be overwritten, we dont know what to do with it anyway
-				return;
 			}
 		}
 	}
@@ -216,20 +211,20 @@ void sensorToGateway(uint8_t nodeNumber)
 
 
         uartBufferTX[0] = 0x7E; //startDelim
-        uartBufferTX[1] = nodeNumber; //startDelim
+        uartBufferTX[1] = (nodeNumber+0x30); //startDelim
         uartBufferTX[2] = fairways[nodeNumber].temperature[0];
         uartBufferTX[3] = fairways[nodeNumber].temperature[1];
         uartBufferTX[4] = fairways[nodeNumber].temperature[2];
-        uartBufferTX[5] = fairways[nodeNumber].capacative[0];
-        uartBufferTX[6] = fairways[nodeNumber].capacative[1];
-        uartBufferTX[7] = fairways[nodeNumber].resistive[0];
-        uartBufferTX[8] = fairways[nodeNumber].resistive[1];
+        uartBufferTX[5] = fairways[nodeNumber].resistive[0];
+        uartBufferTX[6] = fairways[nodeNumber].resistive[1];
+        uartBufferTX[7] = fairways[nodeNumber].capacative[0];
+        uartBufferTX[8] = fairways[nodeNumber].capacative[1];
         uartBufferTX[9] = fairways[nodeNumber].battery[0];
         uartBufferTX[10] = fairways[nodeNumber].battery[1];
-        //uartBufferTX[11] = //Humidity Data
-        //uartBufferTX[12] = //Humidity Data
+        uartBufferTX[11] = 0x39;
+        uartBufferTX[12] = 0x35;
 
-        HAL_UART_Transmit(&huart3, uartBufferTX, 12, 1);
+        HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
 
 return;
 }
@@ -287,37 +282,38 @@ uint8_t generateChecksum(uint8_t *frame)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void calcTemp(uint8_t ADC0_19, uint8_t ADC0_20, uint8_t *threeByteArray)
 {
-	int ADC = ADC0_19*256 + ADC0_20; //wrt real ground, range of 0 (0V) to 1023 (2.5V)
-	int virtualGround = 401;//virtual ground is 981mV: (981/2500)*1023 = 401
+	float ADC = ADC0_19*256 + ADC0_20; //wrt real ground, range of 0 (0V) to 1023 (2.5V)
+	ADC = (ADC/1023)*2.5;
+	int virtualGround = 1;//virtual ground is 1V ish
 	ADC = ADC - virtualGround;//wrt to virtual ground now
-	float voltage = ADC * 2.5; //convert the ADC value to a real voltage
-	voltage = voltage*100; // same as dividing by 0.01 mV/degree
-	int temperature = (int)voltage;//cast into uint16_t
+	ADC = ADC*100; // same as dividing by 0.01 mV/degree
+	int temperature = (int)ADC;//cast into uint16_t
 
 	//we will assume the temperature is in the range of (-99, 99) because if its not, the grass is dead and the sensors dont work anyway
 	if (temperature >= -99 && temperature <=99)
 	{
 		if (temperature <0)
 		{
-			threeByteArray[0] = 1;//1 means negative
+			threeByteArray[0] = 0x31;//1 means negative
+			temperature *= -1;
 		}
 		else
 		{
-			threeByteArray[0] = 0;//0 means positive
+			threeByteArray[0] = 0x30;//0 means positive
 		}
 		threeByteArray[1] = temperature/10; //get the tens digit from 0 to 9
 		threeByteArray[2] = temperature%10; //get the remainder from 0 to 9
 		//turn the values into the hex value representing the ASCII symbol of that digit
 		//^^this sentence is why I will never reccomend digi products
 		//^^because why should I have to do this?
-		threeByteArray[1] += 30;
-		threeByteArray[2] += 30;
+		threeByteArray[1] += 0x30;
+		threeByteArray[2] += 0x30;
 	}
 	else //(The case of righteous fires cleansing the earth or hell froze over)
 	{
-		threeByteArray[0] = 2; //two means buggered Data
-		threeByteArray[0] = 36; //arbitrary
-		threeByteArray[0] = 39; //arbitrary
+		threeByteArray[0] = 0x2; //two means buggered Data
+		threeByteArray[1] = 0x36; //arbitrary
+		threeByteArray[2] = 0x39; //arbitrary
 	}
 
 	return;
@@ -333,8 +329,8 @@ void calcPercent(uint8_t ADC_A, uint8_t ADC_B, uint8_t *threeByteArray)
 	//Deliverable:
 	//The function will convert the ADC value to a percentage based on the available range
 	//then break the percentage down into a two digit int
-	//the two digit int will be sepereated
-	//the seperated values will be replaced by their ascii representations
+	//the two digit int will be separated
+	//the separated values will be replaced by their ascii representations
 
 	float ADC = ADC_A*256 + ADC_B; //wrt real ground, range of 0 (0V) to 1023 (2.5V)
 	ADC = (ADC/1023)*100; //divide by the full range, multiply by 100 to get the percent
@@ -343,8 +339,8 @@ void calcPercent(uint8_t ADC_A, uint8_t ADC_B, uint8_t *threeByteArray)
 	threeByteArray[0] = intADC/10; //get the 10s digit
 	threeByteArray[1] = intADC%10; //get the ones digit
 
-	threeByteArray[0] += 30;//gives the hex value of the ascii representation of the digit
-	threeByteArray[1] += 30;//gives the hex value of the ascii representation of the digit
+	threeByteArray[0] += 0x30;//gives the hex value of the ascii representation of the digit
+	threeByteArray[1] += 0x30;//gives the hex value of the ascii representation of the digit
 
 	return;
 
