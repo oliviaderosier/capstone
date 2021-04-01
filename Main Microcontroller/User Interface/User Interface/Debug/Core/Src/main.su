@@ -23,8 +23,8 @@ main.c:1057:6:error	8	static
 main.c:1098:6:StartXbeeTask	16	static
 main.c:1117:6:StartUserTask	40	static
 main.c:1276:6:StartSolenoidTask	56	static
-main.c:1396:6:StartWeatherTask	120	static
-main.c:1463:6:StartFlowTask	112	static
+main.c:1396:6:StartWeatherTask	104	static
+main.c:1463:6:StartFlowTask	80	static
 main.c:1609:6:StartProcessingTask	24	static
 main.c:1688:6:StartWebsiteTask	16	static
 main.c:1721:6:HAL_TIM_PeriodElapsedCallback	16	static

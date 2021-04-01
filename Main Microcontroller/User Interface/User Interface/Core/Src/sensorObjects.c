@@ -128,11 +128,11 @@ void processIO(uint8_t *ioData)
 				fairways[nodeNumber].temperature[1]	= dataAsASCII[1];
 				fairways[nodeNumber].temperature[2]	= dataAsASCII[2];
 
-				calcPercent(ioData[21], ioData[22], dataAsASCII);
+				calcPercent(ioData[23], ioData[24], dataAsASCII);
 				fairways[nodeNumber].resistive[0]	= dataAsASCII[0];
 				fairways[nodeNumber].resistive[1]	= dataAsASCII[1];
 
-				calcPercent(ioData[23], ioData[24], dataAsASCII);
+				calcPercent(ioData[21], ioData[22], dataAsASCII);
 				fairways[nodeNumber].capacative[0]	= dataAsASCII[0];
 				fairways[nodeNumber].capacative[1]	= dataAsASCII[1];
 

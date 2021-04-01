@@ -1405,49 +1405,49 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		while(Pcount < 20)
-		{
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-			{}
-			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-			{}
-			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-			{}
-			tickend = __HAL_TIM_GET_COUNTER(&htim2);
-			if(tickend > tickstart)
-				period[Pcount] = tickend - tickstart;
-			else
-				period[Pcount] = (65535 - tickstart) + tickend;
-
-			if(period[Pcount]< 1000)
-				Pcount++;
-		}
-
-		for(int i = 0; i < 20; i++)
-		{
-			HAL_ADC_Start(&hadc1);
-			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-			raw[i] = HAL_ADC_GetValue(&hadc1);
-		}
-
-		Pcount = 0;
-		totalT = 0;
-		totalP = 0;
-		for(int i = 0; i < 20; i++)
-		{
-			totalT = totalT +raw[i];
-			totalP = totalP +period[i];
-		}
-		totalT = totalT/20;
-		totalP = totalP/20;
-		if(a != totalT || b != totalP)
-		{
-			//osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
-			//osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
-			a = totalT;
-			b = totalP;
-		}
+//		while(Pcount < 20)
+//		{
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//			{}
+//			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+//			{}
+//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+//			{}
+//			tickend = __HAL_TIM_GET_COUNTER(&htim2);
+//			if(tickend > tickstart)
+//				period[Pcount] = tickend - tickstart;
+//			else
+//				period[Pcount] = (65535 - tickstart) + tickend;
+//
+//			if(period[Pcount]< 1000)
+//				Pcount++;
+//		}
+//
+//		for(int i = 0; i < 20; i++)
+//		{
+//			HAL_ADC_Start(&hadc1);
+//			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+//			raw[i] = HAL_ADC_GetValue(&hadc1);
+//		}
+//
+//		Pcount = 0;
+//		totalT = 0;
+//		totalP = 0;
+//		for(int i = 0; i < 20; i++)
+//		{
+//			totalT = totalT +raw[i];
+//			totalP = totalP +period[i];
+//		}
+//		totalT = totalT/20;
+//		totalP = totalP/20;
+//		if(a != totalT || b != totalP)
+//		{
+//			//osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
+//			//osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
+//			a = totalT;
+//			b = totalP;
+//		}
     osDelay(1);
   }
   /* USER CODE END StartWeatherTask */
@@ -1471,129 +1471,129 @@ void StartFlowTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[0] == 1)
-	  {
-		  for(int j =0; j < 20; j++)
-		  {
-			  HAL_TIM_Base_Start(&htim1);
-			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;
-			  while(total< tickS)
-			  {
-				  F = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);//b7
-				  if(F == 1 && F!=L)
-				  {
-					  C[j]++;
-				  }
-				  L=F;
-				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-				  if (temp < tickL)
-				  {
-					  total = total + temp + (65535 - tickL);
-				  }
-				  else
-				  {
-					  total = total + temp - tickL;
-				  }
-				  tickL = temp;
-			  }
-			  HAL_TIM_Base_Stop(&htim1);
-			  total = 0;
-		  }
-		  for(int j =0; j < 20; j++)
-		  {
-			  f1 = f1 + C[j];
-			  C[j] = 0;
-		  }
-		  f1 = f1 / 100;
-		  Flow[0] = f1;
-		  o[0] = 0;
-	  }
-	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[0] == 0)
-	  {
-		  o[0] = 1;
-	  }
-
-
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 1 && o[1] == 1)
-	  {
-		  for(int j =0; j < 20; j++)
-		  {
-			  HAL_TIM_Base_Start(&htim1);
-			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
-			  while(total < tickS)
-			  {
-				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);//b5
-				  if(F == 1 && F!=L)
-				  {
-					  C[j]++;
-				  }
-				  L=F;
-				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-				  if (temp < tickL)
-					  total = total + temp + (65535 - tickL);
-
-				  else
-					  total = total + temp - tickL;
-
-				  tickL = temp;
-			  }
-			  HAL_TIM_Base_Stop(&htim1);
-			  total = 0;
-		  }
-		  for(int j =0; j < 20; j++)
-		  {
-			  f2 = f2 + C[j];
-			  C[j] = 0;
-		  }
-		  f2 = f2 / 100;
-		  Flow[1] = f2;
-		  o[1] = 0;
-	  }
-	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 0 && o[1] == 0)
-	  {
-		  o[1] = 1;
-	  }
-
-
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[2] == 1)
-	  {
-		  for(int j =0; j < 20; j++)
-		  {
-			  HAL_TIM_Base_Start(&htim1);
-			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
-			  while(total < tickS)
-			  {
-				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//b4
-				  if(F == 1 && F!=L)
-				  {
-					  C[j]++;
-				  }
-				  L=F;
-				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-				  if (temp < tickL)
-					  total = total + temp + (65535 - tickL);
-
-				  else
-					  total = total+ temp - tickL;
-
-				  tickL = temp;
-			  }
-			  HAL_TIM_Base_Stop(&htim1);
-			  total = 0;
-		  }
-		  for(int j =0; j < 20; j++)
-		  {
-			  f1 = f1 + C[j];
-			  C[j] = 0;
-		  }
-		  f3 = f3 / 100;
-		  Flow[2] = f3;
-		  o[2] = 0;
-	  }
-	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[2] == 0)
-	  {
-		  o[2] = 1;
-	  }
+//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[0] == 1)
+//	  {
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  HAL_TIM_Base_Start(&htim1);
+//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;
+//			  while(total< tickS)
+//			  {
+//				  F = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);//b7
+//				  if(F == 1 && F!=L)
+//				  {
+//					  C[j]++;
+//				  }
+//				  L=F;
+//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+//				  if (temp < tickL)
+//				  {
+//					  total = total + temp + (65535 - tickL);
+//				  }
+//				  else
+//				  {
+//					  total = total + temp - tickL;
+//				  }
+//				  tickL = temp;
+//			  }
+//			  HAL_TIM_Base_Stop(&htim1);
+//			  total = 0;
+//		  }
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  f1 = f1 + C[j];
+//			  C[j] = 0;
+//		  }
+//		  f1 = f1 / 100;
+//		  Flow[0] = f1;
+//		  o[0] = 0;
+//	  }
+//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[0] == 0)
+//	  {
+//		  o[0] = 1;
+//	  }
+//
+//
+//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 1 && o[1] == 1)
+//	  {
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  HAL_TIM_Base_Start(&htim1);
+//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
+//			  while(total < tickS)
+//			  {
+//				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);//b5
+//				  if(F == 1 && F!=L)
+//				  {
+//					  C[j]++;
+//				  }
+//				  L=F;
+//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+//				  if (temp < tickL)
+//					  total = total + temp + (65535 - tickL);
+//
+//				  else
+//					  total = total + temp - tickL;
+//
+//				  tickL = temp;
+//			  }
+//			  HAL_TIM_Base_Stop(&htim1);
+//			  total = 0;
+//		  }
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  f2 = f2 + C[j];
+//			  C[j] = 0;
+//		  }
+//		  f2 = f2 / 100;
+//		  Flow[1] = f2;
+//		  o[1] = 0;
+//	  }
+//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 0 && o[1] == 0)
+//	  {
+//		  o[1] = 1;
+//	  }
+//
+//
+//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[2] == 1)
+//	  {
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  HAL_TIM_Base_Start(&htim1);
+//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
+//			  while(total < tickS)
+//			  {
+//				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//b4
+//				  if(F == 1 && F!=L)
+//				  {
+//					  C[j]++;
+//				  }
+//				  L=F;
+//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+//				  if (temp < tickL)
+//					  total = total + temp + (65535 - tickL);
+//
+//				  else
+//					  total = total+ temp - tickL;
+//
+//				  tickL = temp;
+//			  }
+//			  HAL_TIM_Base_Stop(&htim1);
+//			  total = 0;
+//		  }
+//		  for(int j =0; j < 20; j++)
+//		  {
+//			  f1 = f1 + C[j];
+//			  C[j] = 0;
+//		  }
+//		  f3 = f3 / 100;
+//		  Flow[2] = f3;
+//		  o[2] = 0;
+//	  }
+//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[2] == 0)
+//	  {
+//		  o[2] = 1;
+//	  }
 	  osDelay(1);
   }
   /* USER CODE END StartFlowTask */
@@ -1616,7 +1616,7 @@ void StartProcessingTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 1000) == HAL_OK)
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 300) == HAL_OK)
 	 	  	 {
 	 	  		 //has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
 	 	  		 if (uartBufferRX[0] == 0x7E)
@@ -1632,7 +1632,7 @@ void StartProcessingTask(void *argument)
 	 	  				 break;
 
 	 	  			 default://if it wasnt an expected data type just throw it out
-	 	  				 HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 1000);
+	 	  				 HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 400);
 	 	  				 break;
 	 	  			 }
 	 	  			 ///green1
@@ -1654,17 +1654,17 @@ void StartProcessingTask(void *argument)
 	 	  			Moisture[2] = fairways[3].capacative[0]*10;
 	 	  			Moisture[2] = Moisture[2] + fairways[3].capacative[1];
 
-	 	  			 if(Moisture[0]>= 10)//10 percent is 100 in the initial input
-	 	  			 {
-	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
-	 	  			 }
-
-	 	  			 if(Moisture[1]>= 10)//10 percent is 100 in the initial input
+	 	  			 if(Moisture[0] <= 40)//10 percent is 100 in the initial input
 	 	  			 {
 	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
 	 	  			 }
 
-	 	  			 if(Moisture[2]>= 10)//10 percent is 100 in the initial input
+	 	  			 if(Moisture[1]<= 40)//10 percent is 100 in the initial input
+	 	  			 {
+	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
+	 	  			 }
+
+	 	  			 if(Moisture[2]<= 40)//10 percent is 100 in the initial input
 	 	  			 {
 	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
 	 	  			 }
@@ -1673,7 +1673,7 @@ void StartProcessingTask(void *argument)
 	 	  	  }
 
 //process weather and website data*****************************************************************************************
-    osDelay(50);
+    osDelay(150);
   }
   /* USER CODE END StartProcessingTask */
 }
