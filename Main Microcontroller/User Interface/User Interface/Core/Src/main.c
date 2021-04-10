@@ -87,13 +87,6 @@ const osThreadAttr_t FlowTask_attributes = {
   .priority = (osPriority_t) osPriorityAboveNormal5,
   .stack_size = 128 * 4
 };
-/* Definitions for ProcessingTask */
-osThreadId_t ProcessingTaskHandle;
-const osThreadAttr_t ProcessingTask_attributes = {
-  .name = "ProcessingTask",
-  .priority = (osPriority_t) osPriorityAboveNormal6,
-  .stack_size = 128 * 4
-};
 /* Definitions for WebsiteTask */
 osThreadId_t WebsiteTaskHandle;
 const osThreadAttr_t WebsiteTask_attributes = {
@@ -137,8 +130,9 @@ uint8_t UserInfo[4] = {0,0,0,0};
 uint16_t Water[3] = {0,0,0};
 uint16_t Flow[3] = {0,0,0};
 uint8_t web[5] = {0,0,0,0,0};
-uint16_t Temperature;
-uint16_t Humidity;
+uint8_t rain;
+double Temperature;
+double Humidity;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -154,7 +148,6 @@ void StartUserTask(void *argument);
 void StartSolenoidTask(void *argument);
 void StartWeatherTask(void *argument);
 void StartFlowTask(void *argument);
-void StartProcessingTask(void *argument);
 void StartWebsiteTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -172,6 +165,7 @@ void quit(void);
 void onOffTime(void);
 void onOff(void);
 void error(void);
+void calcRain(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -269,9 +263,6 @@ int main(void)
 
   /* creation of FlowTask */
   FlowTaskHandle = osThreadNew(StartFlowTask, NULL, &FlowTask_attributes);
-
-  /* creation of ProcessingTask */
-  ProcessingTaskHandle = osThreadNew(StartProcessingTask, NULL, &ProcessingTask_attributes);
 
   /* creation of WebsiteTask */
   WebsiteTaskHandle = osThreadNew(StartWebsiteTask, NULL, &WebsiteTask_attributes);
@@ -648,7 +639,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void commandToLCD(void)
+void commandToLCD(void)// Send configuration data to my LCD
 {
 	HAL_Delay(20);
 
@@ -706,7 +697,7 @@ void commandToLCD(void)
 	while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == 1)
 	{}
 }
-void printPassword(void)
+void printPassword(void)// print out "Password:" on LCD
 {
 
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
@@ -721,7 +712,7 @@ void printPassword(void)
 	letter('d');
 	letter(':');
 }
-void line1(void)
+void line1(void)// set cursor to line 1 on LCD
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);//RS low
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -739,7 +730,7 @@ void line1(void)
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);//E low
 	HAL_Delay(5);
 }
-void line2(void)
+void line2(void)// set cursor to line 2 on LCD
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);//RS low
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -757,7 +748,7 @@ void line2(void)
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);//E low
 	HAL_Delay(5);
 }
-void clear()
+void clear()// clear LCD screen
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);//RS low
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -775,7 +766,7 @@ void clear()
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); //E low
 	HAL_Delay(5);
 }
-void correct()
+void correct()// print out "Correct!"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -788,15 +779,15 @@ void correct()
 	letter('t');
 	letter('!');
 }
-int getVal(void)
+int getVal(void)// get input value from keypad
 {
 	int count = 0;
 	int val=0;
-	while(count<1)
+	while(count<1)//while we don't have a value count is below 1
 	{
 
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);//ROW1
-
+	  	  	  	  	  	  	  	  	  	  	  	  	  //check for top row values 1,2,3
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
 		  letter('1');
@@ -807,6 +798,7 @@ int getVal(void)
 		  val = 1;
 		  count++;
 	  }
+	  	  	  	  	  //check for top row values 1,2,3
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
 		  letter('2');
@@ -817,6 +809,7 @@ int getVal(void)
 		  val = 2;
 		  count++;
 	  }
+	  	  	  	  	  //check for top row values 1,2,3
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
 		  letter('3');
@@ -830,6 +823,7 @@ int getVal(void)
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
 	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 1);//ROW2
 
+	  	  	  	  	  //check for second row values 4,5,6
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
 		  letter('4');
@@ -840,6 +834,7 @@ int getVal(void)
 		  val = 4;
 		  count++;
 	  }
+	  	  	  	  	  //check for second row values 4,5,6
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
 		  letter('5');
@@ -850,6 +845,7 @@ int getVal(void)
 		  val = 5;
 		  count++;
 	  }
+	  	  	  	  	  //check for second row values 4,5,6
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
 		  letter('6');
@@ -863,7 +859,7 @@ int getVal(void)
 
 	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 1);//ROW3
-
+  	  	  	  	  	  //check for third row values 7,8,9
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
 		  letter('7');
@@ -874,6 +870,7 @@ int getVal(void)
 		  val = 7;
 		  count++;
 	  }
+	  	  	  	  	  //check for third row values 7,8,9
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
 		  letter('8');
@@ -884,6 +881,7 @@ int getVal(void)
 		  val = 8;
 		  count++;
 	  }
+	  	  	  	  	  //check for third row values 7,8,9
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
 		  letter('9');
@@ -897,7 +895,7 @@ int getVal(void)
 
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, 0);//ROW3
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);//ROW4
-
+	  	  	  	  	  	  //check for fourth row values *,0,#
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2) == 1)//COL1
 	  {
 		  letter('*');
@@ -908,6 +906,7 @@ int getVal(void)
 		  val = 10;
 		  count++;
 	  }
+	  	  	  	  	  	  //check for fourth row values *,0,#
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 1)//COL2
 	  {
 		  letter('0');
@@ -918,6 +917,7 @@ int getVal(void)
 		  val = 0;
 		  count++;
 	  }
+	  	  	  	  	  	  //check for fourth row values *,0,#
 	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 1)//COL3
 	  {
 		  letter('#');
@@ -931,10 +931,30 @@ int getVal(void)
 
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);//ROW3
 	}
-	//osDelay(1);
 	return val;
 }
-void wrongPass(void)
+void calcRain(void)//decides if it will rain or not
+{
+	double Dewpoint = 0, n = 0, temp;
+	temp = (17.27*Temperature)/(237.3+Temperature);
+	n = (log(Humidity/100) + temp);
+	Dewpoint = (237.3*n)/(1-n);
+	if(Humidity >= 70)
+	{
+		temp = Dewpoint/0.926316;
+		if (temp <= Humidity && Humidity >= 85)//rain is coming if its expected and the cop is greater than 70%
+		{
+			if(web[2] >= 7 )//if COP is greater than 70%
+			{
+				rain = 1;
+			}
+		}
+		else
+			rain = 0;
+	}
+
+}
+void wrongPass(void)//Print Wrong Password on entry of wrong password
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -953,7 +973,7 @@ void wrongPass(void)
 	letter('r');
 	letter('d');
 }
-void green(void)
+void green(void)//Print "Green 1-3:"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -970,7 +990,7 @@ void green(void)
 
 }
 
-void timer(void)
+void timer(void)//Print "Time 00-60min:"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -992,7 +1012,7 @@ void timer(void)
 
 }
 
-void quit(void)
+void quit(void)//Print "Quit? yes-1 no-0:"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -1015,7 +1035,7 @@ void quit(void)
 	letter('0');
 	line2();
 }
-void onOffTime(void)
+void onOffTime(void)//Print "0-on/off 1-Timer"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -1037,7 +1057,7 @@ void onOffTime(void)
 	letter('r');
 	line2();
 }
-void onOff(void)
+void onOff(void)//Print "0-on 1-off:"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -1054,7 +1074,7 @@ void onOff(void)
 	letter(':');
 
 }
-void error(void)
+void error(void)// Print "Error, Invalid Number"
 {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);//RS high
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);//R/W low
@@ -1098,10 +1118,67 @@ void error(void)
 void StartXbeeTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+	initializeNodes();
+	uint16_t Moisture[3] = {100, 100, 100};
   /* Infinite loop */
 
   for(;;)
   {
+	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 300) == HAL_OK)
+	  {
+		 //has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
+		  if (uartBufferRX[0] == 0x7E)
+		  {
+			  switch (uartBufferRX[3])
+			  {
+			  case 0x92:
+				  processIO(uartBufferRX);
+				  break;
+
+			  case 0x97:
+				  processATResponse(uartBufferRX);
+				  break;
+
+			  default://if it wasnt an expected data type just throw it out
+				  HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 400);
+				  break;
+			  }
+			  ///green1
+			  fairways[1].capacative[0] -= 0x30;// set moisture levels for each green and check to see if they're too high
+			  fairways[1].capacative[1] -= 0x30;
+
+			  Moisture[0] = fairways[1].capacative[0]*10;
+			  Moisture[0] = Moisture[0] + fairways[1].capacative[1];
+			  ///green 2
+			  fairways[2].capacative[0] -= 0x30;
+			  fairways[2].capacative[1] -= 0x30;
+
+			  Moisture[1] = fairways[2].capacative[0]*10;
+			  Moisture[1] = Moisture[1] + fairways[2].capacative[1];
+			  /// green 3
+			  fairways[3].capacative[0] -= 0x30;
+			  fairways[3].capacative[1] -= 0x30;
+
+			  Moisture[2] = fairways[3].capacative[0]*10;
+			  Moisture[2] = Moisture[2] + fairways[3].capacative[1];
+		  }
+		  sensorToGateway(1);
+	  }
+	  //check to see if moisture levels are too high
+	  if(Moisture[0] <= 40)//40 percent is 100 in the initial input
+	  {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+	  }
+
+	  if(Moisture[1]<= 40)//40 percent is 100 in the initial input
+	  {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
+	  }
+
+	  if(Moisture[2]<= 40)//40 percent is 100 in the initial input
+	  {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
+	  }
 	  osDelay(1);
   }
   /* USER CODE END 5 */
@@ -1123,7 +1200,7 @@ void StartUserTask(void *argument)
 
   for(;;)
   {
-	commandToLCD();
+	commandToLCD();//reset LCD
 	printPassword();
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);//ROW1
 	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, 0);//ROW2
@@ -1136,129 +1213,129 @@ void StartUserTask(void *argument)
 	}
 	if(num[0] == 2 && num[1] == 2 && num[2] == 2 && num[3] == 2)
 	{
-		clear();
-		line1();
-		correct();
+		clear();//clear screen
+		line1();// set cursor to line 1
+		correct();// after correct password entry
 		HAL_Delay(1500);
-		num[6] = 0;
+		num[6] = 0;//set quit variable for start
 		while(num[6] == 0)
 		{
-			commandToLCD();
-			onOffTime();
+			commandToLCD();//reset LCD
+			onOffTime();//on/off or timer
 			num[0] = getVal();
 			while(num[0]< 0 || num[0] > 1)
 			{
-				commandToLCD();
-				error();
+				commandToLCD();//reset LCD
+				error();//error invalid entry
 				HAL_Delay(1500);
-				commandToLCD();
-				onOffTime();
+				commandToLCD();//reset LCD
+				onOffTime();//on/off or timer
 				num[0] = getVal();
 			}
-			if(num[0] == 0)
+			if(num[0] == 0)//on/off selected
 			{
 				m = 1;
-				commandToLCD();
-				green();
+				commandToLCD();//reset LCD
+				green();//enter green
 				num[0] = getVal();
 				while(num[0]< 1 || num[0] > 3)
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid entry
 					HAL_Delay(1500);
-					commandToLCD();
+					commandToLCD();//reset LCD
 					green();
 					num[0] = getVal();
 				}
 				indc = num[0];
 				line2();
-				onOff();
+				onOff();//enter value for on or off
 				num[0] = getVal();
 				while(num[0]< 0 || num[0] > 1)
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid entry
 					HAL_Delay(1500);
-					commandToLCD();
-					onOff();
+					commandToLCD();//reset LCD
+					onOff();//enter value for on or off
 					num[0] = getVal();
 				}
-				UserInfo[1] = m;
+				UserInfo[1] = m;//enter new user input data
 				UserInfo[2] = indc;
 				UserInfo[3] = num[0];
 				UserInfo[0]++;
 
 				clear();
-				quit();
+				quit();//quit?
 				num[5] = getVal();
 				while(num[5]< 0 || num[5] > 1)
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid entry
 					HAL_Delay(1500);
-					commandToLCD();
+					commandToLCD();//reset LCD
 					quit();
 					num[5] = getVal();
 				}
 			}
-			else if(num[0] == 1)
+			else if(num[0] == 1)//timer
 			{
 				m = 2;
-				commandToLCD();
-				green();
+				commandToLCD();//reset LCD
+				green();//get green
 				num[0] = getVal();
 				while(num[0]< 1 || num[0] > 3)
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid entry
 					HAL_Delay(1500);
-					commandToLCD();
+					commandToLCD();//reset LCD
 					green();
 					num[0] = getVal();
 				}
-				indc = num[0];
+				indc = num[0];//set green
 				line2();
 				timer();
-				num[0] = getVal();
+				num[0] = getVal();//get time
 				num[1] = getVal();
 				while(num[0]< 0 || num[0] > 6 || num[1]< 0 || num[1] > 9 || (num[0]==6 && num[1]!=0))
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid entry
 					HAL_Delay(1500);
-					commandToLCD();
+					commandToLCD();//reset LCD
 					timer();
-					num[0] = getVal();
+					num[0] = getVal();//get time
 					num[1] = getVal();
 				}
-				UserInfo[1] = m;
+				UserInfo[1] = m;//set input data
 				UserInfo[2] = indc;
 				UserInfo[3] = num[0];
 				UserInfo[0] ++;
 
-				clear();
-				quit();
-				num[5] = getVal();
+				clear();//clear screen
+				quit();//quit?
+				num[5] = getVal();//get input
 				while(num[5]< 0 || num[5] > 1)
 				{
-					commandToLCD();
-					error();
+					commandToLCD();//reset LCD
+					error();//error invalid value
 					HAL_Delay(1500);
-					commandToLCD();
-					quit();
-					num[5] = getVal();
+					commandToLCD();//reset LCD
+					quit();//quit?
+					num[5] = getVal();//get input
 				}
 			}
 			if(num[5] == 1)
 			{
-				num[6] = 5;
+				num[6] = 5;//quit else go back to options
 			}
 		}
 	}
 	else
 	{
 		line2();
-		wrongPass();
+		wrongPass();//error wrong password
 		HAL_Delay(2000);
 	}
 	osDelay(1);
@@ -1282,8 +1359,8 @@ void StartSolenoidTask(void *argument)
 
   for(;;)
   {
-	  while((timT[0] < timF[0]) && (timT[1] < timF[1]) && (timT[2] < timF[2]))
-	  {
+	  while((timT[0] < timF[0]) && (timT[1] < timF[1]) && (timT[2] < timF[2]) && (rain == 0) && (web[1] == 1))//run all the time if any timer elapses leave
+	  {//loop and turn off solenoid then come back in and continue timing also only run while not anticipating rain and after dark
 
 		  if(UserInfo[0] > b)//collecting new values
 		  {
@@ -1300,86 +1377,104 @@ void StartSolenoidTask(void *argument)
 			  {
 				  timF[UserInfo[2]-1] = UserInfo[3];//set final time
 				  timS[UserInfo[2]-1] =__HAL_TIM_GET_COUNTER(&htim2);
-				  if(UserInfo[2] == 1)//green one one
+				  if(UserInfo[2] == 1)//green one on
+				  {
 					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
+					  timS[0] = __HAL_TIM_GET_COUNTER(&htim2);
+				  }
 				  else if(UserInfo[2] == 2)//green two on
+				  {
 					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+					  timS[1] = __HAL_TIM_GET_COUNTER(&htim2);
+				  }
 				  else if(UserInfo[2] == 3)//green three on
+				  {
 					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
+					  timS[2] = __HAL_TIM_GET_COUNTER(&htim2);
+				  }
 			  }
-			  UserInfo[0]--;
+			  UserInfo[0]--;//reset new info check
 		  }
 		  //running timers if we have a time set for any solenoid
 		  if(timF[0] != 10)
 		  {
-			  if(timS[0] != 0)
+			  if(timS[0] != 0)//if start value isn't in reset state
 			  {
 				  timF[0] = timF[0] + timS[0];
-				  timS[0] = 0;
+				  timS[0] = 0;//set start time to reset state now
 			  }
 			  temp = __HAL_TIM_GET_COUNTER(&htim2);
 			  if(temp<L[0])
-				  timT[0] = timT[0] + temp + 65535 - L[0];
+				  timT[0] = timT[0] + temp + 65535 - L[0];// if timer rolled over calc total time now
 
 			  else
-				  timT[0] = timT[0] + (temp - L[0]);
+				  timT[0] = timT[0] + (temp - L[0]);// if timer didn't roll over calc total time now
 			  L[0] = temp;
 		  }
 		  else if(timF[1] != 10)
 		  {
-			  if(timS[1] != 0)
+			  if(timS[1] != 0)//if start value isn't in reset state
 			  {
 				  timF[1] = timF[1] + timS[1];
-				  timS[1] = 0;
+				  timS[1] = 0;//set start time to reset state now
 			  }
 			  temp = __HAL_TIM_GET_COUNTER(&htim2);
 			  if(temp<L[1])
-				  timT[1] = timT[1] + temp + 65535 - L[1];
+				  timT[1] = timT[1] + temp + 65535 - L[1];// if timer rolled over calc total time now
 
 			  else
-				  timT[1] = timT[1] + (temp - L[1]);
+				  timT[1] = timT[1] + (temp - L[1]);// if timer didn't roll over calc total time now
 			  L[1] = temp;
 		  }
 		  else if(timF[2] != 10)
 		  {
-			  if(timS[2] != 0)
+			  if(timS[2] != 0)//if start value isn't in reset state
 			  {
 				  timF[2] = timF[2] + timS[2];
-				  timS[2] = 0;
+				  timS[2] = 0;//set start time to reset state now
 			  }
 			  temp = __HAL_TIM_GET_COUNTER(&htim2);
 			  if(temp<L[2])
-				  timT[2] = timT[2] + temp + 65535 - L[2];
+				  timT[2] = timT[2] + temp + 65535 - L[2];// if timer rolled over calc total time now
 
 			  else
-				  timT[2] = timT[2] + (temp - L[2]);
+				  timT[2] = timT[2] + (temp - L[2]);// if timer didn't roll over calc total time now
 			  L[2] = temp;
 		  }
 		  else
-			  timT[0] = 11;
+			  timT[0] = 11;//reset for no timer
 	  }
 
 
-	  if(timT[0] == 11)
+	  if(timT[0] == 11)// if infinite loop reset timer and head back int while loop this way we get an OS delay every time
 		  timT[0] = 0;
 
-	  if(timT[0] >= timF[0])
+	  if(timT[0] >= timF[0])//reset solenoid 1 timings
 	  {
 			Water[0] = Flow[0] * timT[0];
 			timT[0] = 0;
 			timF[0] = 10;
+			liters[0] = Water[0] + Water[1] + Water[2];//set total water used
+			liters[1] = (liters[0]%10) + 0x30;
+			liters[0] = (liters[0]/10) + 0x30;
 	  }
-	  if(timT[1] >= timF[1])
+	  if(timT[1] >= timF[1])//reset solenoid 2 timings
 	  {
 			Water[1] = Flow[1] * timT[1];
 			timT[1] = 0;
 			timF[1] = 10;
+			liters[0] = Water[0] + Water[1] + Water[2];//set total water used
+			liters[1] = (liters[0]%10) + 0x30;
+			liters[0] = (liters[0]/10) + 0x30;
 	  }
-	  if(timT[2] >= timF[2])
+	  if(timT[2] >= timF[2])//reset solenoid 3 timings
 	  {
 			Water[2] = Flow[2] * timT[2];
 			timT[2] = 0;
 			timF[2] = 10;
+			liters[0] = Water[0] + Water[1] + Water[2];//set total water used
+			liters[1] = (liters[0]%10) + 0x30;
+			liters[0] = (liters[0]/10) + 0x30;
 	  }
 	  osDelay(1);
   }
@@ -1405,49 +1500,50 @@ void StartWeatherTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-//		while(Pcount < 20)
-//		{
-//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-//			{}
-//			tickstart = __HAL_TIM_GET_COUNTER(&htim2);
-//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
-//			{}
-//			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
-//			{}
-//			tickend = __HAL_TIM_GET_COUNTER(&htim2);
-//			if(tickend > tickstart)
-//				period[Pcount] = tickend - tickstart;
-//			else
-//				period[Pcount] = (65535 - tickstart) + tickend;
-//
-//			if(period[Pcount]< 1000)
-//				Pcount++;
-//		}
-//
-//		for(int i = 0; i < 20; i++)
-//		{
-//			HAL_ADC_Start(&hadc1);
-//			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-//			raw[i] = HAL_ADC_GetValue(&hadc1);
-//		}
-//
-//		Pcount = 0;
-//		totalT = 0;
-//		totalP = 0;
-//		for(int i = 0; i < 20; i++)
-//		{
-//			totalT = totalT +raw[i];
-//			totalP = totalP +period[i];
-//		}
-//		totalT = totalT/20;
-//		totalP = totalP/20;
-//		if(a != totalT || b != totalP)
-//		{
-//			//osMessageQueuePut(WeatherQueueHandle, &totalT, 1U, 0U);
-//			//osMessageQueuePut(WeatherQueueHandle, &totalP, 1U, 0U);
-//			a = totalT;
-//			b = totalP;
-//		}
+		while(Pcount < 20)// get 20 readings of Relative humidity at a time
+		{
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+			{}
+			tickstart = __HAL_TIM_GET_COUNTER(&htim2);//on a 1 input measure a period
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 1)
+			{}
+			while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == 0)
+			{}
+			tickend = __HAL_TIM_GET_COUNTER(&htim2);//end the period measurement after getting a 1 again
+			if(tickend > tickstart)
+				period[Pcount] = tickend - tickstart;
+			else
+				period[Pcount] = (65535 - tickstart) + tickend;
+
+			if(period[Pcount]< 1000)
+				Pcount++;
+		}// now with at least 20 readings of frequency
+		 //get temperature value
+		for(int i = 0; i < 20; i++)
+		{
+			HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+			raw[i] = HAL_ADC_GetValue(&hadc1);
+		}
+
+		Pcount = 0;//reset counters and total values for entry of new totals
+		totalT = 0;
+		totalP = 0;
+		for(int i = 0; i < 20; i++)
+		{
+			totalT = totalT +raw[i];
+			totalP = totalP +period[i];
+		}
+		totalT = totalT/20;
+		totalP = totalP/20;//find average value after 20 readings of each
+		if(a != totalT || b != totalP)//check to make sure there is a new value being entered
+		{
+			Temperature = totalT;//assign values to variable if new
+			Humidity = totalP;
+			calcRain();
+			a = totalT;//assign check variables looking for new data
+			b = totalP;
+		}
     osDelay(1);
   }
   /* USER CODE END StartWeatherTask */
@@ -1471,211 +1567,132 @@ void StartFlowTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[0] == 1)
-//	  {
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  HAL_TIM_Base_Start(&htim1);
-//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;
-//			  while(total< tickS)
-//			  {
-//				  F = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);//b7
-//				  if(F == 1 && F!=L)
-//				  {
-//					  C[j]++;
-//				  }
-//				  L=F;
-//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-//				  if (temp < tickL)
-//				  {
-//					  total = total + temp + (65535 - tickL);
-//				  }
-//				  else
-//				  {
-//					  total = total + temp - tickL;
-//				  }
-//				  tickL = temp;
-//			  }
-//			  HAL_TIM_Base_Stop(&htim1);
-//			  total = 0;
-//		  }
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  f1 = f1 + C[j];
-//			  C[j] = 0;
-//		  }
-//		  f1 = f1 / 100;
-//		  Flow[0] = f1;
-//		  o[0] = 0;
-//	  }
-//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[0] == 0)
-//	  {
-//		  o[0] = 1;
-//	  }
-//
-//
-//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 1 && o[1] == 1)
-//	  {
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  HAL_TIM_Base_Start(&htim1);
-//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
-//			  while(total < tickS)
-//			  {
-//				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);//b5
-//				  if(F == 1 && F!=L)
-//				  {
-//					  C[j]++;
-//				  }
-//				  L=F;
-//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-//				  if (temp < tickL)
-//					  total = total + temp + (65535 - tickL);
-//
-//				  else
-//					  total = total + temp - tickL;
-//
-//				  tickL = temp;
-//			  }
-//			  HAL_TIM_Base_Stop(&htim1);
-//			  total = 0;
-//		  }
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  f2 = f2 + C[j];
-//			  C[j] = 0;
-//		  }
-//		  f2 = f2 / 100;
-//		  Flow[1] = f2;
-//		  o[1] = 0;
-//	  }
-//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 0 && o[1] == 0)
-//	  {
-//		  o[1] = 1;
-//	  }
-//
-//
-//	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[2] == 1)
-//	  {
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  HAL_TIM_Base_Start(&htim1);
-//			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 327675;// needs an adjustment for correct timing**********
-//			  while(total < tickS)
-//			  {
-//				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//b4
-//				  if(F == 1 && F!=L)
-//				  {
-//					  C[j]++;
-//				  }
-//				  L=F;
-//				  temp = __HAL_TIM_GET_COUNTER(&htim1);
-//				  if (temp < tickL)
-//					  total = total + temp + (65535 - tickL);
-//
-//				  else
-//					  total = total+ temp - tickL;
-//
-//				  tickL = temp;
-//			  }
-//			  HAL_TIM_Base_Stop(&htim1);
-//			  total = 0;
-//		  }
-//		  for(int j =0; j < 20; j++)
-//		  {
-//			  f1 = f1 + C[j];
-//			  C[j] = 0;
-//		  }
-//		  f3 = f3 / 100;
-//		  Flow[2] = f3;
-//		  o[2] = 0;
-//	  }
-//	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[2] == 0)
-//	  {
-//		  o[2] = 1;
-//	  }
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[0] == 1)//if solenoid 1 is running and we haven't already measured its flow
+	  {
+		  for(int j =0; j < 20; j++)//measure 20 flow values
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;//get start time add total time to be measured, 65535 ticks per sec*15s = 983025
+			  while(total< tickS)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);//solenoid b7 is this sensors
+				  if(F == 1 && F!=L)//if signal changed
+				  {
+					  C[j]++;//add to count
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);//if timer roll over, increment timer
+				  else
+					  total = total + temp - tickL;//if no timer roll over increment timer
+
+				  tickL = temp;//reset timer roll over check value
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  f1 =0;
+		  for(int j =0; j < 20; j++)// average all 20 flow rates
+		  {
+			  f1 = f1 + C[j];
+			  C[j] = 0;
+		  }
+		  f1 = f1 / 100;
+		  Flow[0] = f1;//set flow rate
+		  o[0] = 0;
+	  }
+	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[0] == 0)//if solenoid 1 is off and we already measured flow rate
+	  {
+		  o[0] = 1;//meaning this watering is done and we have flow rate so reset check flag
+	  }
+
+
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 1 && o[1] == 1)//if solenoid 2 is running and we haven't already measured its flow
+	  {
+		  for(int j =0; j < 20; j++)//measure 20 flow values
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;//get start time add total time to be measured, 65535 ticks per sec*15s = 983025
+			  while(total < tickS)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);//solenoid b5 is this sensors
+				  if(F == 1 && F!=L)//if signal changed
+				  {
+					  C[j]++;//add one to count
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);//if timer roll over, increment timer
+
+				  else
+					  total = total + temp - tickL;//if no timer roll over increment timer
+
+				  tickL = temp;//reset timer roll over check value
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  f2 = 0;
+		  for(int j =0; j < 20; j++)// average all 20 flow rates
+		  {
+			  f2 = f2 + C[j];
+			  C[j] = 0;
+		  }
+		  f2 = f2 / 100;
+		  Flow[1] = f2;//set flow rate
+		  o[1] = 0;
+	  }
+	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) == 0 && o[1] == 0)//if solenoid 2 is off and we already measured flow rate
+	  {
+		  o[1] = 1;//meaning this watering is done and we have flow rate so reset check flag
+	  }
+
+
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 1 && o[2] == 1)//if solenoid 3 is running and we haven't already measured its flow
+	  {
+		  for(int j =0; j < 20; j++)//measure 20 flow values
+		  {
+			  HAL_TIM_Base_Start(&htim1);
+			  tickS = __HAL_TIM_GET_COUNTER(&htim1) + 983025;//get start time add total time to be measured, 65535 ticks per sec*15s = 983025
+			  while(total < tickS)
+			  {
+				  F = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);//solenoid b4 is this sensors
+				  if(F == 1 && F!=L)//if signal changed
+				  {
+					  C[j]++;//add one to count
+				  }
+				  L=F;
+				  temp = __HAL_TIM_GET_COUNTER(&htim1);
+				  if (temp < tickL)
+					  total = total + temp + (65535 - tickL);//if timer roll over, increment timer
+
+				  else
+					  total = total+ temp - tickL;//if no timer roll over increment timer
+
+				  tickL = temp;//reset timer roll over check value
+			  }
+			  HAL_TIM_Base_Stop(&htim1);
+			  total = 0;
+		  }
+		  f3 = 0;
+		  for(int j =0; j < 20; j++)// average all 20 flow rates
+		  {
+			  f3 = f3 + C[j];
+			  C[j] = 0;
+		  }
+		  f3 = f3 / 100;
+		  Flow[2] = f3;//set flow rate
+		  o[2] = 0;
+	  }
+	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == 0 && o[2] == 0)//if solenoid 2 is off and we already measured flow rate
+	  {
+		  o[2] = 1;//meaning this watering is done and we have flow rate so reset check flag
+	  }
 	  osDelay(1);
   }
   /* USER CODE END StartFlowTask */
-}
-
-/* USER CODE BEGIN Header_StartProcessingTask */
-/**
-* @brief Function implementing the ProcessingTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartProcessingTask */
-void StartProcessingTask(void *argument)
-{
-  /* USER CODE BEGIN StartProcessingTask */
-
-	initializeNodes();
-	uint16_t Moisture[3];
-
-  /* Infinite loop */
-  for(;;)
-  {
-	  if(HAL_UART_Receive(&huart3, uartBufferRX, 26, 300) == HAL_OK)
-	 	  	 {
-	 	  		 //has to stay with main (the file where the "UART_HandleTypeDef huart3;" is)
-	 	  		 if (uartBufferRX[0] == 0x7E)
-	 	  		 {
-	 	  			 switch (uartBufferRX[3])
-	 	  			 {
-	 	  			 case 0x92:
-	 	  				 processIO(uartBufferRX);
-	 	  				 break;
-
-	 	  			 case 0x97:
-	 	  				 processATResponse(uartBufferRX);
-	 	  				 break;
-
-	 	  			 default://if it wasnt an expected data type just throw it out
-	 	  				 HAL_UART_Receive(&huart3, &uartBufferRX[0], 26, 400);
-	 	  				 break;
-	 	  			 }
-	 	  			 ///green1
-	 	  			fairways[1].capacative[0] -= 0x30;
-	 	  			fairways[1].capacative[1] -= 0x30;
-
-	 	  			Moisture[0] = fairways[1].capacative[0]*10;
-	 	  			Moisture[0] = Moisture[0] + fairways[1].capacative[1];
-	 	  			///green 2
-	 	  			fairways[2].capacative[0] -= 0x30;
-	 	  			fairways[2].capacative[1] -= 0x30;
-
-	 	  			Moisture[1] = fairways[2].capacative[0]*10;
-	 	  			Moisture[1] = Moisture[1] + fairways[2].capacative[1];
-	 	  			/// green 3
-	 	  			fairways[3].capacative[0] -= 0x30;
-	 	  			fairways[3].capacative[1] -= 0x30;
-
-	 	  			Moisture[2] = fairways[3].capacative[0]*10;
-	 	  			Moisture[2] = Moisture[2] + fairways[3].capacative[1];
-
-	 	  			 if(Moisture[0] <= 40)//10 percent is 100 in the initial input
-	 	  			 {
-	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
-	 	  			 }
-
-	 	  			 if(Moisture[1]<= 40)//10 percent is 100 in the initial input
-	 	  			 {
-	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 0);
-	 	  			 }
-
-	 	  			 if(Moisture[2]<= 40)//10 percent is 100 in the initial input
-	 	  			 {
-	 	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
-	 	  			 }
-	 	  		  }
-	  				 //sensorToGateway(1);
-	 	  	  }
-
-//process weather and website data*****************************************************************************************
-    osDelay(150);
-  }
-  /* USER CODE END StartProcessingTask */
 }
 
 /* USER CODE BEGIN Header_StartWebsiteTask */
@@ -1688,16 +1705,16 @@ void StartProcessingTask(void *argument)
 void StartWebsiteTask(void *argument)
 {
   /* USER CODE BEGIN StartWebsiteTask */
-//	uint8_t BufferRX[50];
+	uint8_t BufferRX[50];
   /* Infinite loop */
   for(;;)
   {
-//	  if(HAL_UART_Receive(&huart1, BufferRX, 2, 300) == HAL_OK)
-//  	  {
-//  		web[0]++;
-//  		web[1] = BufferRX[0];//Sun has set or not
-//  		web[2] = BufferRX[1];//Chance of precipitation
-//  	  }
+	  if(HAL_UART_Receive(&huart1, BufferRX, 2, 300) == HAL_OK)
+  	  {
+  		web[0]++;
+  		web[1] = BufferRX[0];//Sun has set or not
+  		web[2] = BufferRX[1];//Chance of precipitation
+  	  }
     osDelay(1);
   }
   /* USER CODE END StartWebsiteTask */
@@ -1711,13 +1728,6 @@ void StartWebsiteTask(void *argument)
   * @param  htim : TIM handle
   * @retval None
   */
-//	  if(osMessageQueueGet(SolenoidQueueHandle, &input, NULL, 0U ) == osOK)
-//	  {//when receiving data put it in this array
-//		  water = water + input;
-//		  HAL_UART_Transmit(&huart1, &water, 1, 10);//*********also send Colton's info************
-//	  }
-//web[3] = BufferRX[2];
-//web[4] = BufferRX[3];
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */

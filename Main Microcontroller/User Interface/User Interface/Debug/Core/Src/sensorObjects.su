@@ -4,7 +4,7 @@ sensorObjects.c:91:6:processIO	32	static
 sensorObjects.c:155:6:sendBattRequest	16	static
 sensorObjects.c:181:6:sendTempRequest	16	static
 sensorObjects.c:209:6:sensorToGateway	16	static
-sensorObjects.c:233:9:verifyChecksum	32	static
-sensorObjects.c:258:9:generateChecksum	24	static
-sensorObjects.c:283:6:calcTemp	32	static
-sensorObjects.c:322:6:calcPercent	24	static
+sensorObjects.c:232:9:verifyChecksum	32	static
+sensorObjects.c:257:9:generateChecksum	24	static
+sensorObjects.c:282:6:calcTemp	32	static
+sensorObjects.c:321:6:calcPercent	24	static

@@ -209,20 +209,19 @@ void sendTempRequest(uint8_t nodeNumber)
 void sensorToGateway(uint8_t nodeNumber)
 {
 
-
         uartBufferTX[0] = 0x7E; //startDelim
         uartBufferTX[1] = (nodeNumber+0x30); //startDelim
-        uartBufferTX[2] = fairways[nodeNumber].temperature[0];
+        uartBufferTX[2] = fairways[nodeNumber].temperature[0];//send temp
         uartBufferTX[3] = fairways[nodeNumber].temperature[1];
         uartBufferTX[4] = fairways[nodeNumber].temperature[2];
-        uartBufferTX[5] = fairways[nodeNumber].resistive[0];
+        uartBufferTX[5] = fairways[nodeNumber].resistive[0];//send salinity
         uartBufferTX[6] = fairways[nodeNumber].resistive[1];
-        uartBufferTX[7] = fairways[nodeNumber].capacative[0];
+        uartBufferTX[7] = fairways[nodeNumber].capacative[0];//send soil moisture
         uartBufferTX[8] = fairways[nodeNumber].capacative[1];
-        uartBufferTX[9] = fairways[nodeNumber].battery[0];
+        uartBufferTX[9] = fairways[nodeNumber].battery[0];//send battery level
         uartBufferTX[10] = fairways[nodeNumber].battery[1];
-        uartBufferTX[11] = 0x39;
-        uartBufferTX[12] = 0x35;
+        uartBufferTX[11] = liters[0];//send water used in L
+        uartBufferTX[12] = liters[1];
 
         HAL_UART_Transmit(&huart1, uartBufferTX, 13, 1000);
 

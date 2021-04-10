@@ -11,8 +11,8 @@
 
 #include "Letters.h"
 
-void letter(char L)
-{
+void letter(char L)//depending on the letter or number entered we have it
+{//written out assigning the binary value of that letter or numberin ASCII to our LCD pins
 	if(L == ':')
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);//E high

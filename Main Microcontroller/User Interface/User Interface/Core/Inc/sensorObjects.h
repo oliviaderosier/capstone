@@ -32,7 +32,7 @@ void sensorToGateway(uint8_t nodeNumber);
 //Global Variables
 uint8_t uartBufferRX[50];
 uint8_t uartBufferTX[50];
-
+uint16_t liters[2];
 //Remote Command Options
 #define OPTION_APPLY	0x02 //apply changes
 
